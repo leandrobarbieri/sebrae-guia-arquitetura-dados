@@ -1,3 +1,7 @@
+# necessidades
+https://hackernoon.com/the-ai-hierarchy-of-needs-18f111fcc007
+![Alt text](image-1.png)
+
 # dominios
 Domínio é uma representação de um assunto no mundo real ele representa um conjunto de serviços relacionados que podem ou não fazerem parte de outro domínio mas em outro contexto.  
 

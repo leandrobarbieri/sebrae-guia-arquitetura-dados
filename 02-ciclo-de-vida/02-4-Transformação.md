@@ -1,4 +1,6 @@
 # o que é
+> Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
+
 > O que acontece nessa fase, qual o objetivo da fase. Delinear entradas, saídas limites e fronteiras
 
 # porque
@@ -29,6 +31,7 @@ R | - | x | x
 PySpark | - | x | x
 SparkSQL | x | x | -
 Bash | - | - | -
+
 
 ## Exemplos códigos comuns
 Listar os comandos mais comuns e as transformações básicas em cada linguagem

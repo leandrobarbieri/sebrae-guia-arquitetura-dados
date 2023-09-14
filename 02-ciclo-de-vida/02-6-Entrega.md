@@ -1,4 +1,7 @@
 # o que
+> Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
+
+
 > qual é o propósito da fase de entrega. A importancia dos metadados e descoberta. Delinear entradas, saídas limites e fronteiras
 
 Nem só de dashboard vide a análise de dados, o analista de dados pode e deve ir muito além de criar gráficos, ele deve contar histórias, contextualizar, identificar correlações, fazer análise de impacto. 
@@ -47,3 +50,9 @@ Data collaboration layer – Consists of data clean rooms where organizations ca
 Activation layer – This layer integrates customer profiles with the organization. It can also integrate with third-party SaaS providers in the advertising and marketing industry, and is capable of enriching data sets for consumption.
 
 https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
+
+
+# Recomendações do guia
+Código | Recomendação | Descrição
+------ | ------------ | ---------
+R01-ENT | A empresa deve ter uma infraestrutura de dados sólida e madura antes de focar em iniciativas de ML | A produtividade de cientistas de dados depende da disponibilidade de dados, da qualidade, da capacidade de lidar com volumes grandes, da infraestrutura de orquestração de pipelines para produtizar os modelos estatísticos. Tudo isso depende de infraestrutura previamente estabelecida.

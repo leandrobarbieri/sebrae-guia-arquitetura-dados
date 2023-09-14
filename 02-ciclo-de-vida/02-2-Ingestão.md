@@ -1,5 +1,6 @@
 # o que é
-> O que acontece nessa fase, qual o objetivo da fase.  Delinear entradas, saídas limites e fronteiras
+> Abordar aqui as relações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
+
 
 
 # porque
@@ -13,19 +14,10 @@
 
 > Ingestão: Diferenças ETL e ELT ou EtLT, Full, Incremental, padronização de formatos, conectividade, drivers, regras de rede, landing zone, agentes, etc..; Formatos csv, parquet, delta tables, quando usar vantagens e desvantagens, qual é mais rapido, qual é menor, códigos de conversão entre formatos; Com ou sem schema – schemaless schemaonread ou write, mudança de schema
 
-There are three different types of data that an organization 
-uses for analytical purposes. First, there is classical 
-structured data that principally comes from executing 
-transactions. This structured data has been around the 
-longest. Second, there is textual data from emails, call 
-center conversations, contracts, medical records, and 
-elsewhere. Once text was a “black box” that could only be 
-stored but not analyzed by the computer. 
-Now, textual Extract, Transform, and Load (ETL) 
-technology has opened the door of text to standard 
-analytical techniques. Third, there is the world of 
-analog/IoT. Machines of every kind, such as drones, 
-electric eyes
+> ETL reverso
+Reverse ETL vs CDP
+
+Another somewhat-in-the-weeds, but fun to watch part of the landscape has been the tension between Reverse ETL (again, the process of taking data out of the warehouse and putting it back into SaaS and other applications) and Customer Data Platforms (products that aggregate customer data from multiple sources, run analytics on them like segmentation, and enable actions like marketing campaigns). 
 
 
 ## exemplos

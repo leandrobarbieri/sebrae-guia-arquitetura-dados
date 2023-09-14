@@ -1,4 +1,6 @@
 # O que?
+> Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
+
 Exploração: analises descritiva, distribuição das variáveis numéricas, atributos, medidas, etc.
 Como isso é parte do workload de analise de dados para construção de pipelienes mas também parte do cilco de vida de ML. Delinear entradas, saídas limites e fronteiras
 

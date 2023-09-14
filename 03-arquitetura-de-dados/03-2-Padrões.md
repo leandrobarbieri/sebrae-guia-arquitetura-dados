@@ -59,6 +59,9 @@ https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html
 https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:cf3f19a7-7854-3697-ab92-14750190f021 
 
 
+
+
+
 ![Alt text](image.png)
 
 he Databricks Lakehouse Platform has the architectural features of a lakehouse. Microsoft's Azure Synapse Analytics service, which integrates with Azure Databricks, enables a similar lakehouse pattern. Other managed services such as BigQuery
