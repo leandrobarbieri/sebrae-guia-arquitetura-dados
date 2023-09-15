@@ -5,7 +5,7 @@ Dividir em fases nos ajuda a entender o processo de transformação de dados em 
 Também ajuda a escolher os componentes necessários
 
   
-![Alt text](..\anexo\ciclo.png)
+![Alt text](ciclo.png)
 
 
 Um profissional de dados recognizes when SQL, Python ou Bash. Cada uma tem um caso de uso e uma tarefa que é mais indicada. Exemplo: sql para transformar, modelar, python para extrair dados de formatos e de fontes diferentes, ou para usar as APIs das aplicações, Bash para automatizar tarefas de implantação ou configurações de ambiente.
@@ -19,5 +19,4 @@ Cientista de Dados/Analista de Dados | Perfil de analise, busca identificar opor
 
 A plataforma de dados pode ser vista com o hub que conecta os produtores (sistemas, dispositivos) aos consumidores de dados (engenheiros, analistas, cientistas) e viabilizar o ciclo de vida.
 
-![Alt text](../anexo/produtor-consumidor.png)
-
+![Alt text](produtor-consumidor.png)
