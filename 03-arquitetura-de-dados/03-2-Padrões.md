@@ -70,6 +70,7 @@ he Databricks Lakehouse Platform has the architectural features of a lakehouse. 
 
 # Comparativo
 
+
 Característica | Data Warehouse | Data Lake | Lakehouse 
 ---- | ---- | ----- | ---- |
 Tipo de dado | ---- | ----- | ---- |
@@ -77,6 +78,20 @@ Formato | ---- | ----- | ---- |
 Usuários | ---- | ----- | ---- |
 Caso de uso | ---- | ----- | ---- |
 Consumo | ---- | ----- | ---- |
+
+
+## Quando usar MDW ou LH?
+É dificil escolher, a infraestrutura de dados que armazena os dados de ambos estão padronizadas na mesma tecnologia, geralmente parquet (delta, hudi, iceberg)
+
+Então a escolha tem que ser baseada em outros critérios, pois os usuários da plaforma podem anternar entre o uso de um MDW e um LH, ou armazenar dados que vem de um no outro.
+
+Cenário | Escolha
+------- | --------
+Funcionalidades |Para direcionar a escolha, se você vai trabalhar com os dados usando um linguagem de programação como Python/R em notebooks em projetos de ciência de dados, mas se precisa de funcionalidades de um banco relacional, como views, procedures e os dados possuem um schema mais estável escolha NDW.
+Tipos de dados | Se você vai usar apenas dados estruturados escolha MDW, mas se no projeto de dados serão analisados dados em csv, json, parquet ou dados como texto ou imagem, vá com Lakehouse
+
+O importante é a arquitetura permitir migrar de um para o outro de uma forma tranquila para atender os cenários dos projetos de dados
+
 
 
 # data mesh

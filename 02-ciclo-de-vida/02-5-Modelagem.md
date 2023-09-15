@@ -5,6 +5,24 @@
 
 Um ponto crítico para ter uma arquitetura de dados moderna é saber dazer a modelagem
 
+# Fronteira entre a camada de qualidade e camada semântica
+A transformação ocorrida na fase anterior não depende de contexto de utilizaçaõ dos dados as transformações buscam trazer integridade e limpeza
+Qualidade dos dados
+Deduplicação
+Parse de atributos
+Padronização de formatos
+Monitoramento de falhas e incrementos
+
+A fase de modelagem já dependente de caso de uso, altera a essencia do dado de certa forma limita o uso mas enriquece com:
+Agregações
+Joins / Unions
+Dê-para
+Métricas e indicadores
+
+Deixam os dados prontos para consumo das ferramentas de visualização
+
+
+
 
 # Porque
 > Importancia de separar a transfornação da modelagem (a primeira cria um produto com dados tratados mas sem regras de negócio, essa com regras e dados modificados para atender casos de uso)

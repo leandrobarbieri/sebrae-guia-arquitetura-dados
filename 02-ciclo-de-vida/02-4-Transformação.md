@@ -6,6 +6,16 @@
 # porque
 > ter uma camada de transformação específica. Qualidade dos dados, multiplos casos de uso (dados tratados mas não alterados com regras de negócio são ótimos para DS)
 
+Motivo | Descrição
+------ | ---------
+Concorrência | Isola a fonte de dados de origem (geração) da fonte de dados analíticos (consumo) Minimiza o uso de recursos
+Segurança | Não abrir conexões externas com a fonte de dados de origem para consumo de dados
+Padronização | Converte diferentes formatos em formatos abertos, não proprietários. Agenda a ingestão de diferentes momentos pra cada fonte
+Semântica | Criar uma camada que faça mais sentido para análise de negócio (as fontes de dados são otimizadas para INSERT e UPDATE)
+Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers, linguagens, etc.) e unir dados de diferentes fontes. Cada fonte pode ter um agendamento diferente
+
+
+
 # Como?
 > Como padronizar formatos diferentes e aplicar regras de validação, duplicidade e inconsistencias
 Como lidar com mudança de schema; tipagem, limpeza, padronização, validação, ofuscação, qualidade, performance

@@ -34,6 +34,8 @@ Dados brutos ou modelados, com catálogo e segurança, dados sensíveis separado
 # para analise
 Nem só de dashbord vive um empresa 
 não criar paineis com filtros implicitos
+prototipar no excel antes de criar dashboards
+principios gestapo
 
 
 # para ml
@@ -56,3 +58,4 @@ https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-
 Código | Recomendação | Descrição
 ------ | ------------ | ---------
 R01-ENT | A empresa deve ter uma infraestrutura de dados sólida e madura antes de focar em iniciativas de ML | A produtividade de cientistas de dados depende da disponibilidade de dados, da qualidade, da capacidade de lidar com volumes grandes, da infraestrutura de orquestração de pipelines para produtizar os modelos estatísticos. Tudo isso depende de infraestrutura previamente estabelecida.
+
