@@ -27,3 +27,17 @@ O guia também tem o objetivo de servir como meio para disseminar conhecimento e
 
 # Estrutura do Guia
 O guia é composto com quatro partes principais. A (**Parte I**)[leandrobarbieri/sebrae-guia-arquitetura-dados/02-ciclo-de-vida/02-0-Introdução.md] busca delinear os objetivos, conceitos e princípios de arquitetura de dados como: separação de responsabilidades, independência de formatos e linguagem, simplicidade e escalabilidade entre outros. Na **Parte II** vamos apresentar o ciclo de vida dos dados como espinha dorsal para ancorar e dar sentido para os componentes da arquitetura. Serão abordadas as relações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias e ao final um estudo de caso com o ciclo completo. Na *Parte III* vamos falar de arquitetura e propor diagramas que exemplificam como os componentes se relacionam. Serão discutidos os métodos para estruturação e storage "medallion", são apresentados os benefícios e vantagens das arquiteturas de data warehouse, data lake, lakehouse e data mesh. Além disso serão apresentados comparativos e recomendações de quando usar. Na *Parte V* vamos falar sobre tópicos relacionados a governaça e como  boas práticas de segurança, metadados e catálogo, versionamento de código em projetos de dados, gerenciamento de riscos elevam a maturidade e adicionam valor a plataforma de dados. 
+
+## Parte I
+- [01-1-Introdução](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-1-Introdução.md)
+- [01-2-0-Princípios](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-0-Princípios.md)
+- [01-2-01-Separação das responsabilidades](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-2-01-Separa%C3%A7%C3%A3o%20das%20responsabilidades.md)
+- [01-2-02-Independência de componentes](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-02-Independência%20de%20componentes.md)
+- [01-2-04-Independência de formatos de dados](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-04-Independência%20de%20formatos%20de%20dados.md)
+- [01-2-05-Adaptável ao contexto](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-05-Adaptável%20ao%20contexto.md)
+- [01-2-06-Multicloud](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-06-Multicloud.md)
+- [01-2-07-Escalabilidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-07-Escalabilidade.md)
+- [01-2-08-Descentralização](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-08-Descentralização.md)
+- [01-2-09-Decisições reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-09-Decisições%20reversíveis.md)
+- [01-2-10-Simplicidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-10-Simplicidade.md)
+- [01-3-11-Referências](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-3-11-Referências.md)

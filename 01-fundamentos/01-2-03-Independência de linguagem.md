@@ -1,4 +1,4 @@
-# P03 - Independência de linguagem: 
+# P03 - Independência de linguagem
 As linguagens e programação, de consulta ou de prompt são os meios pelos quais os profissionais exercem sua proeficiencia para realizar as tarefas e implementar os pipelines, as transformações, o deploy das soluções, as análises e até o storytelling na entrega. 
 
 A plataforma que não cria barreiras para a utilização das principais linguagens se beneficiam pois direciona o foco do profissional ao código das etapas do pipeline. Tecnologias como virtualização de dados criam essa camada de abstração de formatos e linguagens que padronizam a forma de interagir com tecnologias diferentes. Exemplo com uma solução como Microsoft Polybase o analista de dados pode usar SQL-ANSI para consultar uma base NoSQL no Mongo DB, ou com Python fazer Webscrapping em um página Web ao mesmo tempo que se conecta ao um banco relacional ou a um arquivo parquet.

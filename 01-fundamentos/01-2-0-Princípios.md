@@ -25,4 +25,16 @@ P08 | Descentralização | As decisões de governaça podem ser hibridas/federad
 P09 | Decisições reversíveis | As escolhas podem ser revisadas e desfeitas sem afetar o todo. Arquitetura preraparada para mudança
 P10 | Simplicidade | Os componentes devem ser fáceis de usar, devem facilitar ou atomatizar a execução de tarefas comuns
 
+
+## Próximos passos
+
+- [01-2-01-Separação das responsabilidades](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-2-01-Separa%C3%A7%C3%A3o%20das%20responsabilidades.md)
+- [01-2-02-Independência de componentes](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-02-Independência%20de%20componentes.md)
+- [01-2-04-Independência de formatos de dados](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-04-Independência%20de%20formatos%20de%20dados.md)
+- [01-2-05-Adaptável ao contexto](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-05-Adaptável%20ao%20contexto.md)
+- [01-2-06-Multicloud](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-06-Multicloud.md)
+- [01-2-07-Escalabilidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-07-Escalabilidade.md)
+- [01-2-08-Descentralização](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-08-Descentralização.md)
+- [01-2-09-Decisições reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-09-Decisições%20reversíveis.md)
+- [01-2-10-Simplicidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-10-Simplicidade.md)
 	
