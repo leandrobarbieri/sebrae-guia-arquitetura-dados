@@ -7,26 +7,23 @@ Esse ecosistema de soluções que constumamos chamar de plataforma de dados mode
 
 Parte do sucesso de empresas como uber, ifood, nubank, picpay, que IA em seus produtos, está no fato de terem sido capazes de aplicar na prática a convergência entre 3 fatores: disponibilidade de dados, capacidade de processamento e evolução dos frameworks de machine learning. Algorítimos de ML sem o volume de dados suficiente ou muitos dados suficientes sem algorítmos modernos não levariam ao mesmo resultado.
 
-O primeiro passo para estabelecer uma arquitetura de dados adequada ao contexto da empresa é a definição clara de critérios e princípios que sustentem as escolhas arquiteturais, isso servirá de base para justificar a necessidade de cada componente e também para alinhar a expectativas sobre o que é mais importante e não se perder busca na busca pela tecnologia da moda.
+Existe uma de pirâmide de necessidades onde IA/ML está no topo, uma boa prática é estabelecer uma infraestrutura de dados e cultura analítica antes de avançar no desenvolvimento de modelos preditivos.
 
-![Alt text](..\anexo\data-landscape-2023.png)
-[Publicação de 2023 do MAD (Machine Learning, Artificial Intelligence & Data) Landscape](https://mattturck.com/landscape/mad2023.pdf)
+Fase | Desafio | Detalhes
+---- | ------- | -----------
+Necessidades básicas | Coleta de dados: Os pipelines coletam dados que a empresa precisa entre o que está disponível? O processo de ELT está confiável? Existe um padrão para armazenar os dados? Os dados são facilmente acessíveis? | Nessa fase, são estabelecidas os pipelines, os modelos de dados e do ponto de vista de projetos de IA/ML, as features para treinamento
+Dados disponíveis | Experimentação: com os dados disponíveis e um bom entendimento do negócio |As primeiras análises de impacto, testes A/B, e modelos mais simples de classificação/regressão (logistc regression, random florest, etc) começam a ser usados para criar um baseline.
+Arquitetura estabelecida | Pipelines rodando, dados organizados, conhecimento sobre o negócio disponível através de ferramentas analíticas e modelos ML simples. | Nesta fase os primeiros MVPs começam ser implantados
+
+O primeiro passo para estabelecer uma arquitetura de dados adequada ao contexto da empresa é a definição clara de critérios e princípios que sustentem as escolhas arquiteturais, isso servirá de base para justificar a necessidade de cada componente e também para alinhar a expectativas sobre o que é mais importante e não se perder busca na busca pela tecnologia da moda.
 
 Mas apesar da grande quantidade de opções, quando pensamos em plataformas de dados em clouds públicas, vemos a convergência de alguns padrões e tipos de tecnologias como object storages, engines de processamento de dados distribuído, virtualização de dados, lakehouses. Não significa que existe uma única forma de fazer, ou uma plataforma definitiva, completa, que resolva todo os cenários, existe a necessidade de identificar as melhores opções com melhor custo benefício que melhor se adaptam a realidade da empresa.
 
 
 # Objetivos do Guia
-
 Este guia de arquitetura de dados busca apresentar um detalhamento das melhores práticas estabelecidas em arquiteturas de dados modernas, além disso, apresenta estratégias de implantação e recomendações de tecnologias, sempre com o propósito de encontrar o que melhor se adequa ao modelo federado do Sebrae, considerando a independência das unidades, mas sem perder de vista a importância de uma governança centralizada.
 
 O guia também tem o objetivo de servir como meio para disseminar conhecimento entre os times envolvidos em atividades de engenharia de dados e servir de inspiração ou referência para dar os primeiros passos na direção de criar, evoluir ou justificar decisões de arquitetura em plataformas de dados. Este documento não tem o objetivo de estabelecer regras, ou servir como única referência, ele busca ser um material de apoio que traz uma visão de momento, do que poderia ser um bom caminho para estabelecer uma arquitetura, robusta, adaptável, escalável, reversível e simples.
 
 # Estrutura do Guia
-O guia é composto com quatro partes principais. A **Parte I** busca delinear os objetivos, conceitos e princípios de arquitetura de dados como: separação de responsabilidades, independência de formatos e linguagem, simplicidade e escalabilidade entre outros. Na **Parte II** vamos apresentar o ciclo de vida dos dados como espinha dorsal para ancorar e dar sentido para os componentes da arquitetura. Serão abordadas as relações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias e ao final um estudo de caso com o ciclo completo. Na *Parte III* vamos falar de arquitetura e propor diagramas que exemplificam como os componentes se relacionam. Serão discutidos os métodos para estruturação e storage "medallion", são apresentados os benefícios e vantagens das arquiteturas de data warehouse, data lake, lakehouse e data mesh. Além disso serão apresentados comparativos e recomendações de quando usar. Na *Parte V* vamos falar sobre tópicos relacionados a governaça e como  boas práticas de segurança, metadados e catálogo, versionamento de código em projetos de dados, gerenciamento de riscos elevam a maturidade e adicionam valor a plataforma de dados. 
-
-
-
-
-
-
-
+O guia é composto com quatro partes principais. A (**Parte I**)[leandrobarbieri/sebrae-guia-arquitetura-dados/02-ciclo-de-vida/02-0-Introdução.md] busca delinear os objetivos, conceitos e princípios de arquitetura de dados como: separação de responsabilidades, independência de formatos e linguagem, simplicidade e escalabilidade entre outros. Na **Parte II** vamos apresentar o ciclo de vida dos dados como espinha dorsal para ancorar e dar sentido para os componentes da arquitetura. Serão abordadas as relações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias e ao final um estudo de caso com o ciclo completo. Na *Parte III* vamos falar de arquitetura e propor diagramas que exemplificam como os componentes se relacionam. Serão discutidos os métodos para estruturação e storage "medallion", são apresentados os benefícios e vantagens das arquiteturas de data warehouse, data lake, lakehouse e data mesh. Além disso serão apresentados comparativos e recomendações de quando usar. Na *Parte V* vamos falar sobre tópicos relacionados a governaça e como  boas práticas de segurança, metadados e catálogo, versionamento de código em projetos de dados, gerenciamento de riscos elevam a maturidade e adicionam valor a plataforma de dados. 
