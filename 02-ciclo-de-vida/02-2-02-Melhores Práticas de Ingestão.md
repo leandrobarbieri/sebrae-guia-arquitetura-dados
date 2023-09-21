@@ -1,3 +1,3 @@
 Código | Descrição | Princípio
 ------ | --------- | ---------
-INGESTAO-01 | ---- | informar o código do princípio relacionado
+R1-Ingestão | Os responsáveis pelas fontes de dados originais e os engenheiros de dados que desenvolvem os pipelines de dados devem estabelecer um contrato de entrega e consumo de dados. O proprietário se compromete em fornecer o schema dos dados, e avisar em caso de mudança. O comsumidor se compromete a atender a frequência e horários de consumo e os métodos de consumo. Nesse acordo deve haver o propósito do uso e os níveis de segurança | P01, P02, P08

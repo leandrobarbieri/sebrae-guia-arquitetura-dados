@@ -1,11 +1,22 @@
-# O que?
-> Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
+# Fase: Modelagem
+Essa é uma camada onde a lógica de negócio da empresa é aplicada aos datasets. Nessa fase os dados são mais orientados aos domínios e não matém total relação com a fonte de dados original. Junções entre várias tabelas, concatenação entre atributos, colunas calculadas, agregações, segmentaçõs, novos atributos derivados e muitos outros tipos de processamentos que podem mudar significativamente os dados originais nessa camada.
 
-> o que acontece nessa fase, entradas e saídas, objetivos. Delinear entradas, saídas limites e fronteiras
+O objetivo principal agora é preparar os dados para consumo, principalmente por analistas de dados e analistas de negócio. Cientistas de dados também clientes desta camada, mas em geral seus projetos se beneficiam mais de camadas anteriores (bronze, silve) pois os dados estão mais próximos do estado bruto o que possíbilita diferentes combinações e validações de hipóteses não mapeadas. 
 
-Um ponto crítico para ter uma arquitetura de dados moderna é saber dazer a modelagem
+## Entradas
+Deixam os dados prontos para consumo das ferramentas de visualização
 
-# Fronteira entre a camada de qualidade e camada semântica
+			§ É a etapa que prepara o dado para ser servido de acordo com as necessidades específicas do negócio. 
+				
+				□ Diferente da transformação, a modelagem adiciona regras de negócio, semantica para os campos, desnormalização, joins, dê-para, agregações. A modelagem é voltada para simplificação  do schema para a entrega para o negócio
+				
+Exemplo: nessa fase são feitos joins com entidades externas podem adicionar features: join de uma localização com as coordenadas, um de-para de uma unidade da empresa uma área de atuação, etc..
+
+
+
+## Escopo
+Fronteira entre a camada de qualidade e camada semântica
+Filtra qualquer tipo de dados que não precisa ser exposto para análise
 A transformação ocorrida na fase anterior não depende de contexto de utilizaçaõ dos dados as transformações buscam trazer integridade e limpeza
 Qualidade dos dados
 Deduplicação
@@ -19,16 +30,13 @@ Joins / Unions
 Dê-para
 Métricas e indicadores
 
-Deixam os dados prontos para consumo das ferramentas de visualização
+
+## Saídas
+A simplificação obtida através da modelagem nessa fase do ciclo de vida, transforma os conjuntos de dados tratados em produtos, prontos para o usuário final consumir através de ferramentas de análise de dados. O objetivo dessa fase foi alcançado quando não há necessidade de conhecer os aspactos das fontes de dados originais para conseguir fazer análise dos dados.
 
 
 
 
-# Porque
-> Importancia de separar a transfornação da modelagem (a primeira cria um produto com dados tratados mas sem regras de negócio, essa com regras e dados modificados para atender casos de uso)
-
-# Como
-> tipos de tratamentos e transformações. Modelagem: relacionamentos, joins, semântica, dimensões, fatos, etc
 
 # Exemplos
 > das operações acima, de modelagem multidimensional e OLAP. Melhores práticas para modelos oplap (tabular)
@@ -53,10 +61,19 @@ https://www.prnewswire.com/news-releases/dbt-labs-launches-the-dbt-semantic-laye
 
 
 # Recomendações
-R1 | Desacoplar a camada semântica das ferramentas de BI | Uso de ferramendas de BI diferentes com a mesma metrica, propagação de mudanças, melhor consistencia, confinça que todos estão usando a mesma logica dos indicadores, concistencia entre ferramentas de BI
 
 
 
 
-Logical processing layer
-This layer is responsible for transforming data into a consumable state by applying business rules for data validation, identity resolution, segmentation, normalization, profile aggregation, and machine learning (ML) processing. This layer comprises custom application logic. The compute resources for this layer are designed to scale independently from storage to handle large data volumes; support schema-on-read, support partitioned data and diverse data formats; and orchestrate event-based data processing pipelines.
+
+Código | Recomendação | Descrição | Princípios
+------ | ------------ | --------- | ----------
+R01-Modelagem | Os dados da camada de modelagem devem estar organizados com base nos domínios da informação e não mais pelos contextos das fontes de dados. | Como os dados estão sendo preparados para atenderem as necessidades do negócio, fontes de dados de sistemas diferentes podem ser agrupadas em um domínio único. | P05
+R02-Modelagem | A modelagem deve esconder a maior parte da complexidade das fondes de dados originais | Toda a camanda semântica deve ser orientada ao consumo. Remover a normalização, simplicicar nomenclatura de atributos, mudar granularidade, criar métricas calculadas, etc.
+R03-Modelagem | Os dados armazenados na camada de modelagem (gold) devem estar no mesmo storage e formatos de arquivos que as camadas anteriores.
+R04-Modelagem | A camada de modelagem deve ser otimizada para consumo | As tecnologias de MDW, com particionamento, processamento distribuído, storages com discos rápidos (hot)
+R05-Modelagem | Os recursos computacionais desta camada devem ser para escalar de forma independente dos recrusos de storage, para acomodar o comumo massivo.
+R06-Modelagem | Views materializadas podem ser criadas para simplificar o otimizar o consumo | Views ajudam a diminuir a complexidade e quando materializadas podem trazer performance. Usar apenas quando há a possibilidade de analisar a linhagem dos dados.
+
+
+> RX | Desacoplar a camada semântica das ferramentas de BI (metric store) | Uso de ferramendas de BI diferentes com a mesma metrica, propagação de mudanças, melhor consistencia, confinça que todos estão usando a mesma logica dos indicadores, concistencia entre ferramentas de BI

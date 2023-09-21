@@ -6,9 +6,13 @@ O que é um storage de dados analíticos, formatos de arquivos, object storages,
 # Porque
 Benefícios de se usar tecnologias de storage dedicados a análise de dados
 
+# replicação de dados
+
 # tipos 
 > blob, object, etc
 
+# Hot Warm Cold
+https://www.ctera.com/company/blog/differences-hot-warm-cold-file-storage/
 
 # Object storages vantagens e desvantagens
 Features mais importantes, porque usar como storage de dados analíticos

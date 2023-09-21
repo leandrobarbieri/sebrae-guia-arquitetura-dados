@@ -22,6 +22,9 @@ Como lidar com mudança de schema; tipagem, limpeza, padronização, validação
 
 # Tecnologias de qualidade de dados
 dbt
+As ferramentas de qualidade de dados buscam aumentar a acurácia, consistência 
+Primeiro valida a integridado dos dados com relação ao schema publicado
+Depois valida os dados no aspecto funcional de tipos, valores nulos, ranges de válidos, outliers
 
 ## Processamento distribuído
 , quando é necessário, como funciona, quais são os limites
@@ -50,3 +53,12 @@ Código | SQL | Pandas | PySpark
 ------- | --- | ------ | -------
 Projeção de atributos de uma tabela | SELECT col1 FROM Tab | df["col1] | df.select(col(col1))
 Selecionar todos os atributos da tabela | SELECT * FROM Tab | display(df) | df.show()
+
+
+## Recomendações
+Código | Recomendação | Descrição | Princípios
+------ | ------------ | --------- | ----------
+R01-Transformações | Não devem ser incluídas regras de negócio na fase de transformação. Essa fase deve se concentrar em entregar valor através da validação, checagem, otimização e preparação dos dados. | Gerar datsets validados e com alta qualidade mas sem alterações de regras de negócio, os mantém com um propósito geram, servindo para múltiplos contextos e casos de uso onde a inclusão de regras de negócio poderiam limitar.
+R02-Transformação | Os dados devem ser ter padrões de representação consistentes entre os conjuntos de dados. | Por exemplo, todas as tabelas que usar campos como: endereço, um telefone, representação de gênero, número de cpf/cnpj, um código de contrata, etc. devem armazená-los transformados da mesma forma.
+R03-Transformação | As tecnologias usadas para o processamento devem ser escaláveis para conseguir lidar operações complexas de transformação ou limpeza.
+R04-Transformação | Problemas com a qualidade dos dados devem sempre ser endereçados para serem corrigidos no sistema de origem

@@ -31,3 +31,5 @@ https://www.databricks.com/blog/multi-cloud-architecture-portable-data-and-ai-pr
 Uma arquitetura moderna e multi-cloud traz os benefícios de ser capaz de atender mudanças geográficas (caso decidam descontinuar algum datacenter em uma determinada região), geopolítica e regulatória (caso alguma restrição legal obrigue a mudar para outra região) e de mercado caso haja mudança de preço no catálogo de serviços. 
 
 Pensar em uma plataforma multicloud direciona as ações no sentido de ter uma arquitetura mais aberta, formatos abertos, portáveis, com APIs comuns a várias engines de processamento. Essa independencia de cloud aumenta a qualidade dos produtos e o valor pois diminui a necessidade de refatorar código em casos de mudanças futuras.
+
+> Falar sobre como isso ajuda a criar um plano de disaster recovery

@@ -8,7 +8,8 @@ Também ajuda a escolher os componentes necessários
 ![Alt text](ciclo.png)
 
 
-Um profissional de dados recognizes when SQL, Python ou Bash. Cada uma tem um caso de uso e uma tarefa que é mais indicada. Exemplo: sql para transformar, modelar, python para extrair dados de formatos e de fontes diferentes, ou para usar as APIs das aplicações, Bash para automatizar tarefas de implantação ou configurações de ambiente.
+### SQL, Python ou Bash?
+Cada uma tem um caso de uso e uma tarefa que é mais indicada. Exemplo: sql para transformar, modelar, python para extrair dados de formatos e de fontes diferentes, ou para usar as APIs das aplicações, Bash para automatizar tarefas de implantação ou configurações de ambiente.
 
 Profissionais que dominam todas os componentes para entregar o ciclo de vida completo são difíceis de encontrar, cada pessoa envolvida por ter mais proeficiencia em uma parte do ciclo. É importante identificar os tipos de atividades e os tipos de profissionais dentro da mesma função para equilibrar o time e cobrir o ciclo de vida.
 
