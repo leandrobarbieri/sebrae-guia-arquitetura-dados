@@ -9,3 +9,7 @@ As plataformas de dados na nuvem se responsabilizam pela segurança dos seus ser
 
 
 https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
+
+
+
+- segurança unificada

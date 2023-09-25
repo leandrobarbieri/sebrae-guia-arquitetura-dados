@@ -12,3 +12,7 @@ Os dados quando estão armazenados em camadas diferentes, com níveis de tratame
 
 ### Benefício
 Trazer ferramentas que atendam as necessidades dos diversos tipos de produtos de dado, compartilhando as mesmas fontes adiciona valor aos dados já existentes ao mesmo tempo abre para diferentes formas extrair valor.
+
+
+###
+- quais são as personas, dependendo as features são exibidas ou não

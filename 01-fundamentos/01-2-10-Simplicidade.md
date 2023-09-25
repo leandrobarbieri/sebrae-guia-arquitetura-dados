@@ -5,3 +5,6 @@ A simnplicidade também deve vir do ferramental que facilita as tarefas mais com
 
 ### Exemplo
 Uma ideia comum na área de dados levanta questão de que um analista de dados ou cientista de dados consome 70 a 80% do tempo limpando preparando os dados. Na prática isso apenas revela a dificuldade de trabalhar com as ferramentas da plataforma. As manipulações e limpezas mais comuns podem ser apoiadas por features low-code que facilitam e agilizam essas tarefas. 
+
+
+- Avaliar opções de SaaS onde grande parte é gerenciada pelo provedor. as integrações e gerenciamentos nativos. Produtos da mesma stack

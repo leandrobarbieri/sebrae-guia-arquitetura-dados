@@ -51,6 +51,9 @@ df.write \
 Você sabe o que é Upsert? Upsert é uma operação de banco de dados que tenta inserir um registro e, caso o registro exista, o registro é atualizado, caso não exista, o registro é inserido como um novo registro.
 
 
+- duplicação de dados aumenta o custo, manutenção e gerenciamento da segurança. Não deve haver silos de dado, a arquitetura do storage deve ser aberta para que o dado seja compartilhado sem que seja movido, ou gerad uma cópia
+
+
 
 
 

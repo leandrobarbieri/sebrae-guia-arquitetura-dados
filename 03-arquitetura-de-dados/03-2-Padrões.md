@@ -38,7 +38,8 @@ https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-
 
 
 # dw
-
+- uma opção melhor para projetos com dados estruturados e desenvolvedores com skill de SQL
+- os dados não devem ester em formato proprietario. O DW deve armazenar os dados em formato aberto ao mesmo tempo garantir a ACID
 
 
 # dl
@@ -46,6 +47,9 @@ https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-
 
 
 # lakehouse
+
+Os dados estão armazenados no datalake mas organizados em camadas e com propriedades ACID.
+
 Tendências de migração: o melhor data warehouse é o Lakehouse 
 
 Uma conclusão interessante é que cerca de metade das empresas que se mudam para o Lakehouse vêm de data warehouses. Isso inclui os 22% que estão migrando de data warehouses em nuvem. Também demonstra um foco crescente na execução de cargas de trabalho de data warehousing em um Lakehouse e a unificação de plataformas de dados para reduzir custos. 
