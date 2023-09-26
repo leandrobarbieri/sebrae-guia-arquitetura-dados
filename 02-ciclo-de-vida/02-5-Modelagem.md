@@ -6,9 +6,9 @@ O objetivo principal agora é preparar os dados para consumo, principalmente por
 ## Entradas
 Deixam os dados prontos para consumo das ferramentas de visualização
 
-			§ É a etapa que prepara o dado para ser servido de acordo com as necessidades específicas do negócio. 
+É a etapa que prepara o dado para ser servido de acordo com as necessidades específicas do negócio. 
 				
-				□ Diferente da transformação, a modelagem adiciona regras de negócio, semantica para os campos, desnormalização, joins, dê-para, agregações. A modelagem é voltada para simplificação  do schema para a entrega para o negócio
+Diferente da transformação, a modelagem adiciona regras de negócio, semantica para os campos, desnormalização, joins, dê-para, agregações. A modelagem é voltada para simplificação  do schema para a entrega para o negócio
 				
 Exemplo: nessa fase são feitos joins com entidades externas podem adicionar features: join de uma localização com as coordenadas, um de-para de uma unidade da empresa uma área de atuação, etc..
 
@@ -29,6 +29,10 @@ Agregações
 Joins / Unions
 Dê-para
 Métricas e indicadores
+
+
+
+
 
 
 ## Saídas
