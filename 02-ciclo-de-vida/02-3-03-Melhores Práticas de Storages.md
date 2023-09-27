@@ -1,7 +1,5 @@
-Código | Descrição | Princípio
------- | --------- | ---------
-STORAGE-01 | não armazenar dados semi-estruturados em base relacional | informar o código do princípio relacionado
+Código | Questão | Recomendação | Princípio
+------ | --------- | --------- | ---------
+R01-Storage | Como armazenar de forma correta dados em bases de relacionais? | Não armazenar dados semi-estruturados em base relacional e garantir que todas as tabelas com dados analíticos estejam armazenados como column-store | P6
+R02-Storage | Como garantir que os dados possam ser acessados por diversos compomentes de processamento e análise de dados? | os dados não devem estar em formato proprietario, exclusivo do produto do storage (devem estar em formato aberto, comum a maioria das ferramentas). 
 
-- os dados não devem ester em formato proprietario (devem estar em formato open). O DW deve armazenar os dados em formato aberto ao mesmo tempo garantir a ACID
-
-## 

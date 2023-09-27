@@ -96,7 +96,9 @@ Tipos de dados | Se você vai usar apenas dados estruturados escolha MDW, mas se
 
 O importante é a arquitetura permitir migrar de um para o outro de uma forma tranquila para atender os cenários dos projetos de dados
 
+# lambda
 
+# kappa
 
 # data mesh
 - Contexto do sebrae

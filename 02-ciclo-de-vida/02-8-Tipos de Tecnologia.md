@@ -2,6 +2,8 @@ Conceituação dos tipos de tecnologias: Requisitos e restrições das soluçõe
 
 Ferramentas e Tecnologias Recomendadas: Sugestões de ferramentas e tecnologias que podem auxiliar na implementação da arquitetura de dados, como sistemas de gerenciamento de bancos de dados, ferramentas de integração de dados, entre outras.
 
+As escolhas são sempre baseadas no contexto da empresa e no nível de maturidade analitica.
+
 
 
 Tipos de tecnologias | Objetivo/Função | Fase do ciclo de vida | Exemplos de produtos

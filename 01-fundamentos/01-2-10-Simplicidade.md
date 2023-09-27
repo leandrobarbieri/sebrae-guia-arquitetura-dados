@@ -3,8 +3,10 @@ A arquitetura deve dar origem a uma plataforma fácil de ser implantada e gerenc
 
 A simnplicidade também deve vir do ferramental que facilita as tarefas mais comuns dos profissionais de dados, como tratamento, limpeza e consumo. Uma ideia comum na área de dados levanta questão de que um analista de dados ou cientista de dados consome 70 a 80% do tempo limpando preparando os dados. Na prática isso apenas revela a dificuldade de trabalhar com as ferramentas da plataforma. As manipulações e limpezas mais comuns podem ser apoiadas por features low-code que facilitam e agilizam essas tarefas.
 
+É importante avaliar opções de Software-as-Service, onde grande parte das integrações entre os compomentes é gerenciada pelo provedor e os soluções fazem parte de uma mesma stack. 
+
 ### Exemplo
 Uma ideia comum na área de dados levanta questão de que um analista de dados ou cientista de dados consome 70 a 80% do tempo limpando preparando os dados. Na prática isso apenas revela a dificuldade de trabalhar com as ferramentas da plataforma. As manipulações e limpezas mais comuns podem ser apoiadas por features low-code que facilitam e agilizam essas tarefas. 
 
-
-- Avaliar opções de SaaS onde grande parte é gerenciada pelo provedor. as integrações e gerenciamentos nativos. Produtos da mesma stack
+### Benefícios
+Ter melhor usabilidade e fornecer aos seus usuários a melhor experiência possível para realizar tarefas com segurança, eficácia e eficiência. 

@@ -2,28 +2,35 @@
 
 Atualmente a diversidade de tipos fontes de dados, a disponibilidade de informações e o volume disponíveis são um grande desafio mas também uma grande oportunidade. Os benefícios uma arquitetura capaz de se adaptar rapidamente às necessidades, alinhada aos padrões de mercado, nos dará uma boa referência de caminho a seguir.
 
-Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida.
+Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida. 
 
-As decisões e as escolhas devem ser sempre reversíveis, isso dá um bom indicativo de uma arquitetura robusta, capaz de se adaptar com o tempo. Não depender de um fabricante, modelo ou produto é altamente desejável e está no centro do conceito de plataforma de dados moderna. Mesmo que hoje algumas tecnologias sejam consideradas estado da arte, no futuro não muito distante isso pode mudar, além disso, com o aumento da maturidade da empresa novos casos de uso podem demandar evolução ou substituição de componentes.
+Algumas características como: independência, decisões reversíveis, escalabilidade, nos dão bons indicativos de uma arquitetura robusta, capaz de se adaptar com o tempo. 
+
+Nesse contexto, não depender de um fabricante, modelo ou produto é altamente desejável e está no centro do conceito de plataforma de dados moderna. Mesmo que hoje algumas tecnologias sejam consideradas estado da arte, no futuro não muito distante isso pode mudar, além disso, com o aumento da maturidade da empresa novos casos de uso podem demandar evolução ou substituição de componentes.
 
 Estabelecer os princípios nos ajuda a entender o que faz mais sentido para o contexto atual e futuro da empresa, pensar em termos que estabelecem as características mais importantes facilitam o processo de decisão e as escolhas passam a ser mais direcionadas a propósito e menos a preferencias pessoais.
 
-Os princípios são apenas aspectos desejáveis, não impõe restrições, tratam sempre de recomendações que na prática, quando bem implementados se tornam os direnciais das soluções gerenciadas por plataformas como databricks, azure, gcp, aws.
+Os princípios são definições de aspectos desejáveis, não impõe restrições, tratam sempre de recomendações que na prática, quando bem implementados se tornam os diferenciais das soluções gerenciadas por plataformas como databricks, azure, gcp, aws.
 
-Vamos a seguir discutir os 10 princípios que para o Sebrae devem ser considerados para a implementação de uma arquitetura de dados.
+The Well-Architected Framework identifies a set of general design principles to facilitate good design in the cloud:
+
+A seguir a lista com um resumo dos princípios que devem ser considerados pelo Sebrae durante a avaliação e implementação das arquiteturas de plataformas de dados. Vamos levantar questões sobre o que pode ser considerado como melhores práticas em projetos de plataformas de dados. 
+
+### Tabela 1. Lista de princípios. 
+_Os princípios serão listados com códigos para referenciar na tabelas de recomendações de cada fase._
 
 Cód | Nome | Conceito principal
 --- | ---- | ------------------
-P01 | Separação das responsabilidades | Cada componente com um papel bem definido e especializado (sem sobreposições de funcionalidades)
-P02 | Independência de componentes | Componentes podem ser substituídos, escalados ou desativados de forma isolada sem comprometer o todo
-P03 | Independência de linguagem | Os profissionais deve ser capazes de exercer as atividades as liguagens que têm maior proeficiência
-P04 | Independência de formatos de dados | Os dados devem estar em formatos abertos, comuns às diversas tecnologias de processamento e consumo
-P05 | Adaptável ao contexto | A arquitetura de ver flexível para se adequar às naturezas de casos de uso diferentes
-P06 | Multicloud | A empresa deve ser capaz de realizar a implantação da arquitetura e diferentes clouds públicas
-P07 | Escalabilidade | Os componentes devem ser capazes de se adaptar a demanda de conexões, processamento e volumes de dados, aumentando ou diminuindo recursos
-P08 | Descentralização | As decisões de governaça podem ser hibridas/federadas e o consumo dos dados descentralizados (self-service com governança federada)
-P09 | Decisições reversíveis | As escolhas podem ser revisadas e desfeitas sem afetar o todo. Arquitetura preraparada para mudança
-P10 | Simplicidade | Os componentes devem ser fáceis de usar, devem facilitar ou atomatizar a execução de tarefas comuns
+P01 | Separação das responsabilidades | Cada componente possui um papel bem definido e especializado (sem sobreposições de funcionalidades).
+P02 | Independência de componentes | Os componentes podem ser substituídos, escalonados ou desativados de forma isolada sem comprometer o funcionamento da plataforma.
+P03 | Independência de linguagem | Os profissionais deve ser capazes de exercer as atividades nos projetos de dados usando as liguagens que possuem maior proeficiência.
+P04 | Independência de formatos de dados | Os dados devem estar armazenados em formatos abertos, conhecidos pelas diversas tecnologias de processamento e análise de dados.
+P05 | Adaptável ao contexto | A arquitetura de ver flexível para se adequar às naturezas de casos de uso e tipos de usuários com níveis de conhecimento e necessidades diferentes.
+P06 | Multicloud | A empresa deve ser capaz de realizar a implantação da arquitetura em diferentes clouds públicas e estar pronta para migração entre clouds se for necessário.
+P07 | Escalabilidade | Os componentes devem ser capazes de se adaptar a demanda de conexões, processamento e volumes de dados, aumentando ou diminuindo a quantidade de recursos alocados.
+P08 | Descentralização | As decisões de governaça podem ser hibridas/federadas e o consumo dos dados descentralizado, ao mesmo tempo que a governança se mantém centralizada.
+P09 | Decisições reversíveis | As escolhas podem ser revisadas e desfeitas, se que comprometa a continuidade do funcionamento, arquitetura deve ser capaz de absorver mudanças.
+P10 | Simplicidade | Os componentes devem ser fáceis de usar, ter interface amigável, APIs para automação de tarefas, e opções de low-code para facilitar a execução de tarefas comuns, massantes ou repetitivas.
 
 
 ## Próximos passos

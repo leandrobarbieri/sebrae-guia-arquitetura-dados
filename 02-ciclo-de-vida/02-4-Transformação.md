@@ -15,6 +15,8 @@ Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers,
 Como lidar com mudança de schema; tipagem, limpeza, padronização, validação, ofuscação, qualidade, performance
 
 # Tecnologias de qualidade de dados
+Garantir que dados precisos e úteis estejam disponíveis para cargas de trabalho downstream BI, analíticas e machine learning .
+
 Manter a qualidade dos dados é uma premissa para o ciclo de vida. A medida que o dado é tratado ele ganha qualidade, o que representa que será validado quanto a consistência dos tipos de acordo com o schema definido, valores nulos, ranges de válidos, outliers, etc. Também são consideradas regras de negócio que caracterizam registro válidos ou não.
 
 As ferramentas de qualidade de dados buscam aumentar eficiência através da automação das regras de vefirificação realizando a checagem de integridade como parte do pipeline de dados.
@@ -39,6 +41,12 @@ SparkSQL | x | x | -
 Bash | - | - | -
 
 
+## Camada Semântica e Metric Store
+A separação da camanda semantica e a criação de uma abstração para as métricas permite a independencia de qual ferramenta da analise de dados será usada 
+
+https://airbyte.com/blog/the-rise-of-the-semantic-layer-metrics-on-the-fly
+https://towardsdatascience.com/metrics-store-in-action-76b16a928b97
+
 ## Exemplos códigos comuns
 Listar os comandos mais comuns e as transformações básicas em cada linguagem
 
@@ -56,6 +64,8 @@ R02-Transformação | Os dados devem ser ter padrões de representação consist
 R03-Transformação | As tecnologias usadas para o processamento devem ser escaláveis para conseguir lidar operações complexas de transformação ou limpeza.
 R04-Transformação | Problemas com a qualidade dos dados devem sempre ser endereçados para serem corrigidos no sistema de origem
 R05-Transformação | Dever ser estabelecido limites para a qualidade dos dados, quando é detectada que a qualidade está abaixo desses limites, deve haver uma análise por parte do proprietários dos dados se aceitam ou não a inclusão de dados com baixa qualidade.
+
+
 
 
 > o que é
