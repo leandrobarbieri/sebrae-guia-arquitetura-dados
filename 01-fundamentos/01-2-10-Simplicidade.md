@@ -9,4 +9,4 @@ A simnplicidade também deve vir do ferramental que facilita as tarefas mais com
 Uma ideia comum na área de dados levanta questão de que um analista de dados ou cientista de dados consome 70 a 80% do tempo limpando preparando os dados. Na prática isso apenas revela a dificuldade de trabalhar com as ferramentas da plataforma. As manipulações e limpezas mais comuns podem ser apoiadas por features low-code que facilitam e agilizam essas tarefas. 
 
 ### Benefícios
-Ter melhor usabilidade e fornecer aos seus usuários a melhor experiência possível para realizar tarefas com segurança, eficácia e eficiência. 
+Ter melhor usabilidade e fornecer aos seus usuários a melhor experiência possível para realizar tarefas com segurança, eficácia e eficiência. Além disso reduz os custos de treinamentos e capacitações.

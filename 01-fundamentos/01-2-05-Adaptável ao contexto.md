@@ -1,8 +1,6 @@
 
 # P05 - Adaptável ao contexto de uso
-A arquitetura da plataforma de dados deve ser adaptável e flexível para naturezas de casos de uso de projetos de dados, com worloads diferentes. Atender desde analistas de negócio, analistas de dados,  cientista de dados e engenheiros de dados. 
-
-Além disso difentes perfis de cada área, desde iniciantes aos usuários avançados. Oferendo dados brutos, tratados, modelados para cada público. 
+A arquitetura da plataforma de dados deve ser adaptável e flexível para atender diferentes casos de uso de projetos de dados. Atender os workloads de analistas de negócio, analistas de dados,  cientista de dados e engenheiros de dados através de ferramentas específicas e tipos de dados com níveis de transformações diferentes, disponíveis em estado bruto, tratados, modelados. 
 
 Deve haver compatibildade com frameworks de ML, linguagens de consulta ou ferramentas de BI, e todas devem consumir o mesmo repositório de dados compartilhado.
 

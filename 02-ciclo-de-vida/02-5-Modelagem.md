@@ -76,7 +76,7 @@ R01-Modelagem | Os dados da camada de modelagem devem estar organizados com base
 R02-Modelagem | A modelagem deve esconder a maior parte da complexidade das fondes de dados originais | Toda a camanda semântica deve ser orientada ao consumo. Remover a normalização, simplicicar nomenclatura de atributos, mudar granularidade, criar métricas calculadas, etc.
 R03-Modelagem | Os dados armazenados na camada de modelagem (gold) devem estar no mesmo storage e formatos de arquivos que as camadas anteriores.
 R04-Modelagem | A camada de modelagem deve ser otimizada para consumo | As tecnologias de MDW, com particionamento, processamento distribuído, storages com discos rápidos (hot)
-R05-Modelagem | Os recursos computacionais desta camada devem ser para escalar de forma independente dos recrusos de storage, para acomodar o comumo massivo.
+R05-Modelagem | Os recursos computacionais desta camada devem ser para escalar de forma independente dos recursos de storage, para acomodar o comumo massivo.
 R06-Modelagem | Views materializadas podem ser criadas para simplificar o otimizar o consumo | Views ajudam a diminuir a complexidade e quando materializadas podem trazer performance. Usar apenas quando há a possibilidade de analisar a linhagem dos dados.
 
 

@@ -7,7 +7,6 @@ A arquitetura deve permitir que a capacidade seja ajustada à demanda mantendo a
 
 Essa característica de elasticidade é o atributo que define sistemas que são capazes de fazer escalabilidade automática tanto para mais quanto para menos. Essa característica é muito importante para garantir performance sem intervenção manual, aumentando assim robustez da solução .O objetivo é sempre a busca pela eficiência, atender a demanda com menor custo. 
 
-#### Exemplos
 
 #### Benefícios
 Se a arquitetura não tem essa capacidade de escalonar ou de reduzir de acordo com a demanda, erros no dimensiomento de capacidade podem gerar custos excessivos em recursos subutilizados, ou quando escassos causar problemas de performance. Adotar componentes auto-escaláveis permite que apenas a quantidade necessária será provisionada, otimizando o uso dos recursos ao mesmo tempo que mantém a performance.
