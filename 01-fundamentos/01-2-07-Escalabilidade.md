@@ -5,7 +5,7 @@ Os componentes devem ter escalabilidade tanto para adaptar-se ao aumento de dema
 
 A arquitetura deve permitir que a capacidade seja ajustada à demanda mantendo a performance mesmo que em casos de uso específicos o projeto de dados demande muitas conexões, volume de consultas ou quantidade de dados. 
 
-Essa característica de elasticidade é o atributo que define sistemas que são capazes de fazer escalabilidade automática tanto para mais quanto para menos. Essa característica é muito importante para garantir performance sem intervenção manual, aumentando assim robustez da solução .O objetivo é sempre a busca pela eficiência, atender a demanda com menor custo. 
+Essa característica de elasticidade é o atributo que define sistemas que são capazes de fazer escalabilidade automática tanto para mais, quanto para menos. Essa característica é muito importante para garantir performance sem intervenção manual, aumentando assim robustez da solução. O objetivo é sempre a busca pela eficiência, atender a demanda com menor custo. 
 
 
 #### Benefícios

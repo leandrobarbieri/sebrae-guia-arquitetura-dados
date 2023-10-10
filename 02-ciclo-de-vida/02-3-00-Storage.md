@@ -1,3 +1,5 @@
+
+
 # O que é
 > Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
 

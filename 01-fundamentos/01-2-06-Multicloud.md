@@ -1,5 +1,7 @@
 # P06 - Multicloud
-Esse princípio busca estabelecer como objetivo a escolha de componentes que não dependem de um provedor de nuvem específico, amplia as possibilidades atuais e futuras de migração, atualização e evolução da plataforma em uma estratégia de longo prazo. É importante ter um provedor de referência e se beneficiar das integrações entre seus produtos, mas não podemos deixar de considerar a escolha de componentes específicos que criam o lock-in de fornecedor. 
+>_A empresa deve ser capaz de realizar a implantação da arquitetura em diferentes clouds públicas e estar pronta para migração entre clouds se for necessário._
+
+Esse princípio busca estabelecer como objetivo a escolha de componentes que não dependem de um provedor de nuvem específico, que ampliam as possibilidades atuais e futuras de migração, atualização e evolução da plataforma em uma estratégia de longo prazo. É importante ter um provedor de referência e se beneficiar das integrações entre seus produtos, mas não podemos deixar de considerar a escolha de componentes específicos que criar o lock-in de fornecedor. 
 
 A abordagem de desenvolver soluções de dados usando os serviços nativos de uma cloud preferida é muito comum mas cria uma série de desafios de longo prazo:
 
@@ -13,11 +15,11 @@ Para alcançar uma arquitetura multicloud busque sempre usar: formatos de dados 
 
 Crie a infraestrutura como código usando abstrações com ferramentas como o terraform, solução de código de aberto para deploy de infraestrutura na nuvem, compatível com vários provedores.
 
-Como os provedores de nuvem ofereceram uma interface por linha de comando para automação de tarefas e gestão da infraestrutura, é possível orquestrar o deploy de servicos de forma automatizada, a questão que surge nesse contexto multicloud, é que vários comandos diferentes implementados por cada provedor de nuvem, surge a necessidade de uma abstração capaz de traduzir o comando criada em cada comando específico de cada nuvem.
+Como os provedores de nuvem ofereceram uma interface por linha de comando para automação de tarefas e gestão da infraestrutura, é possível orquestrar o deploy de servicos de forma automatizada, a questão que surge nesse contexto multicloud, é que vários comandos diferentes implementados por cada provedor de nuvem, surge a necessidade de uma abstração capaz de traduzir o comando em cada comando específico de cada nuvem.
 
 
-## Exemplo
-Um bom exemplo é o apache airflow, uma solução open-source para orquestração de pipelines. Essa solução pode ser usada como ferramenta de ELT/ETL, como orquestrador de dados ou de machine learning e pode ser implantada tanto on-premise, hibrida ou gerenciada como produtos das principais clouds. No Google ela se chama "Google Composer", na Microsoft está como feature do Data Factory e na AWS é o produto  Managed Workflows para Apache Airflow. Ou seja, um pipeline criado em Airflow, poderia rodar nas principais clouds sem muitos ajustes. 
+#### Exemplo
+Um bom exemplo é o apache airflow, uma solução open-source para orquestração de pipelines. Essa solução pode ser usada como ferramenta de ELT/ETL, como orquestrador de dados ou de machine learning e pode ser implantada tanto on-premise, hibrida ou gerenciada como produtos das principais clouds. No Google ela se chama "Google Composer", na Microsoft está como feature do "Data Factory" e na AWS é o produto  "Managed Workflows para Apache Airflow". Ou seja, um pipeline criado em Airflow, poderia rodar nas principais clouds sem muitos ajustes. 
 
 Cloud | Ferramenta Orquestração/ETL | Versão Airflow Gerenciado
 ----- | ---------- | --------------
@@ -31,12 +33,9 @@ O Databricks é outra ferramenta multicloud que permite rodar uma plataoforma de
 https://www.databricks.com/blog/multi-cloud-architecture-portable-data-and-ai-processing-financial-services
 
 
-## Benefícios
+#### Benefícios
 Uma arquitetura moderna e multi-cloud traz os benefícios de ser capaz de atender mudanças geográficas (caso decidam descontinuar algum datacenter em uma determinada região), geopolítica e regulatória (caso alguma restrição legal obrigue a mudar para outra região) e de mercado caso haja mudança de preço no catálogo de serviços. 
 
-Pensar em uma plataforma multicloud direciona as ações no sentido de ter uma arquitetura mais aberta, formatos abertos, portáveis, com APIs comuns a várias engines de processamento. Essa independencia de cloud aumenta a qualidade dos produtos e o valor pois diminui a necessidade de refatorar código em casos de mudanças futuras.
+Pensar em uma plataforma multicloud direciona as ações no sentido de ter uma arquitetura mais aberta, formatos abertos, portáveis, com APIs comuns a várias engines de processamento. Essa independencia de cloud aumenta a qualidade dos produtos, pois diminui a necessidade de refatorar código em casos de mudanças futuras.
 
-Outro benefício é que ao trabalhar o contexto multicloud faz com que tenhamos que criar a infraestrutura como código (IaC) o que permite criar pipelines de CI/CD que trazem eficiência e permitem maior controle sobre as mudanças. 
-
-
-> Falar sobre como isso ajuda a criar um plano de disaster recovery
+Outro benefício é que ao trabalhar o contexto multicloud faz com que tenhamos que criar a infraestrutura como código (IaC) o que permite criar pipelines de CI/CD que trazem eficiência e permitem maior controle sobre as mudanças.

@@ -38,12 +38,18 @@ https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-
 
 
 # dw
+- colunar e não row-base
+
 - uma opção melhor para projetos com dados estruturados e desenvolvedores com skill de SQL
 - os dados não devem ester em formato proprietario. O DW deve armazenar os dados em formato aberto ao mesmo tempo garantir a ACID
 
 
-# dl
 
+# dl
+Armazenado obj dentro de um low cost GDS, S3, Minio
+Armanzenado literalmente dentro de arquivos físicos
+
+![Alt text](image-3.png)
 
 
 # lakehouse
@@ -63,6 +69,11 @@ https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html
 https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:cf3f19a7-7854-3697-ab92-14750190f021 
 
 
+Ideias para adicionar
+- Lakehouses são mais performaticos pois oferecem mecanismos de indexação e metadados que auxiliam as consultas aos dados
+- Antes tinha que ler tudo levar para a engine para depois processar 
+
+ 
 
 
 
@@ -74,6 +85,7 @@ he Databricks Lakehouse Platform has the architectural features of a lakehouse. 
 
 # Comparativo
 
+- Datalake tem menos previsibilidade de como vc le os dados "troteling"
 
 Característica | Data Warehouse | Data Lake | Lakehouse 
 ---- | ---- | ----- | ---- |
