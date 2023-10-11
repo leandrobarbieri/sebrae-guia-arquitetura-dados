@@ -61,7 +61,7 @@ P05 | Adaptável ao contexto | A arquitetura de ver flexível para se adequar à
 P06 | Multicloud | A empresa deve ser capaz de realizar a implantação da arquitetura em diferentes clouds públicas e estar pronta para migração entre clouds se for necessário.
 P07 | Escalabilidade | Os componentes devem ser capazes de se adaptar a demanda de conexões, processamento e volumes de dados, aumentando ou diminuindo a quantidade de recursos alocados.
 P08 | Descentralização | As decisões de governaça podem ser hibridas/federadas e o consumo dos dados descentralizado, ao mesmo tempo que a governança se mantém centralizada.
-P09 | Decisições reversíveis | As escolhas podem ser revisadas e desfeitas, sem que comprometa a continuidade do funcionamento, arquitetura deve ser capaz de absorver mudanças.
+P09 | Decisões reversíveis | As escolhas podem ser revisadas e desfeitas, sem que comprometa a continuidade do funcionamento, arquitetura deve ser capaz de absorver mudanças.
 P10 | Simplicidade | Os componentes devem ser fáceis de usar, ter interface amigável, APIs para automação de tarefas, e opções de low-code para facilitar a execução de tarefas comuns, massantes ou repetitivas.
 
 
@@ -74,7 +74,7 @@ P10 | Simplicidade | Os componentes devem ser fáceis de usar, ter interface ami
 - [01-2-06-Multicloud](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-06-Multicloud.md)
 - [01-2-07-Escalabilidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-07-Escalabilidade.md)
 - [01-2-08-Descentralização](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-08-Descentralização.md)
-- [01-2-09-Decisições reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-09-Decisições%20reversíveis.md)
+- [01-2-09-Decisões reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-09-Decisões%20reversíveis.md)
 - [01-2-10-Simplicidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-10-Simplicidade.md)
 
 ## P01 - Separação das responsabilidades
@@ -235,7 +235,7 @@ Deve-se manter governança centralizada.
 #### Benefícios
 A descentralização pode trazer agilidade nas escolhas, flexibilidade para cada unidade escolher como quer evoluir sua arquitetura e redução de custos, quando permite evoluir de acordo com o momento e o nível de maturidade atual da unidade.
 
-## P09 - Decisições reversíveis
+## P09 - Decisões reversíveis
 > "_As escolhas podem ser revisadas e desfeitas, sem que comprometa a continuidade do funcionamento, arquitetura deve ser capaz de absorver mudanças._"
 
 Ao chegar a uma arquitetura viável, é importante que ela seja vista sempre como algo mutável, algo que está em constante evolução. 

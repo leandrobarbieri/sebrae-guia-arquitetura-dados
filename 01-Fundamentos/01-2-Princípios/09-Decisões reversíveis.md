@@ -1,4 +1,4 @@
-## P09 - Decisições reversíveis
+## P09 - Decisões reversíveis
 > "_As escolhas podem ser revisadas e desfeitas, sem que comprometa a continuidade do funcionamento, arquitetura deve ser capaz de absorver mudanças._"
 
 Ao chegar a uma arquitetura viável, é importante que ela seja vista sempre como algo mutável, algo que está em constante evolução. 
