@@ -5,7 +5,7 @@ A independência entre os componentes, principalmente entre a camada de storage 
 
 Além da independência entre o storage e as engines de processamento presente nos data warehouses/lakehouses, temos a idenpendência entre tecnologias de armazenamento de dados OLAP, que criam a camanda semântica para diferentes ferramentas de análise de BI que consomem. 
 
-![Alt text](image-1.png)
+![Camadas](/01-Fundamentos/media/image-1.png)
 
 #### Exemplo
 Nas arquiteturas de Lakehouse e Data Warehouses modernos, como Azure Synapse, BigQuery, Databricks, o storage é desacoplado da computação. Na prática o engine de processamento roda em clusters diferentes, dessa forma a arquiterura fica escalável e suporta muito mais usuários concorrentes ou volumes de dados maiores, se adatando ao caso de uso e tipo de demanda. Esse é um exemplo de como o o desacoplamento traz versatilidade. 

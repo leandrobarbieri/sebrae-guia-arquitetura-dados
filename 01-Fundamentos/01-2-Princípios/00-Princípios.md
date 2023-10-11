@@ -3,7 +3,7 @@ A diversidade de fontes, a disponibilidade de meios para coleta de dados e o vol
 
 Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida. 
 
-![Alt text](image.png)
+![Camadas](/01-Fundamentos/media/image.png)
 
 
 Algumas características como: independência, decisões reversíveis, escalabilidade, nos dão bons indicativos de uma arquitetura robusta, capaz de se adaptar com o tempo. 
@@ -35,13 +35,14 @@ P10 | Simplicidade | Os componentes devem ser fáceis de usar, ter interface ami
 
 ## Próximos passos
 
-- [01-2-01-Separação das responsabilidades](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-2-01-Separa%C3%A7%C3%A3o%20das%20responsabilidades.md)
-- [01-2-02-Independência de componentes](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-02-Independência%20de%20componentes.md)
-- [01-2-04-Independência de formatos de dados](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-04-Independência%20de%20formatos%20de%20dados.md)
-- [01-2-05-Adaptável ao contexto](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-05-Adaptável%20ao%20contexto.md)
-- [01-2-06-Multicloud](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-06-Multicloud.md)
-- [01-2-07-Escalabilidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-07-Escalabilidade.md)
-- [01-2-08-Descentralização](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-08-Descentralização.md)
-- [01-2-09-decisões reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-09-decisões%20reversíveis.md)
-- [01-2-10-Simplicidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/01-2-10-Simplicidade.md)
-	
+- [01-2-01-Separação das responsabilidades](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/01-Separa%C3%A7%C3%A3o%20das%20responsabilidades.md)
+- [01-2-02-Independência de componentes](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/02-Independ%C3%AAncia%20de%20componentes.md)
+- [01-2-02-Independência de linguagem](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/03-Independ%C3%AAncia%20de%20linguagem.md)
+- [01-2-04-Independência de formatos de dados](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/04-Independ%C3%AAncia%20de%20formatos%20de%20dados.md)
+- [01-2-05-Adaptável ao contexto](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/05-Adapt%C3%A1vel%20ao%20contexto.md)
+- [01-2-06-Multicloud](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/06-Multicloud.md)
+- [01-2-07-Escalabilidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/07-Escalabilidade.md)
+- [01-2-08-Descentralização](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/08-Descentraliza%C3%A7%C3%A3o.md)
+- [01-2-09-Decisões reversíveis](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/09-Decis%C3%B5es%20revers%C3%ADveis.md)
+- [01-2-10-Simplicidade](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-2-Princ%C3%ADpios/10-Simplicidade.md)
+- [01-3-11-Referências](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-Fundamentos/01-3-Conceitos/02-Refer%C3%AAncias.md)
