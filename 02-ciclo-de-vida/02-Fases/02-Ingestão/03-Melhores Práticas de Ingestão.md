@@ -1,0 +1,6 @@
+Código | Questão | Recomendação | Princípio
+------ | --------- | --------- | ---------
+R01-Ingestão | Como mitigar a possibilidade de que mudanças nas fontes de dados afetem o funcionamento do pipeline? | Os responsáveis pelas fontes de dados originais e os engenheiros de dados que desenvolvem os pipelines de dados devem estabelecer um contrato de entrega e consumo de dados. O proprietário se compromete em fornecer o schema dos dados, e avisar em caso de mudança. O comsumidor se compromete a atender a frequência e horários de consumo e os métodos de consumo. Nesse acordo deve haver o propósito do uso e os níveis de segurança | P01, P02, P08
+R02-Ingestão | Como criar datasets que atendam as necessidades de consumo de dados com objetivos diferentes? | Os dados  ingeridos na plataforma devem manter o contexto geral e não aplicar modelagem que alterem a representação original dos dados na fonte, apenas melhorias na qualidade. 
+R03-Ingestão | Como criar pipelines de forma eficiente sem criar dependência com a ferramenta de orquestração/ETL? | Implemente o pipeline e faça o deploy usando código, evite usar UI quando for possível. Isso reduz a erro humano, permite automação e reduz a dependência da ferramenta| P03
+

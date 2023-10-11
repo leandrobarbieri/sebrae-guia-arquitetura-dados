@@ -46,15 +46,8 @@ Cientista de dados deve pegar da camada limpa de Gold
 
 
 
+> Também é importante fornecer dados  consistentes com significados para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 
-Logical consumption layer
-The consumption layer is responsible for providing scalable tools to gain insights from the vast amount of data in the marketing CDP.
-
-Analytics layer – Enables consumption by all user personas through several purpose-built analytics tools that support analysis methods, including ad-hoc SQL queries, batch analytics, business intelligence (BI) dashboards and ML-based insights. Components in this layer should support schema-on-read, data partitioning, and a variety of formats.
-Data collaboration layer – Consists of data clean rooms where organizations can aggregate customer data from different marketing channels or lines of business, and combine it with first-party data to gain insights while enforcing security, anonymization, and compliance controls.
-Activation layer – This layer integrates customer profiles with the organization. It can also integrate with third-party SaaS providers in the advertising and marketing industry, and is capable of enriching data sets for consumption.
-
-https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
 
 
 # storytelling
@@ -74,4 +67,10 @@ R08-Entrega | Organize os ativos de dados um catálogo unificado orientado a dom
 R09-Entrega | Como gerenciar os acessos e compartilhamento de dados em um modelo descentralizado/federado? | Centralizar o controle de acesso: Mesmo que os dados estejam em arquiteturas separadas, em um modelo federado, busque usar padrões de armazenamento abertos de forma que seja possível criar catálogos com controle de acceso centralizado mantendo uma governança unificada.
 R10-Entrega | Fornecer dados semanticamente consistentes para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 R11-Entrega | Busque sempre criar experiências de autoatendimento para solicitação de acessos aos produtos de dados
+
+
+
+# Referencias
+
+https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
 

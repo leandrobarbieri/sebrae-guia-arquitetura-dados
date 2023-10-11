@@ -18,6 +18,12 @@ Delta, Iceberg são compativeis e comparáveis?
 
 ![Alt text](image-6.png)
 
+## falar sobre schema on read e schema on write
+
+## mostrar um estudo comparando a performance (leitura e escrita) e espaço de armanzenamento de diferentes formatos
+
+## destacar o funcionamento do parquet como padrão para dados analiticos
+
 
 ## Iceberg
 
