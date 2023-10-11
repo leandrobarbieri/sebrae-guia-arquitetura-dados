@@ -1,9 +1,9 @@
-# Princípios para uma boa arquitetura
+# Princípios
 A diversidade de fontes, a disponibilidade de meios para coleta de dados e o volume de informações disponíveis representam grandes desafios e ótimas oportunidades para as empresas. Criar uma arquitetura de dados adaptável às necessidades e alinhada aos padrões de mercado pode trazer grandes vantagens competitivas.
 
 Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida. 
 
-![Camadas](/01-Fundamentos/media/image.png)
+![Ciclo](/01-Fundamentos/media/image.png)
 
 
 Algumas características como: independência, decisões reversíveis, escalabilidade, nos dão bons indicativos de uma arquitetura robusta, capaz de se adaptar com o tempo. 

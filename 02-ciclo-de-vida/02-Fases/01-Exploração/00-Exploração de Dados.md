@@ -1,6 +1,7 @@
-# Exploração de dados
-Exploração: analises descritiva, distribuição das variáveis numéricas, atributos, medidas, etc.
-Como isso é parte do workload de analise de dados para construção de pipelienes mas também parte do cilco de vida de ML. Delinear entradas, saídas limites e fronteiras
+# Fase: Exploração de dados
+Essa é a primeira fase do ciclo de vida, nesse momento são sendo avaliadas as possibilidades de obtenção dos dados, será avaliado o que é necessário e o que está disponível. É uma fase que requer conhecimento técnico e de negócio. É realizada por engenheiros de dados em conjunto com analistas de negócio.
+
+Durante a exploração são feitas análises descritivas, distribuição das variáveis numéricas, avaliação dos tipos de atributos categóricos.
 
 ### SQL, Python ou Bash?
 Cada uma tem um caso de uso e uma tarefa que é mais indicada. Exemplo: sql para transformar, modelar, python para extrair dados de formatos e de fontes diferentes, ou para usar as APIs das aplicações, Bash para automatizar tarefas de implantação ou configurações de ambiente.
@@ -14,8 +15,7 @@ Cientista de Dados/Analista de Dados | Perfil de analise, busca identificar opor
 
 A plataforma de dados pode ser vista com o hub que conecta os produtores (sistemas, dispositivos) aos consumidores de dados (engenheiros, analistas, cientistas) e viabilizar o ciclo de vida.
 
-![Alt text](produtor-consumidor.png)
-
+![Alt text](../../media/produtor-consumidor.png)
 
 
 > O que?

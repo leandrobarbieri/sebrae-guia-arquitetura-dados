@@ -4,7 +4,6 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 
 [The Evolution of The Data Engineer: A Look at The Past, Present & Future](https://airbyte.com/blog/data-engineering-past-present-and-future)
 
-
 [Arquitetura de data lakehouse: estrutura bem arquitetada do Databricks
 ](https://docs.databricks.com/pt/lakehouse-architecture/index.html)
 
