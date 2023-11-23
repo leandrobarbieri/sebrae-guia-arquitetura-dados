@@ -19,9 +19,12 @@ Processo de usar os dados do DW de volta nas aplicações com dados consolidados
 > diferenças, tipos de tecnologias, quando usar e quando não usar
 
 ### Streaming
-Também conhecido como processamento baseado em eventos. Os dados são enviados em um fluxo de pequenos eventos, para bancos de dados de filas, ou pub/subs. São efecientes, pois executam rápido por lidarem com pequenos datasets são bons para demandas de análises em tempo real.
+Também conhecido como processamento baseado em eventos ou em tempo real. Os dados são enviados em um fluxo de pequenos eventos, para bancos de dados de filas, ou pub/subs. São efecientes, pois executam rápido por lidarem com pequenos datasets são bons para demandas de análises em tempo real.
 
 Esse formato de ingestão de dados funciona bem em casos de uso onde o volume das transações é pequeno, o processamento realizado nos dados é mais simples e existe a necessidade de baixa latência.
+
+Após o processamento, em geral os dados são inseridos em data warehouses ou data lakes.
+
 
 ### Batch
 Representa o processo de realizar a transferência de grandes volumes dados de uma só vez, em um momento específico do dia. Um processamento em batch carrega, milhões ou bilhões de registros de um arquivo em uma tabela de destino para realizar a atualização dos dados. Muitas vezes o processamento em batch é a única alternativa técnica para lidar com alguns tipos de fontes de dados.

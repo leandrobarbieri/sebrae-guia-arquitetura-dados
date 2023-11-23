@@ -12,4 +12,8 @@ Metric Store | --- | Transformação, Modelagem
 Domínio e Serviço | Domínio é a área de assunto que pode ter um ou vários serviços. Um serviço é um conjunto de dados específico associado a uma tarefa. Por exemplo, você pode ter um serviço de avaliação de atendimentos tarefa é monitorar a satisfação e outro serviço de processamento de cadastros de atendimentos onde o trabalho de processar os atendimewntos. Um domínio pode conter vários serviços. Por exemplo, você pode ter um domínio de atendimento com serviços: avaliação e castrastro e faturamento. Cada serviço tem tarefas específicas que apoiam o domínio de atendimentos. | Entrega
 
 
+- row-based column-store
+- on-premise
+- cloud
+- data marts
 

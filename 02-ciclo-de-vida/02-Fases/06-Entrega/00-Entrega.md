@@ -51,7 +51,7 @@ Cientista de dados deve pegar da camada limpa de Gold
 
 
 # storytelling
-
+gestalt
 
 # Recomendações do guia
 Código | Recomendação | Descrição
