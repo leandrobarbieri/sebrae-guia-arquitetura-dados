@@ -1,12 +1,13 @@
 # Fase: Exploração de dados
 Essa é a primeira fase do ciclo de vida, nesse momento são sendo avaliadas as possibilidades de obtenção dos dados, será avaliado o que é necessário e o que está disponível. É uma fase que requer conhecimento técnico e de negócio. É realizada por engenheiros de dados em conjunto com analistas de negócio.
 
-Durante a exploração são feitas análises descritivas, distribuição das variáveis numéricas, avaliação dos tipos de atributos categóricos.
+Durante a exploração são feitas análises descritivas, distribuição das variáveis numéricas, avaliação dos tipos de atributos categóricos. Questões como contas de acesso, disponibilidade de drivers e conectores e diferentes tipos de tecnologias podem aumentar o grau de complexidade dessa fase. Nesse contexto ferramentas virtualização de dados podem ajudar a padrinizar a linguagem e abstrair os formatos das fontes de dados de origem.
+
 
 ### SQL, Python ou Bash?
-Cada uma tem um caso de uso e uma tarefa que é mais indicada. Exemplo: sql para transformar, modelar, python para extrair dados de formatos e de fontes diferentes, ou para usar as APIs das aplicações, Bash para automatizar tarefas de implantação ou configurações de ambiente.
+Ao iniciar a exploração, qual linguem utilizar? Dependendo do momento e do desafio técnico nessa fase, pode ser mais indicada uma linguagem específica. Cada caso de uso vai ajudar a determinar. Por exemplo: podemos recomendar SQL para realizar transformações e modelagem; Python  para realizar a extração dos dados de formatos e de fontes diferentes, ou para fazer requisições a APIs de aplicações e lidar com dados em json; podemos usar bash para automatizar tarefas de implantação, interagir com o sistema de arquivos ou S.O e realizar configurações de ambiente.
 
-Profissionais que dominam todas os componentes para entregar o ciclo de vida completo são difíceis de encontrar, cada pessoa envolvida por ter mais proeficiencia em uma parte do ciclo. É importante identificar os tipos de atividades e os tipos de profissionais dentro da mesma função para equilibrar o time e cobrir o ciclo de vida.
+Profissionais que dominam todas os componentes da arquitetura são difíceis de encontrar, cada pessoa envolvida pode ter mais proeficiencia em uma parte do ciclo de vida dos dados. O mais importante é identificar os tipos de atividades e os tipos de profissionais dentro da mesma função e equilibrar o time e cobrir todos os gaps de conhecimento.
 
 Área de Conhecimento | Tipo 1 | Tipo 2 | Tipo 3
 ---------- | ------ | ------ | -------

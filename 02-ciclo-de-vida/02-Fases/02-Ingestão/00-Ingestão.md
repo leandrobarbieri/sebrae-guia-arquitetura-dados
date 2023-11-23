@@ -1,4 +1,10 @@
 # Ingestão
+
+Tradicionalmente as tecnologias de ingestão buscam e armazenam os dados em data warehouse e data lakes através de processos de ELT/ETL. A Fase de extração apenas coleta dos dados como eles estão na fonte original, sem alterar a granularidade, a fase transformação se preocupa com a limpeza, padronização, organização e aplicação de regras de negócio, e a fase de carga é responsável por persistir de forma incrementar ou sobrescrita nas tabelas de destino nos data warehouses.
+
+![Teste](../../media/datawarehouse.jpg)
+
+
 A fase de ingestão é responsável por mover os dados da fonte de origem para o storage de dados analíticos. Esse processo por acontecer de várias formas, pode ser orientado a eventos (streaming de dados), onde o dado é enviado a medida que é produzido, pode ser através de um processo batch, onde um bloco de dados é enviado em um momento específico. A ingestão pode variar também no sentido do fluxo de dados. Podemos ter uma gestão de dados do tipo push, onde o sistema de origem envia os dados. Ou podemos ter ingestão pull, onde o pipeline se conecta a fonte e busca os dados. Além disso podemos ter diferentes estratégias de atualização, podemos ter uma atualização full, onde os dados do storage são substituídos pelos novos dados, incremental, onde apenas dados novos ou atualizados são inseridos. Essa é uma fase muito importante, onde os principais desafios técnicos surgem.
 
 

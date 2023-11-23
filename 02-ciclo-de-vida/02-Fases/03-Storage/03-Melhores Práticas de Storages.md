@@ -6,3 +6,5 @@ R02-Storage | Como garantir que os dados possam ser acessados por diversos compo
 - usar parquet na bronze por ser mais generalista e delta ou iceberg na silver e gold
 
 - colocar pk e foreign key no começo da tabela
+
+- não armazenar dados semi-estruturados em base relacionalç
