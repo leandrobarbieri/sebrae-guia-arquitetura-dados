@@ -8,3 +8,20 @@ R02-Storage | Como garantir que os dados possam ser acessados por diversos compo
 - colocar pk e foreign key no começo da tabela
 
 - não armazenar dados semi-estruturados em base relacionalç
+
+- antes de armazenar fazer a compressao do arquivo para reduzir o tamanho e economizar
+
+ex func de compressao
+> def salvando_arquivo_comprimido_json(dataframe):
+    compressoes = ["none", "bzip2", "gzip", "lz4", "snappy", "deflate"]
+    caminho_padrao = "/FileStore/tables/PNSB_json_"
+
+    for tipo_compressao in compressoes:
+        dataframe.write \
+            .option("compression", tipo_compressao) \
+            .mode("overwrite").format("json") \
+            .save(caminho_padrao + tipo_compressao)
+        
+        display(dbutils.fs.ls(caminho_padrao + tipo_compressao))
+
+salvando_arquivo_comprimido_json(df)

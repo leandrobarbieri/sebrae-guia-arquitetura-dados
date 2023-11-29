@@ -19,11 +19,24 @@ Processo de usar os dados do DW de volta nas aplicações com dados consolidados
 > diferenças, tipos de tecnologias, quando usar e quando não usar
 
 ### Streaming
-Também conhecido como processamento baseado em eventos ou em tempo real. Os dados são enviados em um fluxo de pequenos eventos, para bancos de dados de filas, ou pub/subs. São efecientes, pois executam rápido por lidarem com pequenos datasets são bons para demandas de análises em tempo real.
+É uma técnologia de processamento de dados baseado em eventos. Os dados são enviados em um fluxo de pequenos eventos, para bancos de dados de filas, ou pub/subs. São efecientes, pois executam rápido por lidarem com pequenos datasets são bons para demandas de análises em tempo real.
 
-Esse formato de ingestão de dados funciona bem em casos de uso onde o volume das transações é pequeno, o processamento realizado nos dados é mais simples e existe a necessidade de baixa latência.
+Os bancos de dados de streaming são projetados especificamente para processar um fluxo constante de dados em tempo real. Ao contrário dos bancos de dados tradicionais, que armazenam dados em lotes antes do processamento, bancos de dados de streaming processam os dados assim que são gerados, permitindo realziar análises em tempo real. Casos de uso mais comuns são aqueles que exigem baixa latência como: recomendação de anúncios, detecção de fraudes, monitoramento de dispositivos, aplicações de entrega ou carros por aplicativo. Em conjunto com esse tipo de banco são usadas ferramentas especializadas de ETL em streaming e análise de streaming.
 
-Após o processamento, em geral os dados são inseridos em data warehouses ou data lakes.
+Após o processamento e transformação, em geral os dados são inseridos em data warehouses ou data lakes.
+
+As principais diferenças entre os bancos de dados tradicionais e de streaming são:
+
+Tradicionais: 
+- Grandes quantidades de dados são armazenadas em lote
+
+Streaming
+- são projetados para inserir pequenos volumes de dados incrementalmente e fornecer acesso de baixa latência
+
+
+
+
+
 
 
 ### Batch

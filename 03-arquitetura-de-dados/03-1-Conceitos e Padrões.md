@@ -56,14 +56,28 @@ Nível | Componentes
 ----- | -----------
 Nível 1: Basico | Fontes de dados -> Ferramenta de ETL -> Datawarouse/Lakehouse -> Ferramentas de BI
 Nível 2: Médio | Fontes de dados -> Orquestradores -> Ferramentas de ETL -> Datawarehouse/Lakehouse -> Ferramentas de BI
-Nível 3: Avançado | Fontes de dados -> Orquestradores -> Bancos de dados de streaming -> Ferramentas de ETL/streaming -> Bancos Datawarehouse/Lakehouse -> Ferramentas de BI
+Nível 3: Avançado | Fontes de dados -> Orquestradores -> Bancos de dados de streaming -> Ferramentas de ETL/streaming -> Bancos Datawarehouse/Lakehouse -> Ferramentas de BI > Plataforma de ML e deploy de modelos > Versionamento e CI/CD.
 
 
 
 
 
 ## Data Mesh
-### dominios
+Este novo padrão de arquitetura surgiu como resposta as arquiteturas centralizadasd e data lakes e data warehouses, invertendo o lógica e descentralizando o armazenamento e responsabilidade através do conceito de domínios de dados orientados a maneira que os dados são consumidos.
+
+Os conceitos principais da arquitetura data mesh são:
+
+- Domínios descentralizados
+
+- Dados como produto
+
+- Infraestrutura como plataforma self-service
+
+- Governança federada
+
+
+
+#### dominios
 Domínio é uma representação de um assunto no mundo real ele representa um conjunto de serviços relacionados que podem ou não fazerem parte de outro domínio mas em outro contexto.  
 
 Exemplo domínio atendimento 
@@ -76,3 +90,8 @@ Domínio financeiro
 Venda  
 
 Melhor forma de identificação dos domínios e funções é conversa com especialista no negócio  
+
+
+# Outros Exmplos de Padrões de Arquitetura
+
+Existe outras variações de padrões de arquitetura como "Data Fabric", "

@@ -23,3 +23,5 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 [The Rise of the Semantic Layer: Metrics On-The-Fly](https://airbyte.com/blog/the-rise-of-the-semantic-layer-metrics-on-the-fly)
 
 [ List of categories that are the key pillars to today’s Modern Data Stack.](https://www.moderndatastack.xyz/categories)
+
+[Bancos de dados de streaming]()
