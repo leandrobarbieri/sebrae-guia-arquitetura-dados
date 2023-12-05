@@ -1,5 +1,5 @@
 # P03 - Independência de linguagem
-_Os profissionais deve ser capazes de exercer as atividades nos projetos de dados usando as liguagens que possuem maior proeficiência_
+> _Os profissionais devem ser capazes de exercer as atividades nos projetos de dados usando as liguagens que possuem maior proeficiência_
 
 As linguagens de programação, de consulta ou de prompt são os meios pelos quais os profissionais exercem sua proeficiencia para realizar as tarefas e implementar os pipelines, as transformações, o deploy das soluções, as análises e até o storytelling na entrega. 
 
