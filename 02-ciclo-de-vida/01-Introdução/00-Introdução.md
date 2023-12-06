@@ -1,29 +1,49 @@
 # Introdução do ciclo de vida
 As fases do ciclo de vida refletem o esforço para obter os dados das diversas fontes para criar um pipeline de dados capaz de adicionar valor e qualidade, transformando dados brutos em conjuntos de dados enriquecidos, modelados e prontos para serem consumidos.
 
+<<<<<<< HEAD
+O ciclo de vida dos dados deve ser desenvolvido considerando os diversos perfis de consumo. Cada fase define um objetivo específico e atribui sentido para aos componentes e as relações de dependência, entradas, saídas, limites, responsabilidades, tecnologias utilizadas.
+=======
 É semelhante a produção de um produto qualquer que transforma materia prima em produto acabado. Os dados são a matéria prima e os conjuntos de dados analíticos e modelos de machine learning são os produtos acabados.
 
 ![analogia](../media/analogia.png)
 
 
 O ciclo de vida dos dados deve ser desenvolvido considerando os diversos perfis de consumo. Cada fase define um objetivo específico e atribui sentido para os componentes e as relações de dependência, entradas, saídas, limites, responsabilidades, tecnologias utilizadas.
+>>>>>>> 7427f4838afbd5244f8ccbac30865927a9b7791c
 
+<<<<<<< HEAD
+Vamos trazer detalhes sobre quais artefatos serão gerados, tipos de tecnologias utilizadas, entradas, saídas e recomendações do que deve ser feito.
+=======
 Vamos trazer detalhes sobre quais artefatos serão gerados, tipos de tecnologias utilizadas, entradas, saídas e recomendações do que deve ser feito em cada fase. 
 
 Podemos considerar o ciclo padrão com 4 fases principais: Ingestão, Transformação, Modelagem e Entrega. E 2 fases externas, a exploração, que antecede o ciclo e a análise/modelagem estatística, que utiliza dados entregues.
   
 
 ![Alt text](../media/image-11.png)
+>>>>>>> 7427f4838afbd5244f8ccbac30865927a9b7791c
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7427f4838afbd5244f8ccbac30865927a9b7791c
 ## Padrão Medallion
+<<<<<<< HEAD
+O padrão medallion vem se tornando uma espécie método para organização, limpeza e padronização de dados em Lakehouses. Recomendado para organizar os dados, adicionando qualidade a medida que é movido entre as camadas do object storage.
+=======
 Antes de começarmos o detalhamento de cada fase do ciclo de vida, vamos conhecer o padrão "medallion". Ele vem se tornando uma espécie método para organização, limpeza e padronização de dados em Lakehouses. A sua lógica de separação em camadas, que adiciona qualidade a medida que o dado é movido entre as elas no object storage faz dele um reflexo do ciclo de vida dos dados, desde a exploração inicial até o consumo. 
+>>>>>>> 7427f4838afbd5244f8ccbac30865927a9b7791c
 
 A ideia de camada bronze, prata e ouro remete ao incremento de qualidade e valor adicionado para o negócio. 
 
+<<<<<<< HEAD
+As camadas trazem qualidade através de validações, enriquecimento através de regras de negócio, performance através de modelagem e segurança a partir das fronteiras bem definidas entre as camadas.
+=======
 As camadas deste método adicionam qualidade através de validações, checagens, padronizações, enriquecimento com regras de negócio. Além disso, criam as fronteiras de segurança necessárias para entrega dos dados a públicos específicos, de acordo com o caso de uso.
+>>>>>>> 7427f4838afbd5244f8ccbac30865927a9b7791c
 
-![Alt text](../../anexo/image.png)
+  
+![Alt text](../media/image-11.png)
 
 
 ### Bronze
