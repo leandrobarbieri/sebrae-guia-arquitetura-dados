@@ -32,7 +32,9 @@ Métricas e indicadores
 
 
 
-
+# técnicas e modelagem
+- dimensional
+- slowly change dimension
 
 
 ## Saídas

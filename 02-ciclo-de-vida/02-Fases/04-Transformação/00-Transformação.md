@@ -14,6 +14,7 @@ Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers,
 > Como padronizar formatos diferentes e aplicar regras de validação, duplicidade e inconsistencias
 Como lidar com mudança de schema; tipagem, limpeza, padronização, validação, ofuscação, qualidade, performance
 
+
 # Tecnologias de qualidade de dados
 Garantir que dados precisos e úteis estejam disponíveis para cargas de trabalho downstream BI, analíticas e machine learning .
 
@@ -47,7 +48,7 @@ A separação da camanda semantica e a criação de uma abstração para as mét
 https://airbyte.com/blog/the-rise-of-the-semantic-layer-metrics-on-the-fly
 https://towardsdatascience.com/metrics-store-in-action-76b16a928b97
 
-## Exemplos códigos comuns
+## Exemplos códigos comuns de transformação
 Listar os comandos mais comuns e as transformações básicas em cada linguagem
 
 Código | SQL | Pandas | PySpark 

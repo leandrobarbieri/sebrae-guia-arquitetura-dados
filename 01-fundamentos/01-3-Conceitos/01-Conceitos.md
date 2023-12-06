@@ -28,6 +28,7 @@ Pull/Push Pull Request | ----- | ----
 Schema-on-write e Schema-on-read | ----- | ----
 Área de Stage | é uma área de armazenamento transitório, também referenciado com o landing zone, usado como area de storage durante o processo te ETL | ----
 Granularidade | --- | --
+Serverlles | --- | --
 
 
 

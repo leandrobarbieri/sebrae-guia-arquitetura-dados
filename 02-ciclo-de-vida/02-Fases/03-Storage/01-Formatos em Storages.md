@@ -26,12 +26,10 @@ Delta, Iceberg são compativeis e comparáveis?
 
 ## destacar o funcionamento do parquet como padrão para dados analiticos
 
-
 ## Iceberg
 
 https://www.thoughtworks.com/en-es/radar/platforms/apache-iceberg
 
-Apache Iceberg falls in the same category as Delta Lake and Apache Hudi.
 - Formato de arquivo para implantação de lakehouse
 - Mais possibilidade de customizações/otimizações do que delta (tabelas gigantes acima de 10 TB)
 - Criado pensando em abstrações que permitem outras engines podem se conectar, camada extra de abstrações  
@@ -71,7 +69,6 @@ https://medium.com/@bernardo.costa/comparativo-de-hudi-ice-berg-e-delta-lake-par
 https://www.databricks.com/blog/delta-uniform-universal-format-lakehouse-interoperability
 
 # particionamento em storage distribuido
-
 
 # Comparativo
 - gcs vs adls vs minio
