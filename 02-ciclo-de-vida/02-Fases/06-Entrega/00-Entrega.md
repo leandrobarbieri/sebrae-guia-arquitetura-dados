@@ -67,31 +67,3 @@ R08-Entrega | Organize os ativos de dados um catálogo unificado orientado a dom
 R09-Entrega | Como gerenciar os acessos e compartilhamento de dados em um modelo descentralizado/federado? | Centralizar o controle de acesso: Mesmo que os dados estejam em arquiteturas separadas, em um modelo federado, busque usar padrões de armazenamento abertos de forma que seja possível criar catálogos com controle de acceso centralizado mantendo uma governança unificada.
 R10-Entrega | Fornecer dados semanticamente consistentes para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 R11-Entrega | Busque sempre criar experiências de autoatendimento para solicitação de acessos aos produtos de dados
-
-
-
-# Referencias
-
-https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
-
-
-
-
-ML packages, the ability to install your own third party & custom libraries
-capabilities data scientists can look forward to:
-
-Model & Experiment tracking
-
-Data scientists are able to leverage experiments and models as readily available in items in the Fabric workspace. Support for ML models and experiments allows users to manage models and track experiment runs using standard MLFLow APIs. Comparison experiences make it easy to compare different experiment runs and auto logging helps capture key metrics automatically as users author code to train models.
-
-Model batch scoring
-
-To operationalize their ML models, users can leverage the scalable PREDICT function for distributed batch scoring on Spark. This capability exists in Azure Synapse today and so existing Synapse users should feel right at home. The Fabric Data Science experience provides low code UI for scoring data and tight integration with the lakehouse, making it easy to enrich data and surface it in Power BI reports with zero friction.
-
-Data Exploration & Enrichments
-
-Fabric Data Science offers many innovative solutions in the space of exploring and transforming your data. These include:
-
-Data Wrangler – a low code UI for carrying out data transformations that automatically generate Python code
-Semantic Link – a library enabling seamless connectivity to the Power BI semantic model through data science tools like notebooks
-

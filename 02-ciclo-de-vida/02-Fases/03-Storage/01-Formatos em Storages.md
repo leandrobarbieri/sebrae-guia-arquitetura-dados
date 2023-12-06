@@ -1,3 +1,7 @@
+## Formatos e conectividade
+padronização de formatos, conectividade, drivers, regras de rede, landing para receber, software agentes , etc..; 
+Breve introdução dos formatos csv, parquet, delta tables, quando usar vantagens e desvantagens, qual é mais rapido, qual é menor, códigos de conversão entre formatos; Com ou sem schema – schemaless schemaonread ou write, mudança de schema
+
 
 # Formatos
 > delta, avro, iceberg
@@ -16,9 +20,7 @@ Delta, Iceberg são compativeis e comparáveis?
 - Multitransação grandes pontos de um beneficio de um lakehouse
 
 
-![Alt text](image-6.png)
-
-## falar sobre schema on read e schema on write
+## schema on read e schema on write
 
 ## mostrar um estudo comparando a performance (leitura e escrita) e espaço de armanzenamento de diferentes formatos
 
@@ -26,8 +28,6 @@ Delta, Iceberg são compativeis e comparáveis?
 
 
 ## Iceberg
-
-Apache Iceberg is an open table format for very large analytic data sets. Iceberg supports modern analytical data operations such as record-level insert, update, delete, time-travel queries, ACID transactions, hidden partitioning and full schema evolution. It supports multiple underlying file storage formats such as Apache Parquet, Apache ORC and Apache Avro. Many data-processing engines support Apache Iceberg, including SQL engines such as Dremio and Trino as well as (structured) streaming engines such as Apache Spark and Apache Flink.
 
 https://www.thoughtworks.com/en-es/radar/platforms/apache-iceberg
 
@@ -41,9 +41,6 @@ Apache Iceberg falls in the same category as Delta Lake and Apache Hudi.
 - Timetravel e rollback
 - Lakehouses são imutaveis, novas versões dos dados
 - dois tipos de arquivos (delete files/puffin files) qualquer tipo de arquivo não apenas parquet - parquet, orc, avro (melhor em streaming) - tabelas grandes para query (ORC), default (parquet)- atende casos de uso específicos no mesmo lakehouse format - escolhe o tipo par cada tabela "file format agnostic"
-- 
-
-![Alt text](image-4.png)
 
 
 ## Delta Lake
@@ -60,34 +57,11 @@ Tecno qye funciona bem em com delta
 muita dirsidade de linguafes e
 O spark consegue conversar bem com todos os formatos, mais é mais alinhado com o Delta (mesma fabricante) 
 
-![Alt text](image-8.png)
-
-Delta Log
-
-![Alt text](image-9.png)
-![Alt text](image-10.png)
-
-
 > recomendações
 Quanto mais arquivos mais lento a leitura - arquivos no tamanho certo (pequenos demais - muito list ou grandes demais - acessando mesmo o local sempre paralelismo) - cada arquivo tem que ser aberto listadop o 
 que demora. O custo maior está no list, abertura leitura e fechamento
 - pra resolver compartação de arquivos
 - atividades de  manutenção arquovos oordenados
-
-
-
-
-
-### camadas
-- camada descoplada normalmente objacet storage
-- formato row vs colunar (avro faz isso bem e é o preferido trabalhar com avro ao inves do parquet) porque serializa em binário
-- possibilidade de usar tecnologias diferentes em cada camada independente da engine que está sendo usada
-
-> hive metastore: armazena metadados separadov fisicamente no obj store
-- listagem é a operação mais custosa em data lakes (pastas subpastas)
-- como o dado será organizado no disco - locais específicos mais eficiente para identificar
-![Alt text](image-5.png)
-
 
 
 

@@ -15,7 +15,7 @@ Data Lake | ---- | ----
 Lakehouse | Padrão de arquitetura de dados que traz conceitos de ACID para datalakes baseados em object storage | Ingestão, Transformação, Modelagem
 Virtualização de dados | ---- | ----
 Governança de dados | ------ | -------
-Computação distribuída | ------- | ------
+Computação distribuída | A escalabilidade e elasticidade de uma arquitetura são princípios desejáveis e podem ser obtidas de forma vertical aumentado recursos como cpu, memória e disco ou de forma distribuída/horizontal da inclusão de novos nós que atuam de forma orquestrada. O problema da escalabilidade vertical são os limites rígidos impostos pó próprio hardware e a continuidade em caso de falhas. Já arquitetura distribuída são virtualmente infinitamente escalaveis ao mesmo tempo mais confiáveis por um ou vários nós podem ser perdidos se afetar o processo. Basicamente um nós central distribui a tarefa para os worknodes eles executam e retornam ao no central ia resultados. Atualmente as soluções de data warehouse modernas MPP, object storages, spark funcionam dessa forma | ------
 Data Mesh | --- | Ingestão, Transformação, Modelagem
 Ingestão | ---- | ----
 ETL, ELT/EtLT | --- | Ingestão
@@ -27,9 +27,7 @@ Linhagem de dados | ----- | ------
 Pull/Push Pull Request | ----- | ----
 Schema-on-write e Schema-on-read | ----- | ----
 Área de Stage | é uma área de armazenamento transitório, também referenciado com o landing zone, usado como area de storage durante o processo te ETL | ----
+Granularidade | --- | --
 
-- row-based column-store
-- on-premise
-- cloud
-- data marts
+
 

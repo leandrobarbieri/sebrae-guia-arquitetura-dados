@@ -11,7 +11,8 @@ R02-Storage | Como garantir que os dados possam ser acessados por diversos compo
 
 - antes de armazenar fazer a compressao do arquivo para reduzir o tamanho e economizar
 
-ex func de compressao
+ex func de compressao para testar o melhor formato 
+
 > def salvando_arquivo_comprimido_json(dataframe):
     compressoes = ["none", "bzip2", "gzip", "lz4", "snappy", "deflate"]
     caminho_padrao = "/FileStore/tables/PNSB_json_"

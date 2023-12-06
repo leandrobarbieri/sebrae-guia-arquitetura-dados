@@ -1,11 +1,3 @@
-# Conceitos
-
-## On-premise
-## Cloud
-## Hibrido
-
-
-
 # Tipos de arquitetura e padrões
 
 ## Data warehouses modernos (MDW)
@@ -27,10 +19,10 @@ A perpectiva de avançar na realização de análises preditivas através da mod
 
 Característica | Data Warehouse | Data Lake | Lakehouse 
 ---- | ---- | ----- | ---- |
-Tipo de dado | ---- | ----- | ---- |
-Formato | ---- | ----- | ---- |
-Usuários | ---- | ----- | ---- |
-Caso de uso | ---- | ----- | ---- |
+Tipo de dado | Estruturado apenas | Todos | Todos |
+Formato | proprietário | csv, parquet, delta | parquet, delta, hudi, iceberg |
+Usuários | analistas de dados | cientistas de dados | analistas e cientistas de dados |
+Caso de uso | Análise descritiva | Análise e modelagem estatística | Análise e modelagem estatística |
 Consumo | ---- | ----- | ---- |
 
 
@@ -58,7 +50,11 @@ Nível 1: Basico | Fontes de dados -> Ferramenta de ETL -> Datawarouse/Lakehouse
 Nível 2: Médio | Fontes de dados -> Orquestradores -> Ferramentas de ETL -> Datawarehouse/Lakehouse -> Ferramentas de BI
 Nível 3: Avançado | Fontes de dados -> Orquestradores -> Bancos de dados de streaming -> Ferramentas de ETL/streaming -> Bancos Datawarehouse/Lakehouse -> Ferramentas de BI > Plataforma de ML e deploy de modelos > Versionamento e CI/CD.
 
+REDSHIFT
+BIGQUERY
+SYNAPSE
 
+snowflake roda em  todos bom pra evoluirmos multcloud
 
 
 
@@ -94,4 +90,4 @@ Melhor forma de identificação dos domínios e funções é conversa com especi
 
 # Outros Exmplos de Padrões de Arquitetura
 
-Existe outras variações de padrões de arquitetura como "Data Fabric", "
+Existe outras variações de padrões de arquitetura como "Data Fabric", "Data Vault"
