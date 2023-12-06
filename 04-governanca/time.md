@@ -1,9 +1,4 @@
-
-
-
-
-
-# Areas de conhecimento
+# Areas de Conhecimento
 
 diagrama área42 - nucleo exemplo quadroe escritorio
 
