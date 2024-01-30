@@ -24,4 +24,13 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 
 [ List of categories that are the key pillars to today’s Modern Data Stack.](https://www.moderndatastack.xyz/categories)
 
+
+[Schema Evolution and Compatibility](https://docs.confluent.io/platform/current/schema-registry/fundamentals/schema-evolution.html)
+
+[NoSQL: What's in a name?](https://blog.sym-link.com/posts/2009/30/nosql_whats_in_a_name/)
+
+[O que é um pipeline de dados?](https://www.ibm.com/br-pt/topics/data-pipeline)
+
+[Arquitetura de pipeline de dados: tudo o que você precisa saber](https://www.astera.com/pt/tipo/blog/arquitetura-de-pipeline-de-dados/)
+
 [Bancos de dados de streaming]()

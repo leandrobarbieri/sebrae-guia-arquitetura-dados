@@ -3,6 +3,19 @@ Essa é uma camada onde a lógica de negócio da empresa é aplicada aos dataset
 
 O objetivo principal agora é preparar os dados para consumo, principalmente por analistas de dados e analistas de negócio. Cientistas de dados também clientes desta camada, mas em geral seus projetos se beneficiam mais de camadas anteriores (bronze, silve) pois os dados estão mais próximos do estado bruto o que possíbilita diferentes combinações e validações de hipóteses não mapeadas. 
 
+
+Motivo | Descrição
+------ | ---------
+Concorrência | Isola a fonte de dados de origem (geração) da fonte de dados analíticos (consumo) Minimiza o uso de recursos
+Segurança | Não abrir conexões externas com a fonte de dados de origem para consumo de dados
+Padronização | Converte diferentes formatos em formatos abertos, não proprietários. Agenda a ingestão de diferentes momentos pra cada fonte
+Semântica | Criar uma camada que faça mais sentido para análise de negócio (as fontes de dados são otimizadas para INSERT e UPDATE)
+Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers, linguagens, etc.) e unir dados de diferentes fontes. Cada fonte pode ter um agendamento diferente
+
+
+
+
+
 ## Entradas
 Deixam os dados prontos para consumo das ferramentas de visualização
 
