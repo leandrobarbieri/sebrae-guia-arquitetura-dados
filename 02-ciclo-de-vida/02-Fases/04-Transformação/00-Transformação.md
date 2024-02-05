@@ -1,12 +1,8 @@
+# Fase: Transformação
+Essa é uma etapa importante do processo, esse é o momento de começar a lapidar os dados brutos para adicionar qualidade. Os dados obtidos na fase de ingestão podem estar incompletos, conter erros, campos vcom valores inválidos, corrompidos. Essa fase se preocupa principalmente em melhorar a qualidade, remover duplicidade, padronizar os formatos.
 
+A transformação ainda não entra em atividades que alterem a granularidade ou modificam significativamente os conjuntos de dados. Essa fase não entra em questões de modelagem, desnormalizaçõesm ou criação de métricas com colunas calculadas com regras de negócio.
 
-Motivo | Descrição
------- | ---------
-Concorrência | Isola a fonte de dados de origem (geração) da fonte de dados analíticos (consumo) Minimiza o uso de recursos
-Segurança | Não abrir conexões externas com a fonte de dados de origem para consumo de dados
-Padronização | Converte diferentes formatos em formatos abertos, não proprietários. Agenda a ingestão de diferentes momentos pra cada fonte
-Semântica | Criar uma camada que faça mais sentido para análise de negócio (as fontes de dados são otimizadas para INSERT e UPDATE)
-Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers, linguagens, etc.) e unir dados de diferentes fontes. Cada fonte pode ter um agendamento diferente
 
 
 

@@ -3,6 +3,8 @@ As fases do ciclo de vida refletem o esforço para obter os dados das diversas f
 
 É semelhante a produção de um produto qualquer que transforma materia prima em produto acabado. Os dados são a matéria prima e os conjuntos de dados analíticos e modelos de machine learning são os produtos acabados.
 
+Uma analogia com o ciclo de vida de um produto de consumo.
+
 ![analogia](../media/analogia.png)
 
 
@@ -50,7 +52,10 @@ Fazer essas perguntas te ajudará a selecionar as melhores alternativas de ferra
 
 ### Perfil dos profissionais e áreas de conhecimento
 
-Profissionais que dominam todas os componentes da arquitetura são difíceis de encontrar, cada pessoa envolvida pode ter mais proeficiencia em uma parte do ciclo de vida dos dados. O mais importante é identificar os tipos de atividades e os tipos de profissionais dentro da mesma função e equilibrar o time e cobrir todos os gaps de conhecimento.
+Cada fase deste ciclo envolve diferentes habilidades e profissionais com conhecimentos em todos os componentes da arquitetura são difíceis de encontrar, cada pessoa envolvida pode ter mais proeficiencia em uma parte do ciclo de vida dos dados ou conhecer uma tecnologia específica. O mais importante é identificar os tipos de atividades e os tipos de profissionais dentro da mesma função e equilibrar o time e cobrir todos os gaps de conhecimento.
+
+Podemos dividir a área de dados em 2 grandes grupos e em cada grupo identificar o tipo de profissional.
+
 
 Área de Conhecimento | Tipo 1 | Tipo 2 | Tipo 3
 ---------- | ------ | ------ | -------
@@ -58,9 +63,36 @@ Engenharia de dados | Perfil mais técnico, responsável por manter, gerenciar e
 Cientista de Dados/Analista de Dados | Perfil de mais focado em realizar analise e validar hipóteses. Busca sempre identificar oportunidades nos dados, mais orientado ao negócio, entende o que está acontecendo através de análises descritivas, prescritivas. Faz a modelagem semântica e aplica regas de negócio para enriquecer os dados | Perfil mais orientado ao desenvolvimento. Possui forte conhecimento em programação, utiliza dados em um estado mais bruto, sem muitas transformações que afetem o estado original. Busca validar hipóteses, trabalha com modelos estatísticos e frameworks de machine learning supervisionados de classificação, clusters e recomendações. | Profissional com conhecimentos avançados de estatística e modelos não supervisionados como de NLP, visão computacional. Conhecem algorítimos avançados de redes neurais e deep learning.
 
 <br>
-Olhando de fora, podemos ver a plataforma de dados como hub que conecta os produtores (sistemas, dispositivos) aos consumidores de dados (engenheiros, analistas, cientistas) e que através do ciclo de vida dos dados, decisões mais embasadas e descobertas de padrões estatísticos sejam possíveis.
+Olhando de fora, podemos ver a plataforma de dados como hub que conecta os diversos tipos de fontes, aos desenvolvedores e consumidores de dados (egenheiros, analistas de negócio, analistas de BI, cientistas de dados). É através da colaboração entre eles que o ciclo de vida dos dados acontece e o valor é obtido através do uso de dados.
 
 ![Alt text](../media/produtor-consumidor.png)
 
 
+
+# Pipelines de dados
+Os pipelines de dados representam todo esse processo de transformação de dados em informação que está representado no ciclo de vida. Um pipeline de dados nada mais é do que o sequenciamento lógico das etapas, respeitando suas dependências e restrições. 
+
+O termo pipeline também é usado na área de tecnologia em diferentes contextos. Por exemplo:
+
+### Pipeline Devops:  
+Esse tipo de pipeline está relacionado com o processo de desenvolvimento de software e busca a através da automação do processod e compilação, teste, implantação garantir a qualidade do software e a entrega em produção de forma mais tranquila e controlada.
+
+### Pipeline Machine Learning
+Já um pipeline de machine learning está mais relacionado com o pipeline de dados, mas vai além. As primeiras fases são iguais (coleta, limpeza, preparação e transformação de dados brutos) com o objetivo de obter um formato adequado para treinar um modelo estatístico. Além disso, ele também automatiza o treinamento do modelo a validação e a implantação do modelo em produção como produto acessível por uma API, por exemplo. 
+
+
+## Como cada profissional atua no desenvolvimento do pipeline
+Função | Atividades | Tecnologias envolvidas
+------ | ---------- | -----------------------
+Engenheiro de dado | Perfil mais técnico, focado no processo de ingestão de dados (extract e load) e desenvolvimento do pipeline | SQL, Python, Data Warehouse, Data Lake, Spark, Containers, etc..
+Analista de Dados | Consumidor indireto do pipeline, produz análises com ferramentas de  BI avançada e faz a modelagem OLAP para atender requisitos de negócio | SQL, modelagem de dados, storytelling, estatística, conhecimento da área de negócio
+Analista de Negócio | Apoia na fase de exploração de dados e modelagem semântica. Consome os relatório e dashboards com dados gerados pelo pipeline. Fazer querys ad-hoc e produz dashboards customizados | Conhecimento da área de negócio e ferramentas de visualização de dados
+Cientista de dados/ML | Utiliza os dados brutos gerados nas primeiras fases do pipeline para validar hipóteses e gerar modelos preditivos que podem ser utilizados como parte do eriquecimento dos dados no pipeline. | Python, SQL, R, Estatística, Framework de Machine Learning
+
+
+## Orquestração
+A orquestração é o processo de execução das fazes do pipeline e envolve o acionamento, agendamento e monitoramento das várias tecnologias envolvidas no processo. Existem plataformas específicas para execução destes pipelines, todas elas se caracterizam por terem uma vasta lista de conectores. Um coisa importante buscar manter a separação das responsabilidades ao usar uma plataforma de orquestração. Apesar de muitas vezes ela ser capaz de fazer a ingestão e processamento de dados, ela deve ser usada apenas para acionar e controlar a execução.
+
+### Exemplo: 
+A solução de orquestração inicia a execução no dia e horário agendado. Na primeira etapa ela fica escutando uma pasta do datalake esperando a aplicação enviar dados novos, quando detecta a presença de um arquivo na pasta "landing" ela passa para a etapa que executa um código PySpark que roda no cluster Spark que lê os dados e fazer o processamento e salva de volta em outra pasta do datalake. Quando termina o orquestrador aciona a próxima etapa que executa um procedure em um banco SQL que cria uma tabela virtual que abstrai o arquivo salvo na etapa anterior, se a tabela for criada com sucesso o orquestrador aciona uma nota procedure que lê os dados da tabela virtual e insere os dados em um data warehouse. Quando essas etapas estiverem prontas o orquestrador fazer uma requisição para o endpoint do serviça na nuvem responsável por disparar o atualização do modelo semântico comos novos dados. Quando tudo tiver pronto envia uma mensgem para o teams informando que o processo acadou. Veja, o orquestrador acionou, um datalake, um cluste spark, um data warehouse, uma api, um webhook, mas não processou um dado sequer.
 

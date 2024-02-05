@@ -1,4 +1,4 @@
-# Recomendações do guia
+# Lista de recomendações de melhores práticas
 
 Código | Questão | Recomendação | Princípio
 ------ | --------- | --------- | ---------

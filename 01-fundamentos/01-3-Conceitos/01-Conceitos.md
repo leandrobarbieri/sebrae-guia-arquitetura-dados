@@ -7,10 +7,10 @@ Data Warehouse | É um repositorio centralizado de dados criado para servir de f
 Modern Data Warehouse | São bancos de dados relacionais que possuem uma arquitetura distribuída, implementados com o conceito de separação da camada de storage da camada de processamento, capazes de escalar e executar consultas em SQL  | ----
 Big Data |  ---- | -----
 Column-store vs Row-store | ----- | ---
-OLAP/Cubos | Online Analytical Processing são bancos de dados otimizados para análise de dados, possuem estruturas de dados colunares e são responsáveis por abrigar a camada semântica do modelo de dados. Também conhecidos como cubos, essas estruturas são montadas pensando na maneira como o analista utiliza os dados para criar relatórios e gráficos | Entrega
+OLAP/Cubos | Online Analytical Processing são bancos de dados otimizados para análise de dados, são capazes de lidar com volumes de registros muito maiores que bases OLTP. Eles trabalham com estruturas de dados colunares que permite uma alta compactação dos dados e maior eficiência nas querys. Muitos destes trabalham com os dados em memória o que traz muita velocidade no processamento. Além disso são responsáveis por abrigar a camada semântica do modelo de dados o que facilita o desenvolvimento das análises. O termo OLAP não se limita os conhecidos CUBOS, esse tipo de tecnologia pode ser atribuído a qualquer tecnologia de banco que suporte querys analíticas, interativas e em laga escala. | Entrega
 Bancos de dados de streaming | Banco de dados projetado especificamente para processar um fluxo constante de dados em tempo real. Ao contrário dos bancos de dados tradicionais, que armazenam dados em lotes antes do processamento, um banco de dados de streaming processam os dados assim que são gerados, permitindo insights e análises em tempo real. Casos de uso mais comuns são aqueles que exigem baixa latência como: recomendação de anúncios, detecção de fraudes, monitoramento de dispositivos, aplicações de entrega ou carros por aplicativo. Em conjunto com esse tipo de banco são usadas ferramentas especializadas de ETL em streaming e análise de streaming. | ------
 Business intelligence | aplicações, infraestrutura e ferramentas que permitem estruturar explorar dos dados | -----
-ACID | --- | Modelagem e Entrega
+ACID | Essa é uma característica dos bancos relacionais e Lakehouses atuais, a sigla é um acronimo para atmonicidade, consistência, isolamento e durabilidade, características que garantem um grande confiabilidade para os bancos de dados. A atomicidade garante que a transação uma vez criada será executado por completo ou será desfeita por completo. A consistência garante que o banco sempre vai ter a última versão do dado que foi atualizado, o isolamento garante que duas transações não afetarão o mesmo dado ao mesmo tempo gerando uma inconsistência, a durabilidade garante que uma vez salvo o dado não será perdido em caso de desligamento, por exemplo | Modelagem e Entrega
 Data Lake | ---- | ----
 Lakehouse | Padrão de arquitetura de dados que traz conceitos de ACID para datalakes baseados em object storage | Ingestão, Transformação, Modelagem
 Virtualização de dados | ---- | ----
@@ -29,6 +29,7 @@ Schema-on-write e Schema-on-read | ----- | ----
 Área de Stage | é uma área de armazenamento transitório, também referenciado com o landing zone, usado como area de storage durante o processo te ETL | ----
 Granularidade | --- | --
 Serverlles | --- | --
+CDC - Change Data Capture | é um método de extração de eventos em um banco de dados, essa abordagem traz eficiencia no processo de ingestão por permitir fazer Upserts e manter a base de dados analítica sempre atualizada. Os bancos relacionais utilizam os logs de alteração para capturar as alterações.
 
 
 
