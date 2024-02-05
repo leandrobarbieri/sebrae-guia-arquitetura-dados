@@ -5,6 +5,36 @@ Os DW em nuvem representam uma evolução significativa das alternativas on-prem
 
 Em DW tradicionais essa infra de dados teria que ser previamente dimensionada para atender a demanda atual e futura. Exemplos de soluções que se destacam atualmente estão Azure Synapse dedicated poll, BigQuery, Snowflake, Amazon Redshift. Além dessa flexibilidade os MDW trazem na prática a ideia de separação da camada de processamento da estrurura de armazenamento, que em geral está sustentada por object storages
 
+### Arquiteturas MPP
+
+Descrever como essa arquitetura entrega processamento distribuído
+
+![Alt text](image-4.png)
+
+Possio um nó principal e compute notes
+Divide entre os compute note
+Temos que fazer a forma de distribuição correta para aproveitar os benefícios do paralelismo
+
+Tipos de distribuição entre os nós
+
+Round-robin: distribuição aleatória entre as partições, definida por tabela. Para carga costuma ser mais o método mais rápido. Método de distribuição recomendado para carga de tabelas stage
+
+Hash-distributed: passa uma coluna que será usada para realizar a distribuição de forma determinística atribuindo cada linha a uma distribuição. Recomendado para querys em tabelas fato. Alta performance na leitura
+É importante escolher uma coluna de forma certa para a distribuição não ficar desbalanceada. As colunas usadas precisam conseguir identificar de forma bem granular (identificação única)
+
+Replicated: uma cópia completa em cada nó. Funciona bem para dimensões pois são pequenas. 
+
+
+Partições dentro das distribuições
+
+São divisões dentro da própria distribuição. Só faz sentido começar a particionar quando tipos mais de 100 milhões de registros em uma tabela.
+Criada em geral em colunas de data
+Performance nas querys pois facilita a busca e filtragem dos dados
+
+
+Recomendações
+![Alt text](image-5.png)
+
 ## Data Lakes
 Uma das arquiteturas mais populares nos ultimos anos da area de engenharia de dados, ganhou destaque por trazer a liberdade de trabalhar com dados semi-estruturado e permitir armazenamento em escala a qualquer tipo de objeto de dados ao mesmo tempo ser de fácil integração com engines de processamento diversas. Porém, apesar do hipe, essa tecnologia apresentou vários desafios de governança, controle de transações, catálogos de metadados para descoberta. Mas o maior problema foi que essa arquitetura foi concebida para ser somente leitura e enfrenta dificuldade de atender requisitos de leis como LGPD que obriga a empresa a deletar dados de um usário específico.
 
@@ -41,6 +71,7 @@ O importante é a arquitetura permitir migrar de um para o outro de uma forma tr
 
 ## Plataforma de Dados Moderna
 Essa nova geração de soluções de dados que trazem uma plataforma integrada com soluções de orquestração de pipelines, processamento distribuido, object storage, Lakehouse, virtualização, ambiente de desenvolvimento para ciência de dados e BI, sendo oferecida como PaaS nas principais clouds implusiona e traz agilidade para empresas de todos os tamanhos conseguirem extrair valor dos seus dados. Essas plataformas se caracterizam por serem altamente modularizadas, o que permite criar arquiteturas mais simples ou mais complexas dependendo da realidade da empresa. 
+
 
 Se pesarmos em níveis complexidade poderiamos ter por exemplo:
 
