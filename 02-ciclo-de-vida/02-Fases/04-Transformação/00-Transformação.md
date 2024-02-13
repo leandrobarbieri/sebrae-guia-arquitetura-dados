@@ -44,6 +44,10 @@ A separação da camanda semantica e a criação de uma abstração para as mét
 https://airbyte.com/blog/the-rise-of-the-semantic-layer-metrics-on-the-fly
 https://towardsdatascience.com/metrics-store-in-action-76b16a928b97
 
+
+## Mascaramento de dados 
+As colunas podem ser consultadas mas em tempo de execução dependendo do usuário e permissões os valores são mascarados. Esse recurso se chama "dynamic data mask"
+
 ## Exemplos códigos comuns de transformação
 Listar os comandos mais comuns e as transformações básicas em cada linguagem
 
