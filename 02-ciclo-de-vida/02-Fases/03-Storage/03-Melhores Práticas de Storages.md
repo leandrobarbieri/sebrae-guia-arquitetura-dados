@@ -6,7 +6,8 @@ R03-Storage | Como gerenciar o storage para não perder a governança? | Use val
 R04-Storage | Qual tipo de storage usar? | Usar object storage com padrões abertos que garantam performance e facilidade para o compartilhamento com segurança. | P10-Simplicidade, P08-Descentralização, P09-Multicloud
 R05-Storage | Como libdar com a segurança de dados sensíveis? | Logo na camada Bronze/Raw, os dados seinsíveis devem ser encriptados ou mascarados. Utize mascaramento sempre que tiver a previsão usar os dados sem mascaramento por algum grupo de usuários com permissão.
 R06-Storage | Como evitar mover grandes quantidades de dados entre unidades e parceiros? | Use os recursos de data sharing para "montar" os conjuntos de dados externos ou internos que já serão compartilhados. Isso aumenta a confiabilidade, reduz a redundância e traz qualidade. | P06-Multicloud, P08-Descentralização,  P10-Simplicidade
-
+R07-Storage | Como controlar o aumento do espaço de armazenamento do object storage? | Utilizar políticas para remoção automática de versões de arquivos mais antigos ou que já tem várias versões armazenadas |
+R08-Storage | Como reduzir o custo de storage? | Utilize os recursos das ferramentas de gestão de ciclo de vida dos object storages para criar políticas automatizadas para armazenar dados antigos ou pouco acessados em categorias de persistências com discos com melhor custo benefício.
 
 
 

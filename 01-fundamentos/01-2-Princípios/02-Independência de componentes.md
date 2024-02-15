@@ -3,7 +3,7 @@
 
 A independência entre os componentes, principalmente entre a camada de storage e as engines de processamento (separação entre armazenamento e computação) é um princípio que traz benefícios como redução de custos, escalabilidade e flexibilidade para mudanças. Esse princício está presente nas stack de dados modernas e vem sendo o grande diferencial em comparação a modelos antigos baseados em data warehouse tradicionais.
 
-Além da independência entre o storage e as engines de processamento presente nos data warehouses/lakehouses, temos a idenpendência entre tecnologias de armazenamento de dados OLAP, que criam a camanda semântica para diferentes ferramentas de análise de BI que consomem. 
+Além da independência entre o storage e as engines de processamento presente nos data warehouses/lakehouses, existem tecnologias que criam uma separação também da camada semântica de dados OLAP, que permitem que diferentes ferramentas de análise de BI possam consumir as mesmas estruturas de dados.
 
 ![Camadas](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/media/camadas.png?raw=true)
 

@@ -21,15 +21,17 @@ Essa abertura, permite que plataformas diferentes compartilhem dados com seguran
 
 
 # Object storages
-Hoje os principais storages para dados analíticos são os object storages, entre os mais usados estão o Amazon S3, Azure Blob Storage, Google Cloud Storage. Todos eles tem o benefício de serem baratos e muito flexíveis pois antedem vários tipos de caso de e são capazes de armazenar qualquer tipo de arquivo, e ao mesmo tempo serem integrados com tecnologias de Lakehouse. 
+Atualmente os principais storages para dados analíticos são os object storages, entre os mais usados estão o Amazon S3, Azure Blob Storage, Google Cloud Storage. Todos eles tem o benefício de serem baratos e muito flexíveis pois antedem vários tipos de caso de e são capazes de armazenar qualquer tipo de arquivo, e ao mesmo tempo serem integrados com tecnologias de Lakehouse. 
 
-Além disso, funcionam de forma distribuída e escalável, características essas encontradas nas tecnologias de plataformas de dados modernas como spark, e data warehouses modernos baseados em serviço na cloud.
+Além disso, operam de forma distribuída e escalável, características essas encontradas nas tecnologias de plataformas de dados modernas como spark, e data warehouses modernos baseados em serviço na cloud.
 
-Um object storage funciona como se fosse um sistema de arquivos, que podemos armazenar qualquer tipo de objeto (txt, csv, json, imagens, vídeos, audio). Uma característica específica é a de não ter um árvore de diretório de arquivos centralizada, cada objeto mantém seus próprios metadados e isso faz com que não haja limitação para a quantidade de arquivos que podem ser gerenciados por um object storage. Outra característica importante é que os objetos armazenados são imutáveis, não podem ser modificados, apenas inseridos, substituídos ou removidos. Tudo isso aliado ao fato de serem distribuídos e escaláveis verticalmente e horizontalmente, faz dos object storages uma solução que entraga a capacidade de ler e escrever grandes volumes de dados de forma muito eficiente.
+Um object storage funciona como se fosse um sistema de arquivos, que podemos armazenar qualquer tipo de objeto (txt, csv, json, imagens, vídeos, audio). Uma característica específica é a de não ter um árvore de diretório de arquivos centralizada, cada objeto mantém seus próprios metadados e isso faz com que não haja limitação para a quantidade de arquivos que podem ser gerenciados por um object storage. Outra característica importante é que os objetos armazenados são imutáveis, não podem ser modificados, apenas inseridos, substituídos ou sobrescritos sob a mesma chave que o identifica. Tudo isso aliado ao fato de serem distribuídos e escaláveis verticalmente e horizontalmente, faz dos object storages uma solução que entrega a capacidade de ler e escrever grandes volumes de dados de forma muito eficiente.
 
 Nas arquiteruras modermas temos a separação entre o processamento e o armazenamento dos dados, nesse contexto os object storages entregam a flexibilidade que as diversas tecnologias para processar os dados precisam. Hoje os object storages vêm provando que são ideais para as cargas de trabalho com volume e varidade. Ou seja, eles são capazes de acomodar a demanda de armazenamento de tecnologias de big data que processam dados em escala de petabytes com um ótima performance de escrita e leitura em processamentos em batch.
 
 Existe uma questão quanto a cargas de trabalho que envolvem atualizações frequentes. Object storages em geral não são bons com operações em arquivos pequenos. Eles trabalham melhor com arquivos grandes e baixas taxas de operações por segundo.
+
+Outra questão é o versionamento dos objetos, como eles são imutáveis podemos manter várias versões para a mesma chave de objeto, geralmente cada versão armazena o objeto "full" e não apenas o diferencial entre as versões, esse espaço adicional necessário pode aumentar o custo e precisa ser gerenciado através de políticas de versionamento para remoção automática (quando uma certa quantidade de versões é alcançada ou um determinado tempo passar)
 
 Mas existem formatos e tecnologias que surgiram para lidar com essas questões de atualização em object storages e estão resolvendo bem essas limitações. Veremos com mais detalhes quando entrarmos no assunto formatos em object storages.
 
@@ -39,7 +41,7 @@ Apesar de parecer que os arquivos em um object storage possuem uma estrutura de 
 
 Um fator muito importante para ter um object store funcional é a padronização das camadas (exemplo: bronze/raw, silver/enriched, gold/curated) e a nomenclatura das "pastas' para organizar o data lake e não correr o risco de perder o controle sobre onde os dados estão armazenados.
 
-## Hierarquia Lógica:
+## Estrutura hierarquia de pastas
 Para manter o data lake organizado, crie uma hierarquia lógica de pastas que reflita a estrutura dos dados. Organize as pastas por domínio, projeto, fonte de dados ou qualquer outra categoria relevante. Evite pastas com muitos arquivos soltos.
 
 Veja uma relação de camadas e as sugestões de padrões de nomenclatura:
@@ -55,36 +57,54 @@ Gold/Refined | Após limpeza e padronização os dados devem estar organizados p
 
 
 
-## Tipos de disco para storages
-Os dados em um object storage podem ser armazenados em tipos de disco diferentes. Dependendo da frequencia de acesso e do tipo de uso podemos escolher entre tipos "hot" ou "cold" para armazenar os dados de forma eficaz e com maior custo benefício.
+## Categorias de persistência
+Os dados em um object storage podem ser armazenados em tipos de disco diferentes. Dependendo da frequencia de acesso e do tipo de uso podemos escolher entre as categorias "hot", "warm" ou "cold" para armazenar os dados de forma eficaz e com maior custo benefício dependendo do padrão de utilização.
 
-o tipo hot storage é usado em camadas do data lake que são acessadas com mais frequencia, ele é baseado em discos SSD, mais eficientes e mais caros. Essa opção possui baixa latência, mais facilidade para escalar e leitura e escrita otimizada. Já o tipo cold é mais barato, é baseado em dicos HDD e é recomdado para manter dados históricos.
+o tipo hot storage é usado em camadas do data lake que são acessadas com mais frequencia, ele é baseado em discos SSD, mais eficientes e mais caros. Essa opção possui baixa latência, mais facilidade para escalar e leitura e escrita otimizada. Já os tipos warm/cold são mais baratos, são baseados em dicos HDD/Fita. São recomdados para manter dados históricos.
 
-Use o tipo hot nas camadas de transformação e entrega e cold para backup ou armazenamento de longo prazo para dados históricos que precisam ser mantidos por alguma questão de compliance
+Use o tipo hot nas camadas de transformação e entrega e cold para backup ou armazenamento de longo prazo para dados históricos que precisam ser mantidos por alguma questão de compliance. 
 
-<br>
+Ainda existem opções de disco para arquivamento de dados, estes são ainda mais baratos, mas fique atento ao tempo necessário para obter os dados que em alguns serviços podem demorar até 12h.
 
-# Data Sharing
-É um recurso que nos permitir incorporar fontes de dados de storages remotos ou internos como parte do lakehouse. Isso traz simplicidade e evita a replicação de dados sem controle dentro da empresa e abre a possibildade de compartilhamento entre unidades independentes ou empresas parceiras.
+A escolha do tipo certo pode reduzir muito o custo de armazenamento, sem deixar de atender os requisitos para cada tipo de caso de uso.
 
-O fato de não ter mover grandes quantidade de dados e conseguir incorporar nas querys tabelas externas com segurança e performance, faz com que a feature data sharing seja ideal para o modelo federado do Sebrae, onde cada unidade pode atuar de forma independente, com arquiteturas distintas e mesmo assim compartilhar seus produtos de dados como recurso que pode ser gerenciado e governado por um repositório central unificado. Além disso simplifica os pipelines de atualização dos dados pois evita a necessidade de sincronização dos pipelines externos e internos.
+Característica | Hot | Warm | Cold
+-------------- | --- | ---- | ----
+Frequência de acesso | Usar em camadas do data lake com acesso frequente como camada bronze/silver/gold | Usar para arquivos de backup com baixa frequencia de acesso | Usar para questões de compliance com muito baixa probabilidade de acesso
+Custos de aramazenamento em comparação | Alto | Médio | Baixo
+Custos para recuperar os dados | Baixo | Médio | Alto
+
+Utilize os recursos das ferramentas de gestão de ciclo de vida dos object storages para criar políticas automatizadas para armazenar dados antigos ou pouco acessados em categorias com melhor custo benefício.
+
+
+## Storages para streaming
+> escrever sobre as particularidades deste tipo de carga de trabalho e os tipos storages mais apropriados
+
 
 <br>
 
 ## Formatos de arquivos
 Os arquivos de dados podem existir em formatos abertos, conhecidos e tradicionais como csv, json, xml, parquet ou proprietários como .mdf do SQL Server e .dbf o Oracle. Cada formato possui suas característivas vantegens e desevantagens. Alguns são mais estruturados como é o caso do parquet, outros são semi-estrutrados como o csv. Essa diversidade faz seja necessário avaliar cada caso de uso.
 
-### Schema-on-Read e Schema-on-Write
-A definição do schema do arquivo, ou seja, a estrutura da tabela e os tipos das colunas pode fazer parte dos metadados do arquivo ou ser parte da query que faz a leitura dos dados. Essa diferenciação faz com que as consultas tenham que inferir os tipos para conseguir analisar os dados. Exemplo: os dados são armazenados sem schema e ao ler um arquivo csv os tipos dos campos precisam ser inferidos ou definidos explicitamente, o que não acontece com arquivos parquet, pois já faz parte da estrutura os metadados com os tipos e ao serem lidos não precisam de explicitar o schema da tabela. Já no processo aquivos schema-on-write, o arquivo ganha a definição de campos e tipos no momento que são salvos no storage.
+## Schema-on-Read e Schema-on-Write
+A definição do schema do arquivo, ou seja, a estrutura da tabela e os tipos das colunas podem fazer parte dos metadados do próprio arquivo (schema-on-write) ou ser parte da query que faz a leitura dos dados (schema-on-read). No caso de um arquivo sem schema, como um csv por exemplo, as consultas precisam inferir os tipos, ou inserir as definições como parte da query, para conseguir analisar os dados. Isso não acontece com arquivos parquet por exemplo, esse tipo possui os metadados com os tipos de cada atributo, e ao serem lidos não precisam de explicitar o schema da tabela. Os aquivos como parquet são schema-on-write, ou seja, o arquivo ganha a definição de campos e tipos no momento que são salvos no storage.
+
+Busque utilizar sempre que possível arquivos com schema bem definidos (schema-on-write). Isso padroniza os conjuntos de dados, traz qualidade devido às restrições de tipos e facilita o consumo. Mas se não for possível, aproveite a flexibilidade dos object storages para trabalhar com qualquer tipo de arquivo e os nomes, encoding, caracter de separação e tipos dos campos, somente quando precisar acessar os dados (schema-on-read).
+
+## Armazenamento Colunar
+Formatos de arquivos e dados colunares são um grande difencial para os ambientes de analise de dados, em que as operações realizadas sob os dados utilizam grandes blocos de dados e não linhas específicas. Arquivos armazenados de forma colunar permitem que a execução de querys utilizem apenas as colunas necessárias reduzindo drasticamente a quantidade de dados que são lidos. Aliado a isso a compactação faz com que a performance de leitura seja muito superior a arquivos armazenados em blocos de linhas, que por sua vez são melhores em operações que envolvam atualização de linhas específicas de uma tabela.
+
+... _continuar: conceituar, dar exemplos usar imagem_
+
+Muitas vezes pode ser uma boa opção entregar conjuntos de dados desnormalizados para consumo, neste caso no formato colunar a performance acaba  sendo superior.
 
 
-# Formatos
+## Formatos
 A escoha dos formatos mais adequados para a sua arquitetura influenciam a forma como o pipeline será desenvolvido e as tecnologias que serão usadas tanto para processamento quanto para consumo dos dados. O mais importante é padronizar o uso de um formato cada caso de uso e camada do Lakehouse. Hoje os mais usados em arquiteturas de Lakehouse são  (Delta Lake, Iceberg, Hudi)
 
 Os formatos Delta, Iceberg e Hudi trazem além do formato otimizado para análise de dados, uma série de features que adicionam as características ACID de bancos de dados tradicionais aos data lakes dessa forma criando os recursos necessário para implantação de um Lakehouse.
 
 O formato parquet desempenha um papel central neste conjunto de formatos para Lakehouses. É com base nele que são criadas as abstrações que entregam as características ACID que existem nos Lakehouses que usam DELTA, HUDI, ICEBERG como formato.
-
 
 
 ## Comparação de formatos em Lakehouses
@@ -134,11 +154,28 @@ ClickHouse | Sim | Não | Sim
 
 
 
+
+## Delta Lake
+<!-- - Sugestão de criar particionamento quando a tabela estiver acima de 1TB
+- Criado pensando na integração com o spark.
+- Traz a opção de trabalhar com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem), PySpark (diversidade)
+- Formato parquet
+- O spark consegue conversar bem com todos os formatos, mais é mais alinhado com o Delta (mesma fabricante) 
+- Hidden Partitioning (não precisa dizer o que precisa particionar)
+
+> recomendações
+- Quanto mais arquivos mais lento a leitura - arquivos no tamanho certo (pequenos demais - muito list ou grandes demais - acessando mesmo o local sempre paralelismo) 
+- cada arquivo tem que ser aberto listadop o que demora. O custo maior está no list, abertura leitura e fechamento
+- pra resolver compartação de arquivos
+- atividades de  manutenção arquovos oordenados -->
+
+
+
 ## Iceberg
 
 https://www.thoughtworks.com/en-es/radar/platforms/apache-iceberg
 
-- Formato de arquivo para implantação de lakehouse
+<!-- - Formato de arquivo para implantação de lakehouse
 - Mais possibilidade de customizações/otimizações do que delta (tabelas gigantes acima de 10 TB)
 - Criado pensando em abstrações que permitem outras engines podem se conectar, camada extra de abstrações  
 - Expressões com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem)
@@ -146,25 +183,16 @@ https://www.thoughtworks.com/en-es/radar/platforms/apache-iceberg
 - Hidden Partitioning (não precisa dizer o que precisa particionar) entende o que fazer auto
 - Timetravel e rollback
 - Lakehouses são imutaveis, novas versões dos dados
-- dois tipos de arquivos (delete files/puffin files) qualquer tipo de arquivo não apenas parquet - parquet, orc, avro (melhor em streaming) - tabelas grandes para query (ORC), default (parquet)- atende casos de uso específicos no mesmo lakehouse format - escolhe o tipo par cada tabela "file format agnostic"
+- dois tipos de arquivos (delete files/puffin files) qualquer tipo de arquivo não apenas parquet - parquet, orc, avro (melhor em streaming) - tabelas grandes para query (ORC), default (parquet)- atende casos de uso específicos no mesmo lakehouse format - escolhe o tipo par cada tabela "file format agnostic" -->
 
 
-## Delta Lake
-Tecno qye funciona bem em com delta
-![Alt text](image-7.png)
-- Sugestão de criar particionamento quando a tabela estiver acima de 1TB
-- Criado pensam na integração com o spark, 
-- Cada formato tem um conjunto de tecnologias que se casam ou preferenciais: Kafka, StarRocks (DW Open Source), Apache Doris (DW Open Source), Apache Impala 
-- Não precisa ter um DW ou um lakehouse pode usar um engine de query moderno como trino e consultar o dado direto no data lake Pinot + Trino + Delta/Iceberg
-- Expressões com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem)
-- Trabalha apenas com parquet
 
-- Hidden Partitioning (não precisa dizer o que precisa particionar)
-muita dirsidade de linguafes e
-O spark consegue conversar bem com todos os formatos, mais é mais alinhado com o Delta (mesma fabricante) 
 
-> recomendações
-Quanto mais arquivos mais lento a leitura - arquivos no tamanho certo (pequenos demais - muito list ou grandes demais - acessando mesmo o local sempre paralelismo) - cada arquivo tem que ser aberto listadop o 
-que demora. O custo maior está no list, abertura leitura e fechamento
-- pra resolver compartação de arquivos
-- atividades de  manutenção arquovos oordenados
+# Data Sharing
+É um recurso que nos permite compartilhar ou incorporar fontes de dados de storages remotos ou internos como parte do seu lakehouse, com controle de acesso em objetos, pastas ou buckets/containes específicos do data lake.
+
+Isso traz simplicidade e evita a replicação de dados sem controle dentro da empresa, além disso, abre a possibildade de compartilhamento entre unidades independentes ou empresas parceiras.
+
+O fato de não ter mover grandes quantidade de dados e conseguir incorporar nas querys tabelas externas com segurança e performance, faz com que a feature data sharing seja ideal para o modelo federado do Sebrae, onde cada unidade pode atuar de forma independente, com arquiteturas distintas e mesmo assim compartilhar seus produtos de dados como recurso que pode ser gerenciado e governado por um repositório central unificado. Esse compartilhamento traz agilidade para o desenvolvimento dos pipelines de atualização pois evita a necessidade de sincronização dos pipelines externos e internos ao mesmo tempo mantém a responsabilidade de quem é o dono do conjunto de dados, um dos conceitos centrais do Data Mesh, que veremos mais a frente.
+
+<br>

@@ -7,6 +7,9 @@ Identificar e mapear o perímetro de segurança da rede. Considere os ataques e 
 Modelo de responsabilidade compartilhada:
 As plataformas de dados na nuvem se responsabilizam pela segurança dos seus serviços e componentes, cabe a quem utiliza se preocupar com a sensibilidade dos dados, regras e leis relacionadas e com a segurança das aplicações criadas sob estes componentes. Essa é uma responsabilidade dos responsáveis pela arquitetura e não faz parte dos serviços contratados. Por exemplo, muitos vazamentos resultaram de erros na configuração de acesso a buckets da aws que foram deixados público. 
 
+Sempre exercitar o exercício do menor privilégio
+
+
 
 https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
 

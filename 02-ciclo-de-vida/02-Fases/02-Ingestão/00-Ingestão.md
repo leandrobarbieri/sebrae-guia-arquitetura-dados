@@ -145,7 +145,10 @@ Inserir dados | **Adicionar**:<br> `INSERT INTO default.people10m SELECT * FROM 
 Inserir novos e atulizar existentes (Upsert)| `MERGE INTO destino USING origem ON (destino.col1=origem.col1) WHEN MATCHED AND destino.col2 <> origem.col2 THEN UPDATE SET destino.col2=origem.col2 WHEN NOT MATCHED THEN INSERT (col1,col2) VALUES (origem.col1,origem.col2)` |  `deltaTable.alias('origem').merge(df.alias('destino'), "origem.col1 = destino.col1").whenNotMatchedInsertAll().whenMatchedUpdateAll("origem.col1 < destino.col1").execute()`
 
 
-### Tipos de FOntes x Ferramentas para Ingestão
+### Orquestração
+Ferramentas capazes que acionar diferentes tecnologias e sequenciar a execução de tarefas de forma agendada...
+
+### Tipos de Fontes x Ferramentas para Ingestão
 
 ![Alt text](image.png)
 
