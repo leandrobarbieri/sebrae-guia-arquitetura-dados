@@ -74,11 +74,29 @@ O processamento em batch é o mais usado, apesar do ganho de popularidade das es
 ### Full Snapshots
 Essa estratégia mode todos os dados e adiciona em uma partição imutável. O problema dessa estratégia é a grande duplicação de dados, o que não chega a ser um problema quanto ao custo de armazenamento, que hoje é baixo. Além disso a análise de dados é mais dificil, processar alguns anos pode demorar muito dependendo do volume.
 
+Use essas estratégia quando:
+- O volume de dados na origem é pequeno.
+- O sistema de origem não mantém um campo de carimbo de data/hora que identifique se os dados foram adicionados, atualizados ou excluídos.
+
 ### Slowly Changing Dimensions
 Essa abordagem armazena os dados de forma mais eficiente, pois versiona os registros atualizados. O benefício é que a análise fica mais simples e rápida, e identificar e remover dados individuais, por exemplo a pedido da LGPD, também. O lado complicado dessa abordagem é que as mudanças nas fontes de dados precisam ser monitoradas e detactadas e assim que possível as atualizações realizadas.
 
+Use essas estratégia quando:
+- O sistema de origem mantém um campo de carimbo de data/hora que identifica se os dados foram adicionados, atualizados ou excluídos.
+
+
 ### Insert-only
 Esse padrão de ingestão de dados cria um novo registro acada processamento ao invés de fazer a atualização. Cada inserção uma coluna com a data/hora é incluída no registro. Por exemplo, cada vêz que um cliente muda de endereço uma nova linha com o endereço é inserida junto com a anterior, dessa forma todo o log de alterações é mantido no banco de dados analítico e o dado atual pode ser obtido buscando pela data de inserção mais recente. Use somente onde tiver necessidade, avalie se esse histório pode ser mantido na tabela de fatos pois essa estratégia pode trazer algumas desvantagens como gerar tabelas muito grandes quando há atualizações frequentes, além de demandar processamento adicional para buscar a versão atual através da ultima data de atualização.
+
+Use essas estratégia quando:
+- O volume de dados na origem é grande.
+- O sistema de origem não mantém um campo de carimbo de data/hora que identifique se os dados foram adicionados, atualizados ou excluídos.
+
+
+
+
+
+
 
 Os dados são inseridos por exemplo 
 <br> 
@@ -125,6 +143,14 @@ Ler uma tabela | `SELECT * FROM TABELA` | `spark.read.format("delta").load("/tmp
 Ler uma versão anterior de um registro | `SELECT * FROM delta./tmp/delta/tabela VERSION AS OF 123` | `df2 = spark.read.format("delta").option("versionAsOf", 123).load("/tmp/delta/tabela")`
 Inserir dados | **Adicionar**:<br> `INSERT INTO default.people10m SELECT * FROM tabela`<br><br>**Sobrescrever**:<br> `INSERT OVERWRITE TABLE default.people10m SELECT * FROM tabela` | **Adicionar**:<br> `df.write.format("delta").mode("append").saveAsTable("default.tabela")`<br><br>**Sobrescrever**:<br> `df.write.format("delta").mode("overwrite").saveAsTable("default.tabela")`
 Inserir novos e atulizar existentes (Upsert)| `MERGE INTO destino USING origem ON (destino.col1=origem.col1) WHEN MATCHED AND destino.col2 <> origem.col2 THEN UPDATE SET destino.col2=origem.col2 WHEN NOT MATCHED THEN INSERT (col1,col2) VALUES (origem.col1,origem.col2)` |  `deltaTable.alias('origem').merge(df.alias('destino'), "origem.col1 = destino.col1").whenNotMatchedInsertAll().whenMatchedUpdateAll("origem.col1 < destino.col1").execute()`
+
+
+### Orquestração
+Ferramentas capazes que acionar diferentes tecnologias e sequenciar a execução de tarefas de forma agendada...
+
+### Tipos de Fontes x Ferramentas para Ingestão
+
+![Alt text](image.png)
 
 
 ### Entradas

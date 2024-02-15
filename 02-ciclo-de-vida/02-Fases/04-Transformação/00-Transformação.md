@@ -21,6 +21,32 @@ As ferramentas de qualidade de dados buscam aumentar eficiência através da aut
 ## Processamento distribuído
 , quando é necessário, como funciona, quais são os limites
 
+# virtualização de dados e conceito de serverless
+> descrever os benefícios como não precisar mover os dados, principalmente em uma arquitetura mesh baseada em domínios, centralizar o acesso aos dados em um unico ponto (oquestrador não precisa ter acesso a todas as fontes, apenas a maquina que virtualiza) 
+
+Integração de bases de dados
+SQL executa querys em Oracle, MongoDB, S3 Object storages com usando apenas com T-SQL
+
+Virtualiza a origem
+Permitindo o acesso indireto à fonte sem ter que configurar drivers, conectores, regras no client
+
+Simplifica as consultas
+Padroniza a linguagem de consulta, independentemente da fonte as querys são em T-SQL
+
+Integração
+Permite fazer querys hibridas, com parte do dados externos e parte dos dados no SQL Server
+
+Acesso aos mesmos dados sem necessidade de importar/duplicar para a engine de processamento
+
+Storage unificado de dados agrupados por domínios
+
+![Alt text](image-2.png)
+
+# Recomendações
+
+## não armazenar dados semi-estruturados em base relacionalç
+
+
 
 ## Linguagens de processamento
 Definir qual engine vai interagir como o lakehouse, 
@@ -43,6 +69,10 @@ A separação da camanda semantica e a criação de uma abstração para as mét
 
 https://airbyte.com/blog/the-rise-of-the-semantic-layer-metrics-on-the-fly
 https://towardsdatascience.com/metrics-store-in-action-76b16a928b97
+
+
+## Mascaramento de dados 
+As colunas podem ser consultadas mas em tempo de execução dependendo do usuário e permissões os valores são mascarados. Esse recurso se chama "dynamic data mask"
 
 ## Exemplos códigos comuns de transformação
 Listar os comandos mais comuns e as transformações básicas em cada linguagem

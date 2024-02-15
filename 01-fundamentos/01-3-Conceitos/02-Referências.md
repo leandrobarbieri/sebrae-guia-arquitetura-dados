@@ -33,4 +33,10 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 
 [Arquitetura de pipeline de dados: tudo o que você precisa saber](https://www.astera.com/pt/tipo/blog/arquitetura-de-pipeline-de-dados/)
 
-[Bancos de dados de streaming]()
+[Data Lake Governance Best Practices](https://dzone.com/articles/data-lake-governance-best-practices)
+
+    
+[Zonas e contêineres do data lake](https://learn.microsoft.com/pt-br/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/best-practices/data-lake-zones)
+
+
+[Apache Hudi vs Delta Lake vs Apache Iceberg - Data Lakehouse Feature Comparison](https://www.onehouse.ai/blog/apache-hudi-vs-delta-lake-vs-apache-iceberg-lakehouse-feature-comparison)

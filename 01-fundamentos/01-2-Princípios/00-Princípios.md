@@ -3,8 +3,7 @@ A diversidade de fontes, a disponibilidade de meios para coleta de dados e o vol
 
 Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida. 
 
-![Ciclo](https://github.com/leandrobarbieri/sebrae-guia-arquitetura-dados/blob/main/01-fundamentos/media/ciclo.png?raw=true)
-
+![Ciclo](../media/ciclo.png)
 
 Algumas características como: independência, decisões reversíveis, escalabilidade, nos dão bons indicativos de uma arquitetura robusta, capaz de se adaptar com o tempo. 
 
