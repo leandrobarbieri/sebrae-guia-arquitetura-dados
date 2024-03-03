@@ -1,6 +1,9 @@
+# Fase: Entrega
+Essa é a fase final do pipeline de dados, é o momento em que o dado está "pronto" para análise. O mais importante aqui é que os produtos de dados atendam às diferentes necessidades dos usuários e tenham como principal característica a qualidade. Além disso, devemos garantir que o que é entregue seja reutilizável e atenda a vários casos de uso e que a empresa pode confiar.
 
-Ofereça dados como produtos reutilizáveis nos quais a empresa pode confiar
-Produzir dados como produto de alta qualidade é o objetivo principal de qualquer plataforma de dados. A ideia é que as equipes data engineering apliquem o pensamento do produto aos dados selecionados: os ativos de dados são seus produtos, e o cientista de dados, engenheiros de ML e BI ou quaisquer outras equipes de negócios que consomem dados são seus clientes. Esses clientes devem ser capazes de descobrir, abordar e criar valor a partir desses dados-como-produtos por meio de uma experiência de autoatendimento sem a intervenção das equipes de dados especializadas.
+Produzir dados como produto de alta qualidade é o objetivo principal de qualquer plataforma de dados, portanto essa fase é o final dessa processo de transformação de dados em produto. 
+
+A ideia é que as equipes data engineering apliquem o pensamento do produto aos dados selecionados: os ativos de dados são seus produtos, e o cientista de dados, engenheiros de ML e BI ou quaisquer outras equipes de negócios que consomem dados são seus clientes. Esses clientes devem ser capazes de descobrir, abordar e criar valor a partir desses dados-como-produtos por meio de uma experiência de autoatendimento sem a intervenção das equipes de dados especializadas.
 
 Publique produtos de dados semanticamente consistentes em toda a empresa
 Um data lake geralmente contém dados de diferentes sistemas de origem. Às vezes, esses sistemas nomeiam o mesmo conceito de maneira diferente (como cliente x account) ou significam conceitos diferentes pelo mesmo identificador. Para que os usuários de negócios combinem facilmente esses conjuntos de dados de maneira significativa, os dados devem ser homogêneos em todas as fontes para serem semanticamente consistentes. Além disso, para que alguns dados sejam valiosos para análise, as regras internas de negócios devem ser aplicadas corretamente, como o reconhecimento de receita. Para garantir que todos os usuários estejam usando os dados interpretados corretamente,
@@ -12,10 +15,24 @@ Nem só de dashboard vide a análise de dados, o analista de dados pode e deve i
 Pode utilizar modelos treinandos ou treinar seu próprios modelos. É importante a arquitetura estar preparada para se integrar com soluções de gestão de modelos como mlflow que gerencia os experimentos e registro dos modelos de forma que o analista possa usar como parte dos scritps sql, usando um conjunto de colunas para submentar a inferencia de um modelo.
 
 
+- a descoberta de onde os dados estão e  quais os assuntos
+- metadados que auxiliam a definição de contexto
 
-# como
-camada gold, dw ou cubo? como e porque cada uma das opções
-, catalogo, segurança, machine learning, BI, self-service, storytelling, etc
+
+# Tipos de entrega
+
+Podemos classificar de acordo com o grau de flexibilidade e complexidade. Entregas em que os dados estão mais preparados, onde foram manipulados para obter a visão específica atender um caso de uso específo são classificadas como menos flexível porém mais pronto (menor esforço e necessidade de manipulação). Já os produtos que são entregues com alto grau de flexibilidade, podem ser usados com um propósito mais geral, podem atender a mais casos de uso (análise descritiva, prescritiva, preditiva) porém demandam mais esforço e preparação para resolver o problema. É como a analogia de um foodtruck vs um restaurante, no foodtruck os ingredientes (dados) estão pré-processados, e são apenas aqueles contidos nas poucas possibilidades de preparação planejadas. Já em um restaurante os ingredientes estão em seu estado mais bruto, há disponibilidade de realizar combinações não planejadas, que podem vir de um pedido de um cliente.
+
+
+![Alt text](../../media/tipos-de-entrega.png)
+
+
+
+
+
+
+
+
 
 Caso de uso | Siver | Gold | DW | Cubo | Painel | Obs
 ------------| ----- | ---- | -- | ---- | ------ | ---
@@ -53,7 +70,7 @@ Cientista de dados deve pegar da camada limpa de Gold
 # storytelling
 gestalt
 
-https://medium.com/aela/os-7-princ%C3%ADpios-de-gestalt-e-como-utiliz%C3%A1-los-em-projetos-de-ui-design-46d6d832abf6
+
 
 
 # Recomendações do guia
