@@ -53,6 +53,9 @@ Cientista de dados deve pegar da camada limpa de Gold
 # storytelling
 gestalt
 
+https://medium.com/aela/os-7-princ%C3%ADpios-de-gestalt-e-como-utiliz%C3%A1-los-em-projetos-de-ui-design-46d6d832abf6
+
+
 # Recomendações do guia
 Código | Recomendação | Descrição
 ------ | ------------ | ---------
@@ -67,3 +70,4 @@ R08-Entrega | Organize os ativos de dados um catálogo unificado orientado a dom
 R09-Entrega | Como gerenciar os acessos e compartilhamento de dados em um modelo descentralizado/federado? | Centralizar o controle de acesso: Mesmo que os dados estejam em arquiteturas separadas, em um modelo federado, busque usar padrões de armazenamento abertos de forma que seja possível criar catálogos com controle de acceso centralizado mantendo uma governança unificada.
 R10-Entrega | Fornecer dados semanticamente consistentes para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 R11-Entrega | Busque sempre criar experiências de autoatendimento para solicitação de acessos aos produtos de dados
+R11-Entrega | Como ter controle de acesso completo a nível de objeto, tabela (linhas, colunas), views, procedures, funções, etc? | Usar na camada de entrega uma solução baseada na arquitetura de data warehouse moderno, com dados persistidos ou virtualizados. Dependendo da plataforma, Lakehouses podem não ter o nível de controle de acesso necessário para essa camada de entrega.

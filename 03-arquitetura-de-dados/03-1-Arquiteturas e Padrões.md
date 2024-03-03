@@ -28,43 +28,44 @@ Essa separação entre as camadas de armazenamento e processamento está fazendo
 
 ### Arquiteturas MPP
 
-<!-- Descrever como essa arquitetura entrega processamento distribuído
+São arquitetura de cluster de bancos de dados que processam as operações de forma distribuída, através da combinação de um nó principal que distribui e gerencia, e nós de processamento (compute nodes) que executam as querys.
 
-![Alt text](image-4.png)
+> incluir imagems
 
-Possio um nó principal e compute notes
-Divide entre os compute note
-Temos que fazer a forma de distribuição correta para aproveitar os benefícios do paralelismo
+A principal precupação que temos nesta arquitetura é como fazer corretamente a distribuição e particionamento entre os nós de execução para aproveitarmos os benefícios do paralelismo.
 
-Tipos de distribuição entre os nós
 
-Round-robin: distribuição aleatória entre as partições, definida por tabela. Para carga costuma ser mais o método mais rápido. Método de distribuição recomendado para carga de tabelas stage
+#### Tipos de distribuição entre os nós
+
+Round-robin: distribuição aleatória entre as partições, definida por tabela. Para carga costuma ser o método mais rápido. Método de distribuição recomendado para carga de tabelas stage
 
 Hash-distributed: passa uma coluna que será usada para realizar a distribuição de forma determinística atribuindo cada linha a uma distribuição. Recomendado para querys em tabelas fato. Alta performance na leitura
 É importante escolher uma coluna de forma certa para a distribuição não ficar desbalanceada. As colunas usadas precisam conseguir identificar de forma bem granular (identificação única)
 
 Replicated: uma cópia completa em cada nó. Funciona bem para dimensões pois são pequenas. 
 
-
-Partições dentro das distribuições
-
-São divisões dentro da própria distribuição. Só faz sentido começar a particionar quando tipos mais de 100 milhões de registros em uma tabela.
-Criada em geral em colunas de data
-Performance nas querys pois facilita a busca e filtragem dos dados
+Dentro de cada distribuição (compute nodes) podemos criar particionamentos para otimizar ainda mais a performance de busca e filtragem. Porém só obtemos melhorias quando temos mais de 100 milhões de registros em uma tabela.
 
 
 Recomendações
 ![Alt text](image-5.png) -->
+
+
 
 ## Comparativo
 
 Característica | Data Warehouse | Data Lake | Lakehouse 
 ---- | ---- | ----- | ---- |
 Tipo de dado | Estruturado apenas | Todos | Todos |
-Formato | proprietário | csv, parquet, delta | parquet, delta, hudi, iceberg |
+Formato | proprietário | csv, parquet, imagens, etc | parquet, delta, hudi, iceberg |
 Usuários | analistas de dados | cientistas de dados | analistas e cientistas de dados |
 Caso de uso | Análise descritiva | Análise e modelagem estatística | Análise e modelagem estatística |
-Consumo | ---- | ----- | ---- |
+Linguagens | SQL | Python, R | SQL e Python, R |
+Leitura/Escrita | SQL | Spark, T-SQL | Spark, T-SQL
+Segurança | A nível de tabela, schema, view, função, procedure, column-level, row-Level, data masking | Nenhum controle a nível de linha ou coluna, apenas a nível de objeto | Podem apresentar controle a nível de linhas e colunas limitados ou dependendo a plataforma.
+Data Sharing | Sim | Sim | Sim
+
+
 
 
 ## Quando usar MDW ou LH?

@@ -195,4 +195,7 @@ Isso traz simplicidade e evita a replicação de dados sem controle dentro da em
 
 O fato de não ter mover grandes quantidade de dados e conseguir incorporar nas querys tabelas externas com segurança e performance, faz com que a feature data sharing seja ideal para o modelo federado do Sebrae, onde cada unidade pode atuar de forma independente, com arquiteturas distintas e mesmo assim compartilhar seus produtos de dados como recurso que pode ser gerenciado e governado por um repositório central unificado. Esse compartilhamento traz agilidade para o desenvolvimento dos pipelines de atualização pois evita a necessidade de sincronização dos pipelines externos e internos ao mesmo tempo mantém a responsabilidade de quem é o dono do conjunto de dados, um dos conceitos centrais do Data Mesh, que veremos mais a frente.
 
+<!-- O conceito de data sharing consite em compartilhar de forma segura conjuntos de dados entre plataformas heterogêneas, independentes. Esse tipo de acesso a dados realizado entre empresas ganhou força com o uso de object storages que entregam controle de acesso e um permissionamento refinado permitindo acesso segura pela internet através do protocolos próprios que rodam sob o http sem ter que se preocupar com detalhes como acesso a rede corporativa para chegar até os servidores de bancos de dados. Além disso, dentro da própria empresa o data sharing permite que unidades tenham seus dados compartilhados de forma seletiva, garantindo a descetralização da produção e do consumo. -->
+
+
 <br>

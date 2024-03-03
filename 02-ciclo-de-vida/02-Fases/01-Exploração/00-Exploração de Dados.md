@@ -44,10 +44,6 @@ Tipos | Descrição
 Estas fontes são as bases de dados OLAP. Elas não se limitam os conhecidos CUBOS, esse tipo de tecnologia pode ser atribuído a qualquer tecnologia de banco que suporte querys analíticas, interativas e em laga escala. Apesar destas bases teoricamente já conterem os dados "prontos" para análise, elas também podem ser uma fonte de dados para a contrução de um novo pipeline em um ETL reverso, onde os dados prontos em um banco OLAP são usados como entrada para a base de dados de um outro sistema, por exemplo um CRM com dados consolidados e enriquecidos de um cliente.
 
 
-# Data Sharing
-O conceito de data sharing consite em compartilhar de forma segura conjuntos de dados entre plataformas heterogêneas, independentes. Esse tipo de acesso a dados realizado entre empresas ganhou força com o uso de object storages que entregam controle de acesso e um permissionamento refinado permitindo acesso segura pela internet através do protocolos próprios que rodam sob o http sem ter que se preocupar com detalhes como acesso a rede corporativa para chegar até os servidores de bancos de dados. Além disso, dentro da própria empresa o data sharing permite que unidades tenham seus dados compartilhados de forma seletiva, garantindo a descetralização da produção e do consumo.
-
-
 ## Entradas
 Ao acessar os dados é importante ter como referência os contatos do responsáveis pelas fontes de dados, criar boa relação ter interações constantes, durante e depois da construção dos pipelines. Entre eles estão, engenheiros de software, administradoresde bancos de dados, gestor do sistema de origem. Essa relação permite que quando alguma coisa acontecer com o sistema, como uma mudança no schema, ou uma falha em um servidor de banco de dados você será avisado e terá um espaço para discutir e entender os impactos em conjunto e dessa forma manter um contrato com os fornecedores de dados que definem as regras de firewall, drivers de conexão, usuários, senhas e tokens de acesso que serão usados que com que frequência as bases serão acessadas.
 
