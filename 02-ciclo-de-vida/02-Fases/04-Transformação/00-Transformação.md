@@ -1,27 +1,31 @@
 # Fase: Transformação
-Essa é uma etapa importante do processo, esse é o momento de começar a lapidar os dados brutos para adicionar qualidade. Os dados obtidos na fase de ingestão podem estar incompletos, conter erros, campos vcom valores inválidos, corrompidos. Essa fase se preocupa principalmente em melhorar a qualidade, remover duplicidade, padronizar os formatos.
+Até essa fase no ciclo de vida estávamos unicamente com mover os dados de um lugar para outro e armazenar de forma eficiente. A partir desse momento vamos ver o que é necessário fazer para tranformar os dados em conjuntos de dados fáceis de usar, confiáveis e padronizados.
 
-A transformação ainda não entra em atividades que alterem a granularidade ou modificam significativamente os conjuntos de dados. Essa fase não entra em questões de modelagem, desnormalizaçõesm ou criação de métricas com colunas calculadas com regras de negócio.
+Vamos começar a lapidar os dados brutos para adicionar qualidade. Os dados obtidos na fase de ingestão podem estar incompletos, incorretos, duplicados, fora do padrão para consulta. É agora, nessa etapa do ciclo de vida que vamos começar a preparação para o consumo.
 
+É importante dizer que na fase de transformação ainda não vamos realizar operações que alterem a granularidade ou modificam significativamente os dados. Ações relacionadas a modelagem, desnormalizaçõesm, inclusão de regras de negócio, criação de métricas com colunas calculadas são feitas na etapa seguinte de modelagem. Isso tem uma razão simples. Manter as tabelas com os atributos inalterados, permite que eles sejam usados em projetos diferentes, de formas diferentes e com propósitos diferentes. Um data warehouse modelado com dimensões e fatos geralmente são enviesados para uma análise de negócio enquanto projetos de ciências de dados e machine learning muitas vezes precisam de dados tratados porém sem o viés de análise. 
 
-
-
-# Como?
-> Como padronizar formatos diferentes e aplicar regras de validação, duplicidade e inconsistencias
-Como lidar com mudança de schema; tipagem, limpeza, padronização, validação, ofuscação, qualidade, performance
+![Alt text](../../media/fase-transformacao.png)
 
 
-# Tecnologias de qualidade de dados
-Garantir que dados precisos e úteis estejam disponíveis para cargas de trabalho downstream BI, analíticas e machine learning .
+# Processamento distribuído
+Vamos assumir a partir de agora que os dados estão armazenados e organizados em um storage e que podemos realizar a leitura para iniciar as etapas de processamento para transformação...
 
-Manter a qualidade dos dados é uma premissa para o ciclo de vida. A medida que o dado é tratado ele ganha qualidade, o que representa que será validado quanto a consistência dos tipos de acordo com o schema definido, valores nulos, ranges de válidos, outliers, etc. Também são consideradas regras de negócio que caracterizam registro válidos ou não.
 
-As ferramentas de qualidade de dados buscam aumentar eficiência através da automação das regras de vefirificação realizando a checagem de integridade como parte do pipeline de dados.
+# Lakehouse Query Engines
+Nessa fase vamos falar do componente central que são as query engines, esse é o componente capaz de ler os dados aplicar transformações e salvar os dados transformados de volta nas camadas do storages (lakehouse ou data warehouses).
 
-## Processamento distribuído
-, quando é necessário, como funciona, quais são os limites
+Essas tecnologias hoje contam com a capacidade de processamento distribuído e escalável, onde um nó central distribui para os nós de processamento as cargas de trabalho e em seguida coordera e agrupa os resultados. Um principais diferenciis das querys engines modernas é essa capacidade de lidar com grandes volumes de dados.
 
-# virtualização de dados e conceito de serverless
+Hoje podemos destacar tecnologias como Spark, BigQuery, Synapse Analytics. São ferramentas que nos permitem fazer a tranformação dos utilizando linguagens como SQL e Python em um ambiente integrado.
+
+
+
+# Virtualização de dados e conceito de serverless
+
+ abstraction layer that provides data access across disparate data sources.
+
+
 > descrever os benefícios como não precisar mover os dados, principalmente em uma arquitetura mesh baseada em domínios, centralizar o acesso aos dados em um unico ponto (oquestrador não precisa ter acesso a todas as fontes, apenas a maquina que virtualiza) 
 
 Integração de bases de dados
@@ -40,15 +44,17 @@ Acesso aos mesmos dados sem necessidade de importar/duplicar para a engine de pr
 
 Storage unificado de dados agrupados por domínios
 
-![Alt text](image-2.png)
-
-# Recomendações
-
-## não armazenar dados semi-estruturados em base relacionalç
+![Alt text](../../media/image-2.png)
 
 
+# Tecnologias de qualidade de dados
+Garantir que dados precisos e úteis estejam disponíveis para cargas de trabalho downstream BI, analíticas e machine learning .
 
-## Linguagens de processamento
+Manter a qualidade dos dados é uma premissa para o ciclo de vida. A medida que o dado é tratado ele ganha qualidade, o que representa que será validado quanto a consistência dos tipos de acordo com o schema definido, valores nulos, ranges de válidos, outliers, etc. Também são consideradas regras de negócio que caracterizam registro válidos ou não.
+
+As ferramentas de qualidade de dados buscam aumentar eficiência através da automação das regras de vefirificação realizando a checagem de integridade como parte do pipeline de dados.
+
+# Linguagens de processamento
 Definir qual engine vai interagir como o lakehouse, 
 de dados SQL, Python, SparkSQL, quando usar, qual é mais indicada para cada perfil de usuário, ou fase no ciclo de vida
 
@@ -82,22 +88,10 @@ Código | SQL | Pandas | PySpark
 Projeção de atributos de uma tabela | SELECT col1 FROM Tab | df["col1] | df.select(col(col1))
 Selecionar todos os atributos da tabela | SELECT * FROM Tab | display(df) | df.show()
 
+Como regra geral, para acesso a dados sempre selecione as colunas necessárias e aplique filtros ao rodar uma consulta.
 
-## Recomendações
-Código | Recomendação | Descrição | Princípios
------- | ------------ | --------- | ----------
-R01-Transformações | Não devem ser incluídas regras de negócio na fase de transformação. Essa fase deve se concentrar em entregar valor através da validação, checagem, otimização e preparação dos dados. | Gerar datsets validados e com alta qualidade mas sem alterações de regras de negócio, os mantém com um propósito geram, servindo para múltiplos contextos e casos de uso onde a inclusão de regras de negócio poderiam limitar.
-R02-Transformação | Os dados devem ser ter padrões de representação consistentes entre os conjuntos de dados. | Por exemplo, todas as tabelas que usar campos como: endereço, um telefone, representação de gênero, número de cpf/cnpj, um código de contrata, etc. devem armazená-los transformados da mesma forma.
-R03-Transformação | As tecnologias usadas para o processamento devem ser escaláveis para conseguir lidar operações complexas de transformação ou limpeza.
-R04-Transformação | Problemas com a qualidade dos dados devem sempre ser endereçados para serem corrigidos no sistema de origem
-R05-Transformação | Dever ser estabelecido limites para a qualidade dos dados, quando é detectada que a qualidade está abaixo desses limites, deve haver uma análise por parte do proprietários dos dados se aceitam ou não a inclusão de dados com baixa qualidade.
+Quanto uma tabela em um Lakehouse é muito grande use sempre estratégias de particionamento para reduzir a quantidade arquivos que são carregados. 
 
+Ao ler uma tabela grande no BigQuery, Snowflake ou Spark por exemplo, não existe o risco de causar o lock do arquivo, pois a leitura é feita em um snapshot enquanto escritas pode ser feitas. Para garantir a consistênca apenas uma escrita pode ser feita ao mesmo tempo.
 
-
-
-> o que é
-> Abordar aqui asrelações de dependência, entradas, saídas, limites, responsabilidades, tipos de tecnologias
-
-> O que acontece nessa fase, qual o objetivo da fase. Delinear entradas, saídas limites e fronteiras
-
-> ter uma camada de transformação específica. Qualidade dos dados, multiplos casos de uso (dados tratados mas não alterados com regras de negócio são ótimos para DS)
+Updates e deletes em Lakehouses criam arquivos com dados duplicados pois essas tecnologias mantém os arquivos imutáveis, isso faz que com o tempo seja necessário realizar operações de limpeza (vacuum) que removem arquivos com dados versionados. Isso é uma boa prática que libera espaço e economiza recursos. No Snowflake essa operação é automática e não temos controle sobre isso. No Bigquery a limpeza do histórico é feita por padrão em uma janela de 7 dias, já no Databricks os dados são retidos indefinidamente até que manualmente sejam removidos. É importante ficar atentos para criarmos estratégias para manutenção das versões na quantidade correta. Bancos de dados baseados em object storage que são atualizados com operações de upserts com frequência precisam de mais atenção ainda pois podem crescer rapidamente e acumular muitos dados históricos sem necessidade.

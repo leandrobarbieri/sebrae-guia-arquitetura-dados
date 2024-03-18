@@ -1,31 +1,35 @@
 # Fase: Modelagem
-Essa é uma camada onde a lógica de negócio da empresa é aplicada aos datasets. Nessa fase os dados são mais orientados aos domínios e não matém total relação com a fonte de dados original. Junções entre várias tabelas, concatenação entre atributos, colunas calculadas, agregações, segmentaçõs, novos atributos derivados e muitos outros tipos de processamentos que podem mudar significativamente os dados originais nessa camada.
+Agora é o momento de organizar os dados de forma que seja útil para análise, ou seja, os conjuntos de dados serão modificados para ganhar a nomenclatura do negócio. O objetivo é facilitar ao máximo o consumo. Essa é uma fase crítica para a percepção de valor no ponto de vista do negócio. E agora que o produto de dados começa a ganhar valor para a empresa, pois pode ser consumido por um público maior de analistas de negócio. Um modelo de dados deve estar estruturado para refletir a nomenclatura do negócio e representar os processos da empresa. 
 
-O objetivo principal agora é preparar os dados para consumo, principalmente por analistas de dados e analistas de negócio. Cientistas de dados também clientes desta camada, mas em geral seus projetos se beneficiam mais de camadas anteriores (bronze, silve) pois os dados estão mais próximos do estado bruto o que possíbilita diferentes combinações e validações de hipóteses não mapeadas. 
+Essa é uma camada onde a lógica que adiciona semântica e simplificação. Os conjuntos de dados são desnormalizados para remover a complexidade do relacionamento entre as tabelas. Nessa fase os dados são mais orientados aos domínios e não matém total relação com a fonte de dados original. Junções entre várias tabelas, concatenação entre atributos, colunas calculadas, agregações, segmentaçõs, novos atributos derivados e muitos outros tipos de processamentos que podem mudar significativamente os dados originais nessa camada.
 
+O objetivo principal agora é preparar os dados para consumo, principalmente por analistas de dados e analistas de negócio. Cientistas de dados também clientes desta camada, mas em geral seus projetos se beneficiam mais de camadas anteriores (bronze, silver) pois os dados estão mais próximos do estado bruto o que possíbilita diferentes combinações e validações de hipóteses não mapeadas. 
+
+Alguns dos motivos para fazer a modelagem dos dados:
 
 Motivo | Descrição
 ------ | ---------
-Concorrência | Isola a fonte de dados de origem (geração) da fonte de dados analíticos (consumo) Minimiza o uso de recursos
-Segurança | Não abrir conexões externas com a fonte de dados de origem para consumo de dados
-Padronização | Converte diferentes formatos em formatos abertos, não proprietários. Agenda a ingestão de diferentes momentos pra cada fonte
 Semântica | Criar uma camada que faça mais sentido para análise de negócio (as fontes de dados são otimizadas para INSERT e UPDATE)
-Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers, linguagens, etc.) e unir dados de diferentes fontes. Cada fonte pode ter um agendamento diferente
-
-
-
-
-
-## Entradas
-Deixam os dados prontos para consumo das ferramentas de visualização
-
-É a etapa que prepara o dado para ser servido de acordo com as necessidades específicas do negócio. 
+Fonte única da verdade | Os dados tratados e modelados incorporam as regras e fórmas de cálculos que podem ser usadas por toda a empresa sem gerar duplicidade.
+Abstração | Abstrair a complexidade de acesso aos dados. (conectores, drivers, linguagens, etc.) e unir dados de diferentes fontes em um lugar único fácil de acessar
 				
-Diferente da transformação, a modelagem adiciona regras de negócio, semantica para os campos, desnormalização, joins, dê-para, agregações. A modelagem é voltada para simplificação  do schema para a entrega para o negócio
-				
-Exemplo: nessa fase são feitos joins com entidades externas podem adicionar features: join de uma localização com as coordenadas, um de-para de uma unidade da empresa uma área de atuação, etc..
+São exemplos comuns de operações de modelagem:
+Nessa fase são feitos joins com entidades externas podem adicionar features: join de uma localização com as coordenadas, um de-para de uma unidade da empresa uma área de atuação, etc..
 
 
+Operação | Exemplo de código
+-------- | -----------------
+Desnornalização | ` df_1 = spark.table("CorporeRM.FLAN") ` <br> ` df_2 = spark.table("CorporeRM.TMOV") ` <br> `df_juncao = df_1.join(df_2, on='IDMOV', how='inner') ` <br> ` df_juncao = df_juncao.elect("COL1", "COl2", "...") `
+Dê-para | ` df = df.withColumn("Col1", \ ` <br> ` when(col("Col1") == "Action", "AC") \ ` <br> `.when(col("Col1") == "Adventure", "AD") \ ` <br> `.when(col("Col1").isNull(), "-") \ ` <br> `.otherwise("Genero1_Split")) `
+Agregações | ` df = df.groupBy("col1", "col2", "col3", "...") \ `<br> `.agg(    {"quantidade": "sum", "quantidade": "avg"}) `
+Salvar tabela | `df_juncao.write.format("delta").saveAsTable("tabela") `
+
+
+Diferente da transformação, a modelagem adiciona regras de negócio, semantica para os campos, desnormalização, joins, dê-para, agregações. A modelagem é voltada para simplificação  do schema para a entrega para o negócio.
+
+Um fator importante a ser considerado nessa fase é a granularidade dos dados, em geral trabalhar com uma granularidade mais baixa permite uma análise mais variada, enquanto a escolha de uma granularidade maior pode reduzir o tamanho do conjunto de dados mais pode limitar as possibilidades de análise. Por exemplo, a tabela de atendimentos executados incluindo cada atendimento, com os detalhes do cliente, produto, programa, iniciativa, data. Nesse exemplo a granularidade é o atendimento por dia. 
+
+		
 
 ## Escopo
 Fronteira entre a camada de qualidade e camada semântica
@@ -46,25 +50,13 @@ Métricas e indicadores
 
 
 # técnicas e modelagem
-- dimensional
-- slowly change dimension
-
-
-## Saídas
-A simplificação obtida através da modelagem nessa fase do ciclo de vida, transforma os conjuntos de dados tratados em produtos, prontos para o usuário final consumir através de ferramentas de análise de dados. O objetivo dessa fase foi alcançado quando não há necessidade de conhecer os aspactos das fontes de dados originais para conseguir fazer análise dos dados.
+- Kimbal
+- Immon
+- Data Vault
 
 
 
-
-
-# Exemplos
-> das operações acima, de modelagem multidimensional e OLAP. Melhores práticas para modelos oplap (tabular)
-
-sc typ2 delta 
-https://docs.delta.io/latest/delta-update.html#id2
-
-
-# camada semantica
+# Camada semantica
 Conceito de desacoplamento da camada semantica empresa Transform comprada pelo dbt 
 dbt Semantic Layer, Enabling Greater Consistency Across Analytics Tools
 
@@ -78,21 +70,11 @@ https://www.prnewswire.com/news-releases/dbt-labs-launches-the-dbt-semantic-laye
 >What Transform introduced to all of us was the incredible potential of semantic capabilities that are decoupled from a single business intelligence tool – or, “headless semantic layer”. In this world, metrics and entities are no longer locked into a single BI tool, they can be accessed by all downstream tools. 
 
 
-
-# Recomendações
-
-
+## Entradas
+Os dados transformados, geralmente disponíveis na camada "silver" são usados como entrada nessa etapa. Além disso, é necessário o envolvmento da área de negócio desde o início da modelagem, para que sejam adicionados os viéses de análise e os dados sejam desnormalizados e as métricas seja criadas de acordo com a necessidade.
 
 
-
-Código | Recomendação | Descrição | Princípios
------- | ------------ | --------- | ----------
-R01-Modelagem | Os dados da camada de modelagem devem estar organizados com base nos domínios da informação e não mais pelos contextos das fontes de dados. | Como os dados estão sendo preparados para atenderem as necessidades do negócio, fontes de dados de sistemas diferentes podem ser agrupadas em um domínio único. | P05
-R02-Modelagem | A modelagem deve esconder a maior parte da complexidade das fondes de dados originais | Toda a camanda semântica deve ser orientada ao consumo. Remover a normalização, simplicicar nomenclatura de atributos, mudar granularidade, criar métricas calculadas, etc.
-R03-Modelagem | Os dados armazenados na camada de modelagem (gold) devem estar no mesmo storage e formatos de arquivos que as camadas anteriores.
-R04-Modelagem | A camada de modelagem deve ser otimizada para consumo | As tecnologias de MDW, com particionamento, processamento distribuído, storages com discos rápidos (hot)
-R05-Modelagem | Os recursos computacionais desta camada devem ser para escalar de forma independente dos recursos de storage, para acomodar o comumo massivo.
-R06-Modelagem | Views materializadas podem ser criadas para simplificar o otimizar o consumo | Views ajudam a diminuir a complexidade e quando materializadas podem trazer performance. Usar apenas quando há a possibilidade de analisar a linhagem dos dados.
+## Saídas
+A simplificação obtida através da modelagem nessa fase do ciclo de vida, transforma os conjuntos de dados tratados em produtos, prontos para o usuário final consumir através de ferramentas de análise de dados. O objetivo dessa fase foi alcançado quando não há necessidade de conhecer os aspactos das fontes de dados originais para conseguir fazer análise dos dados e os dados estão prontos para consumo das ferramentas de visualização.
 
 
-> RX | Desacoplar a camada semântica das ferramentas de BI (metric store) | Uso de ferramendas de BI diferentes com a mesma metrica, propagação de mudanças, melhor consistencia, confinça que todos estão usando a mesma logica dos indicadores, concistencia entre ferramentas de BI

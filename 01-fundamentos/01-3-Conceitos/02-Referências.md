@@ -40,3 +40,6 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 
 
 [Apache Hudi vs Delta Lake vs Apache Iceberg - Data Lakehouse Feature Comparison](https://www.onehouse.ai/blog/apache-hudi-vs-delta-lake-vs-apache-iceberg-lakehouse-feature-comparison)
+
+
+[Distributed Query Engines vs. Data Lake Engines](https://medium.com/creative-data/the-evolution-of-distributed-sql-based-query-engines-for-big-data-dfcb68102060)

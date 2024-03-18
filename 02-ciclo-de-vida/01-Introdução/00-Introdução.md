@@ -70,7 +70,7 @@ Olhando de fora, podemos ver a plataforma de dados como hub que conecta os diver
 
 
 # Pipelines de dados
-Os pipelines de dados representam todo esse processo de transformação de dados em informação que está representado no ciclo de vida. Um pipeline de dados nada mais é do que o sequenciamento lógico das etapas, respeitando suas dependências e restrições. 
+Os pipelines de dados representam todo esse processo de transformação de dados em informação. Eles combinam os elementos da arquitetura de dados (storages, engines, bibliocas) e processos para mover e transformar os dados entre as fases so ciclo de vida. Um pipeline de dados é o sequenciamento lógico das etapas de transformação, respeitando suas dependências e restrições. 
 
 O termo pipeline também é usado na área de tecnologia em diferentes contextos. Por exemplo:
 

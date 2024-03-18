@@ -9,7 +9,7 @@ As plataformas de dados na nuvem se responsabilizam pela segurança dos seus ser
 
 Sempre exercitar o exercício do menor privilégio
 
-
+Mover dados de sistemas, extraindo de contextos de segurança podem criar vulnerabilidades
 
 https://aws.amazon.com/pt/blogs/architecture/overview-and-architecture-building-customer-data-platform-on-aws/
 
