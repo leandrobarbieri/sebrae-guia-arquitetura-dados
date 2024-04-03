@@ -10,5 +10,6 @@ R04-Transformação | Problemas com a qualidade dos dados devem sempre ser ender
 R05-Transformação | Dever ser estabelecido limites para a qualidade dos dados, quando é detectada que a qualidade está abaixo desses limites, deve haver uma análise por parte do proprietários dos dados se aceitam ou não a inclusão de dados com baixa qualidade.
 R06-Transformação | Evite realizar operações full scan (select *) | Esse tipo de leitura faz o scan da tabela inteira, retornando todas as linhas e todas as colunas isso é ineficiente, não aproveita as features de particionamento e caso esteja sendo processado em um serviço de cloud terá custos extras desnecessários.
 R07-Transformação | Use CTEs (common table expression) ao invés de subquerys ou tabelas temporárias
-
-## não armazenar dados semi-estruturados em base relacionalç
+R08-Transformação |  Não armazenar dados semi-estruturados em base relacional
+R09-Transformação | Como regra geral, para acesso a dados sempre selecione as colunas necessárias e aplique filtros ao rodar uma consulta.
+R10-Tranformação | Quanto uma tabela em um Lakehouse é muito grande use sempre estratégias de particionamento para reduzir a quantidade arquivos que são carregados e persistidos. 

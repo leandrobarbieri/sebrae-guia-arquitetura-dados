@@ -43,3 +43,7 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 
 
 [Distributed Query Engines vs. Data Lake Engines](https://medium.com/creative-data/the-evolution-of-distributed-sql-based-query-engines-for-big-data-dfcb68102060)
+
+https://docs.databricks.com/en/delta-live-tables/expectations.html
+
+https://medium.com/datalakers-blog/data-lakehouse-um-novo-paradigma-na-arquitetura-de-dados-6678d55b6ce8

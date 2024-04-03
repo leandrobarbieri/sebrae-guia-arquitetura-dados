@@ -49,11 +49,10 @@ Métricas e indicadores
 
 
 
-# técnicas e modelagem
+# Técnicas e modelagem
 - Kimbal
 - Immon
 - Data Vault
-
 
 
 # Camada semantica
@@ -67,14 +66,9 @@ https://www.getdbt.com/blog/dbt-acquisition-transform
 
 https://www.prnewswire.com/news-releases/dbt-labs-launches-the-dbt-semantic-layer-enabling-greater-consistency-across-analytics-tools-301652226.html
 
->What Transform introduced to all of us was the incredible potential of semantic capabilities that are decoupled from a single business intelligence tool – or, “headless semantic layer”. In this world, metrics and entities are no longer locked into a single BI tool, they can be accessed by all downstream tools. 
-
 
 ## Entradas
 Os dados transformados, geralmente disponíveis na camada "silver" são usados como entrada nessa etapa. Além disso, é necessário o envolvmento da área de negócio desde o início da modelagem, para que sejam adicionados os viéses de análise e os dados sejam desnormalizados e as métricas seja criadas de acordo com a necessidade.
 
-
 ## Saídas
 A simplificação obtida através da modelagem nessa fase do ciclo de vida, transforma os conjuntos de dados tratados em produtos, prontos para o usuário final consumir através de ferramentas de análise de dados. O objetivo dessa fase foi alcançado quando não há necessidade de conhecer os aspactos das fontes de dados originais para conseguir fazer análise dos dados e os dados estão prontos para consumo das ferramentas de visualização.
-
-
