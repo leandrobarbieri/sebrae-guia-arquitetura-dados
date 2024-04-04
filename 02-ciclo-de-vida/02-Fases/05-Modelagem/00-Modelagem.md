@@ -49,9 +49,15 @@ Métricas e indicadores
 
 
 
-# Técnicas e modelagem
+# Técnicas e Modelagem
+
+### Immon
+O criador dos conceitos de data warehouse, Imon trouxe a discussão sobre a separação dos dados operacionais e analiticos, sobre a organização dos dados baseados em áreas de negócio, sobre a conciliação de fontes de dados diferentes em um único repositório. Vários dos princípios se mantém como boas práticas até hoje, mas 
+
+Fatores importantes relacionados a linha de modelagem sugerida por Imon
+
 - Kimbal
-- Immon
+
 - Data Vault
 
 
