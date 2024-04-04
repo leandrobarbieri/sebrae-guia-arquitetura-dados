@@ -50,8 +50,10 @@ Métricas e indicadores
 
 
 # Técnicas e modelagem
-- Kimbal
-- Immon
+- Kimbal/Immon
+
+![alt text](image-1.png)
+
 - Data Vault
 
 

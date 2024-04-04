@@ -46,6 +46,12 @@ Podemos classificar de acordo com o grau de flexibilidade e complexidade. Entreg
 ![Alt text](../../media/tipos-de-entrega.png)
 
 
+## Tabelas dimensionais
+
+
+## Wide-Tables, OBTs
+
+
 
 # Importância de um catálogo de dados
 
