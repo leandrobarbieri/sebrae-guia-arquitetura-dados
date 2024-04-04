@@ -194,6 +194,8 @@ O recurso de data sharing presente nas plataformas de dados modernas (databricks
 
 Dessa forma podemos integrar essas fontes obtidas via data sharing aos dados do Lakehouse/Data warehouse. Na verdade os dados lidos via data share não estão fisicamente armazenados no storage, se o proprietário remover os dados na origem eles não poderão ser acessados. Avalie persistir as tabelas que estão mapeadas via data sharing. 
 
+![alt text](image-1.png)
+
 #### Shell
 Outro método de exportação de dados são os scripts shell, seja diretamente ou através de containers e que executam scripts em outras liguagens. Um uso comum da interface shell é a orquestração das atividades envolvidas no processo de ingestão. Um script shell pode ler dados de um banco, gerar um arquivo, compactar, fazer o upload em um object storage e startar um processo de ingestão em um data warehouse. A maioria das ferramentas possuem o CLI com uma interface detalhada de comandos shell que permitem a automação de tarefas.
 

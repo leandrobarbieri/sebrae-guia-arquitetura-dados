@@ -100,7 +100,7 @@ Muitas vezes pode ser uma boa opção entregar conjuntos de dados desnormalizado
 
 
 ## Formatos
-A escoha dos formatos mais adequados para a sua arquitetura influenciam a forma como o pipeline será desenvolvido e as tecnologias que serão usadas tanto para processamento quanto para consumo dos dados. O mais importante é padronizar o uso de um formato cada caso de uso e camada do Lakehouse. Hoje os mais usados em arquiteturas de Lakehouse são  (Delta Lake, Iceberg, Hudi)
+A escoha dos formatos mais adequados para a sua arquitetura influenciam a forma como o pipeline será desenvolvido e as tecnologias que serão usadas tanto para processamento quanto para consumo dos dados. O mais importante é padronizar o uso de um formato cada caso de uso e camada do Lakehouse. Hoje os mais usados em arquiteturas de Lakehouse são  (Delta Lake, Iceberg, Hudi), porém se for escolhido trabalhar com o Spark é recomendado o uso de Delta, pois é um formato criado pela mesma empresa que criou o Spark e possui melhor performance e compatibilidade.
 
 Os formatos Delta, Iceberg e Hudi trazem além do formato otimizado para análise de dados, uma série de features que adicionam as características ACID de bancos de dados tradicionais aos data lakes dessa forma criando os recursos necessário para implantação de um Lakehouse.
 
@@ -156,6 +156,14 @@ ClickHouse | Sim | Não | Sim
 
 
 ## Delta Lake
+O que é? É um formato, uma camada de abstração de um formato, um framework com conjunto de libs, uma tabela?
+
+Após o surgimento do Spark começou a surgir a necesside criar um formato otimizado, com recursos adionais além do que até então era utilizado no caso o formato parquet. Então em 2019 da empresa Databrics criou o Delta Lake, uma camada de storage, engine de para armazenar dados em data lakes, que traz uma série de feautures adicionais, como time travel e propriedades ACID.
+
+Spark casa muito bem com delta, pela facilidade e performance para se fazer o offload da memória para o storage
+
+Mas para trabalhar com esse formato não é necessário usar o spark, o delta por ser um padrão aberto pode ser processado por outras engines, por exemplo pandas.
+
 <!-- - Sugestão de criar particionamento quando a tabela estiver acima de 1TB
 - Criado pensando na integração com o spark.
 - Traz a opção de trabalhar com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem), PySpark (diversidade)

@@ -1,7 +1,7 @@
 # Princípios
 A diversidade de fontes, a disponibilidade de meios para coleta de dados e o volume de informações disponíveis representam grandes desafios e ótimas oportunidades para as empresas. Criar uma arquitetura de dados adaptável às necessidades e alinhada aos padrões de mercado pode trazer grandes vantagens competitivas.
 
-Projetar uma arquitetura de dados envolve identificar os elementos necessários, as interfaces, as entradas e as saídas de cada fase do ciclo de vida. 
+Projetar uma arquitetura de dados é identificar os elementos necessários, as interfaces, entradas e saídas de cada fase de um ciclo de vida dos dados e através da utilização de ferramentas e práticas.
 
 ![Ciclo](../media/ciclo.png)
 
@@ -11,7 +11,7 @@ Nesse contexto, não depender de um fabricante, modelo ou produto é altamente d
 
 Estabelecer princípios nos ajuda a entender o que faz mais sentido para o contexto atual e futuro da empresa, pensar em termos que estabelecem as características mais importantes facilitam o processo de decisão e as escolhas passam a ser mais direcionadas a propósito e menos a preferencias pessoais.
 
-Os princípios são definições de aspectos desejáveis, não impõe restrições, tratam sempre de recomendações que na prática, quando bem implementados se tornam os diferenciais das soluções gerenciadas por plataformas como databricks, azure, gcp, aws.
+Os princípios são definições de aspectos desejáveis, não impõe restrições, tratam sempre de recomendações que na prática, quando bem implementados, se tornam os diferenciais das soluções gerenciadas por plataformas como databricks, azure, gcp, aws, reduzindo muito a fricção quando for necessário transfor para outro ambiente.
 
 A seguir a lista com um resumo dos princípios que devem ser considerados pelo Sebrae durante a avaliação e implementação das arquiteturas de plataformas de dados. Vamos levantar questões sobre o que pode ser considerado como melhores práticas em projetos de plataformas de dados. 
 
