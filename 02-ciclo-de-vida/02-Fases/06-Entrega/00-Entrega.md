@@ -16,21 +16,16 @@ Pode utilizar modelos treinandos ou treinar seu próprios modelos. É importante
 
 # Virtualização de dados e conceito de serverless
 
-A virtualização traz benefícios como não precisar mover os dados, principalmente em uma arquitetura mesh baseada em domínios, centralizar o acesso aos dados em um unico ponto (oquestrador não precisa ter acesso a todas as fontes, apenas a maquina que virtualiza) 
+A virtualização traz benefícios como não precisar mover os dados, principalmente em uma arquitetura mesh baseada em domínios, centralizar o acesso aos dados em um unico ponto (oquestrador não precisa ter acesso a todas as fontes, apenas a maquina que virtualiza). Esse componente se apresenta como uma ótima solução para empresas que armazenam dados em vários tipos de bancos de dados. Apesar de ser uma solução que facilita o acesso e consumo, ela não resolve o problema do isolamente e concorrência. As querys realizadas por esse tipo de tecnologia são processadas pelo sistema de origem, muitas vezes impactanto a fonte cada vez que as querys são executadas.
 
-#### Integração de bases de dados
-SQL executa querys em Oracle, MongoDB, S3 Object storages com usando apenas com T-SQL
+#### Benefícios
+- Integração de bases de dados: as mesmas querys em SQL são executadas  em Oracle, MongoDB, S3 Object storages.
 
-#### Virtualiza a origem
-Permitindo o acesso indireto à fonte sem ter que configurar drivers, conectores, regras no client
+- Virtualiza a origem: permitindo o acesso indireto à fonte sem ter que configurar drivers, conectores, regras no client.
 
-#### Simplifica as consultas
-Padroniza a linguagem de consulta, independentemente da fonte as querys são em T-SQL
+- Simplifica as consultas: Padroniza a linguagem de consulta, independentemente da fonte as querys são SQLm padrão
 
-#### Integração
-Permite fazer querys hibridas, com parte do dados externos e parte dos dados no SQL Server
-
-Acesso aos mesmos dados sem necessidade de importar/duplicar para a engine de processamento
+- Redução de replicação: Acesso aos mesmos dados sem necessidade de importar/duplicar para a engine de processamento
 
 Storage unificado de dados agrupados por domínios
 
@@ -40,17 +35,10 @@ Storage unificado de dados agrupados por domínios
 
 # Tipos de entrega
 
-Podemos classificar de acordo com o grau de flexibilidade e complexidade. Entregas em que os dados estão mais preparados, onde foram manipulados para obter a visão específica atender um caso de uso específo são classificadas como menos flexível porém mais pronto (menor esforço e necessidade de manipulação). Já os produtos que são entregues com alto grau de flexibilidade, podem ser usados com um propósito mais geral, podem atender a mais casos de uso (análise descritiva, prescritiva, preditiva) porém demandam mais esforço e preparação para resolver o problema. É como a analogia de um foodtruck vs um restaurante, no foodtruck os ingredientes (dados) estão pré-processados, e são apenas aqueles contidos nas poucas possibilidades de preparação planejadas. Já em um restaurante os ingredientes estão em seu estado mais bruto, há disponibilidade de realizar combinações não planejadas, que podem vir de um pedido de um cliente.
+Podemos classificar os tipos de entrega para os usuários de acordo com o grau de flexibilidade. Entregas em que os dados estão mais preparados, onde foram manipulados para obter a visão específica atender um caso de uso específo são classificadas como menos flexível porém mais prontos para consumo (menor esforço e necessidade de manipulação). Já os produtos que são entregues com alto grau de flexibilidade, podem ser usados com um propósito mais geral, podem atender a mais casos de uso (análise descritiva, prescritiva, preditiva) porém demandam mais esforço e preparação para resolver o problema. É como a **analogia** de um foodtruck versus um restaurante. No foodtruck os ingredientes (dados) estão pré-processados, e são contidos nas poucas possibilidades de preparação pré-planejadas. Já em um restaurante os ingredientes estão em seu estado mais bruto, há disponibilidade de realizar combinações não planejadas, que podem vir de um pedido de um cliente.
 
 
 ![Alt text](../../media/tipos-de-entrega.png)
-
-
-## Tabelas dimensionais
-
-
-## Wide-Tables, OBTs
-
 
 
 # Importância de um catálogo de dados
@@ -60,41 +48,17 @@ Podemos classificar de acordo com o grau de flexibilidade e complexidade. Entreg
 
 
 
-Caso de uso | Siver | Gold | DW | Cubo | Painel | Obs
+Caso de uso | Siver | Gold | DW | Cubo | Painel/Infográfico | Obs
 ------------| ----- | ---- | -- | ---- | ------ | ---
-Investigação de hipótese e correlação | x | x | x | - | - | -
-Desenvolvimento de modelo estatísco | x | x | x | - | - | Dados nas camadas integração frameworks de ml
-Análise ad-hoc | - | - | x | x | - | Dados modelados ideal para consulta SQL e ferramentas de viz
-Acompanhamento de indicadores | - | - | - | - | x | -
-
-
-# Boas práticas
-Dados brutos ou modelados, com catálogo e segurança, dados sensíveis separados, alternativas para consumo direto do data lake ou através de data warehouse dependendo do caso de uso. Ambiente para publicação e monitoramento de modelos estatísticos de ML
-
-3-Entrega: Painéis de BI com modelos OLAP criados para cada painel
-
-3-Entrega: Dados modelados que podem ser usados por diferentes tipos de tecnologias de análise ou ML
-
-3-Entrega: Dados brutos ou modelados, com catálogo e segurança, dados sensíveis separados, alternativas para consumo direto do data lake ou através de data warehouse dependendo do caso de uso. Ambiente para publicação e monitoramento de modelos estatísticos de ML
-
-# para analise
-Nem só de dashbord vive um empresa 
-não criar paineis com filtros implicitos
-prototipar no excel antes de criar dashboards
-principios gestapo
-
-
-# para ml
-Cientista de dados deve pegar da camada limpa de Gold 
+Investigação de hipótese e correlação | ✔️ | ✔️ | ✔️ | ✔️ | - | Esse caso de uso exige flexibilidade e as necessidades e possibilidades de exploração não estão previamente estabelecidas
+Desenvolvimento de modelo estatísco | ✔️ | ✔️ | - | - | - | Os modelos estatísticos utilizam dados brutos, e a manipulação envolve transforma-los e números
+Análise ad-hoc | - | - | ✔️ | ✔️ | - | Dados modelados ideal para consultas SQL e storytelling com ferramentas de vizualização
+Acompanhamento de indicadores | - | - | - | - | ✔️ | São dados previamente mapeados e com os padrões de análise amplamente conhecidos e estáveis. Geralmente não mudam com frequência
 
 
 
-> Também é importante fornecer dados  consistentes com significados para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
+# Storytelling
 
-
-
-# storytelling
-gestalt
 
 
 
@@ -114,3 +78,26 @@ R09-Entrega | Como gerenciar os acessos e compartilhamento de dados em um modelo
 R10-Entrega | Fornecer dados semanticamente consistentes para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 R11-Entrega | Busque sempre criar experiências de autoatendimento para solicitação de acessos aos produtos de dados
 R11-Entrega | Como ter controle de acesso completo a nível de objeto, tabela (linhas, colunas), views, procedures, funções, etc? | Usar na camada de entrega uma solução baseada na arquitetura de data warehouse moderno, com dados persistidos ou virtualizados. Dependendo da plataforma, Lakehouses podem não ter o nível de controle de acesso necessário para essa camada de entrega.
+
+
+# Boas práticas
+
+Adaptar o tipo de entrega a necessidade: Muitas vezes o que os analistas precisam são os dados e não mais um dashbord
+
+Construção de dashboards: Não criar paineis com filtros implicitos. É importante sempre estar claro todos os filtros que estão dando contexto a um painel. Utilize textos para complementar as análises gráficas
+
+Prototipação:  Uma técnica que pode ajudar é sempre prototipar no excel antes de criar dashboards. Com isso terá a real dimesão do que será necessário. E muitas vezes verá que não precisa de um dashboard, e sim apenas um tabela dinâmica ou apenas os microdados
+
+Descoberta: todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
+
+
+
+# Resumo
+
+Pergunda | Exploração | Ingestão | Storage | Transformação | Modelagem | Entrega
+---------- | -------- | ------- | ------------- | --------- | ------- | --------
+O que acontece em cada fase? | - | - | - | - | - | -
+Qual tipo de tec. usar? | - | - | - | - | - | -
+Qual perfil de profissional? | - | - | - | - | - | -
+Entradas | - | - | - | - | - | -
+Saídas | - | - | - | - | - | -

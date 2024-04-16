@@ -47,3 +47,5 @@ Reis, Joe; Housley, Matt. Fundamentals of Data Engineering. O'Reilly
 https://docs.databricks.com/en/delta-live-tables/expectations.html
 
 https://medium.com/datalakers-blog/data-lakehouse-um-novo-paradigma-na-arquitetura-de-dados-6678d55b6ce8
+
+https://techcommunity.microsoft.com/t5/analytics-on-azure-blog/a-modern-data-analytics-platform-on-azure-with-data-vault-2-0/ba-p/3860634
