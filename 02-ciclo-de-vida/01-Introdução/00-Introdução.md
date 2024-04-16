@@ -27,20 +27,27 @@ As camadas deste método adicionam qualidade através de validações, checagens
 
 
 ### Bronze
-Essa é a camada da dados brutos, é o ponto de entrada dos dados que vêm das fontes originais. Todo tipo de dado deve ser possível armazenar aqui, seja ele estruturado, semi-estruturado, não estruturado. Não são feitas transformações e o formato original é mantido. Essa camada tem o objetivo de receber os dados ingeridos os mais rápido possível para liberar a fonte de dados original do fluxo de dados de consumo.
+Essa é a camada da dados brutos, é o ponto de entrada dos dados que vêm das fontes originais, sempre de um para um, cada tabela da fonte terá uma tabela na bronze (mesma quantidade de linhas e colunas). Todo tipo de dado deve ser possível armazenar aqui, seja ele estruturado, semi-estruturado, não estruturado. Não são feitas transformações e o formato original é mantido. Essa camada tem o objetivo de receber os dados ingeridos os mais rápido possível para liberar a fonte de dados original do fluxo de dados de consumo. Essa camada pode receber metadados como nome da fonte de dados, data/hora. método de usado na ingestão, etc. Essa camada deve ser usada explusivamente para ingestão dos dados, os dados nunca devem ser ingidos na Silver ou na Gold e os usuários nunca devem ter acesso a essa camada, se precisarem de dados brutos, crie um clone na camada gold para entrega.
+
+O principal benefício é fazer com que todos as cargas de trabalho após a ingestão aconteçam de forma mais rápida e não afetem as fontes de dados originais
+
+![alt text](image.png)
+
 
 ### Silver
-Essa é uma camada de validação. As primeiras checagens de qualidade são feitas. Os dados são refinados, transformações como deduplicação, limpeza de valores nulos, ofuscação entre outras. Nesta camada a preocupação principal deve estar em deixar o dado consistente e completo. Regras de negócio que modificam as representação dos dados não devem ser incluídas aqui. Essa camada pode ser muito consumida por cientistas de dados e busca de validação de hipóteses, pois os dados ainda não foram alterados para atender casos de usos específos.
+Essa é uma camada de validação, se preocupa em criar tabelas que representam as entidades de domínios. Enquanto da bronze podemos ter várias tabelas de produtos, vindo de vários sistemas diferentes, na Silver teremos uma tabela que continua representando o produto, porém no contexto geral, represemta produto independente da origem. Nessa fase as primeiras checagens de qualidade são feitas. Os dados são refinados, transformações como deduplicação, limpeza de valores nulos, ofuscação, padronização de formato, entre outras. Nesta camada a preocupação principal deve estar em deixar o dado consistente e completo. Regras de negócio que modificam as representação dos dados não devem ser incluídas aqui, na Silver temos uma visão operacional e não de negócio. Nesse momento os dados estão prontos para serem usados em contextos específicos, muitas vezes cientistas de dados buscarão na Silver realizar a validação de hipóteses em dados que ainda não estão modelados. Evite entregar o acesso aos usuários diretamente nessa camada, se for necessário crie clones na camada gold para que mudanças nessa camada possam ser feitas sem afetar o que foi desenvolvido.
+
+Sempre implementar a Silver no processo, independente de será alterada ou não na gold
 
 ### Gold
-Aqui os dados estão sendo preparados para consumo. Geralmente é onde acontece a modelagem. Nessa camada os dados são modificados para atender casos de uso específicos. Entre ações que ocorrem nesta camada estão, agregações, dê-paras com dados externos, expressões com cálculos, joins, unions, e vários outras operações que modificam e preparam para responder questões de negócio. Pode haver mais de uma camada gold por exemplo, otimizada para ciêntistas de dados, ou a camada gold pode estar fora do datalake e ser entregue através de um data warehouse.
+Aqui os dados estão sendo preparados para consumo. Geralmente é onde acontece a modelagem. Nessa camada os dados são modificados para atender casos de uso específicos. Entre ações que ocorrem nesta camada estão, agregações, dê-paras com dados externos, expressões com cálculos, joins, unions, e vários outras operações que modificam e preparam para responder questões de negócio. Pode haver mais de uma camada gold por exemplo, otimizada para ciêntistas de dados, ou a camada gold pode estar fora do datalake e ser entregue através de um data warehouse. A função dessa camada é servir como local de entrega, combinando de diferentes formas as entidades de domímio criadas na Silver. As mesmas tabelas da Silver podem ser combinada de N formas na Gold para satisfazer diferentes demandas do negócio. Por exemplo, podemos entregar uma modelagem Star Schema ou criar tabelões desnormalizados e agregadas para satisfazer as demandas.
 
 ### Canadas adicionais
-Não há problema em ter camadas adicionais, isso sempre vai depender do projeto, pode haver situações que uma camada adicional, raw ou landing por exemplo, precisa ser criada para receber os dados para depois ingerir na bronze. Também pode haver necessidade de uma camada para dados sensíveis ou para um caso de uso muito específico. O importante é manter a filosofia do padrão, separar as reponsabilidades e adicionar qualidade aos dados a cada camada de transformação.
+Não há problema em ter camadas adicionais, isso sempre vai depender do projeto, pode haver situações que uma camada adicional, raw ou landing por exemplo, precisa ser criada para receber os dados para depois ingerir na bronze, ou quando alguns sistemas não conseguem ler o formato padronizado na bronze. Também pode haver necessidade de uma camada para dados sensíveis ou para um caso de uso muito específico. O importante é manter a filosofia do padrão, separar as reponsabilidades e adicionar qualidade aos dados a cada camada de transformação.
 
-Separar em diferentes camadas otimiza o processamento de dados e permite atender diferentes casos de uso, onde cada camada esteja alinhada com as necessidades de um perfild de usuário
+Separar em diferentes camadas otimiza o processamento de dados e permite atender diferentes casos de uso, onde cada camada esteja alinhada com as necessidades de um perfil de usuário. 
 
-As camadas também servem como contexto de segurança
+Em resumo a bronze e á área de dados brutos, a silver de dados de domínio e a gold de negócio.
 
 ### Checklist de transformação de dados
 Antes de mover os dados entre as camadas veja:
@@ -70,7 +77,7 @@ Olhando de fora, podemos ver a plataforma de dados como hub que conecta os diver
 
 
 # Pipelines de dados
-Os pipelines de dados representam todo esse processo de transformação de dados em informação que está representado no ciclo de vida. Um pipeline de dados nada mais é do que o sequenciamento lógico das etapas, respeitando suas dependências e restrições. 
+Os pipelines de dados representam todo esse processo de transformação de dados em informação. Eles combinam os elementos da arquitetura de dados (storages, engines, bibliocas) e processos para mover e transformar os dados entre as fases so ciclo de vida. Um pipeline de dados é o sequenciamento lógico das etapas de transformação, respeitando suas dependências e restrições. 
 
 O termo pipeline também é usado na área de tecnologia em diferentes contextos. Por exemplo:
 

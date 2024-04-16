@@ -1,3 +1,5 @@
+# Lista de recomendações de melhores práticas para storages
+
 Código | Questão | Recomendação | Princípio
 ------ | --------- | --------- | ---------
 R01-Storage | Como armazenar de forma correta dados em bases de relacionais? | Não armazenar dados semi-estruturados em base relacional e garantir que todas as tabelas com dados analíticos estejam armazenados como column-store | P6

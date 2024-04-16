@@ -1,9 +1,9 @@
 # P06 - Multicloud
 >_A empresa deve ser capaz de realizar a implantação da arquitetura em diferentes clouds públicas e estar pronta para migração entre clouds se for necessário._
 
-Esse princípio busca estabelecer como objetivo a escolha de componentes que não dependem de um provedor de nuvem específico, que ampliam as possibilidades atuais e futuras de migração, atualização e evolução da plataforma em uma estratégia de longo prazo. É importante ter um provedor de referência e se beneficiar das integrações entre seus produtos, mas não podemos deixar de considerar a escolha de componentes específicos que criar o lock-in de fornecedor. 
+Esse princípio busca estabelecer como objetivo a escolha de componentes que não dependem de um provedor de nuvem específico, que ampliam as possibilidades atuais e futuras de migração, atualização e evolução da plataforma em uma estratégia de longo prazo. É importante ter um provedor de referência e se beneficiar das integrações entre seus produtos, mas é bom considerar a escolha de componentes centrais da arquitetura sem criar lock-in de fornecedor. 
 
-A abordagem de desenvolver soluções de dados usando os serviços nativos de uma cloud preferida é muito comum mas cria uma série de desafios de longo prazo:
+A abordagem de desenvolver soluções de dados usando os serviços nativos de uma cloud preferida é muito comum, isso traz benefícios mas cria uma série de desafios de longo prazo:
 
 Desafio | Descrição
 ------- | ---------
@@ -19,7 +19,7 @@ Como os provedores de nuvem ofereceram uma interface por linha de comando para a
 
 
 #### Exemplo
-Um bom exemplo é o apache airflow, uma solução open-source para orquestração de pipelines. Essa solução pode ser usada como ferramenta de ELT/ETL, como orquestrador de dados ou de machine learning e pode ser implantada tanto on-premise, hibrida ou gerenciada como produtos das principais clouds. No Google ela se chama "Google Composer", na Microsoft está como feature do "Data Factory" e na AWS é o produto  "Managed Workflows para Apache Airflow". Ou seja, um pipeline criado em Airflow, poderia rodar nas principais clouds sem muitos ajustes. 
+Um bom exemplo é o apache airflow, uma solução open-source para orquestração de pipelines. Essa solução pode ser usada como ferramenta de ELT/ETL, como orquestrador de dados ou de machine learning e pode ser implantada tanto on-premise, hibrida ou gerenciada como produtos das principais clouds. No Google ela se chama "Google Composer", na Microsoft é uma feature do "Data Factory" e na AWS é o produto  "Managed Workflows para Apache Airflow". Ou seja, um pipeline criado em Airflow, poderia rodar nas principais clouds sem muitos ajustes. 
 
 Cloud | Ferramenta Orquestração/ETL | Versão Airflow Gerenciado
 ----- | ---------- | --------------

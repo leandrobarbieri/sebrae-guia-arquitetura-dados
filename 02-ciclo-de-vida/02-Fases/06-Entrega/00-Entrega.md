@@ -9,14 +9,33 @@ Publique produtos de dados semanticamente consistentes em toda a empresa
 Um data lake geralmente contém dados de diferentes sistemas de origem. Às vezes, esses sistemas nomeiam o mesmo conceito de maneira diferente (como cliente x account) ou significam conceitos diferentes pelo mesmo identificador. Para que os usuários de negócios combinem facilmente esses conjuntos de dados de maneira significativa, os dados devem ser homogêneos em todas as fontes para serem semanticamente consistentes. Além disso, para que alguns dados sejam valiosos para análise, as regras internas de negócios devem ser aplicadas corretamente, como o reconhecimento de receita. Para garantir que todos os usuários estejam usando os dados interpretados corretamente,
 
 
-
 Nem só de dashboard vide a análise de dados, o analista de dados pode e deve ir muito além de criar gráficos, ele deve contar histórias, contextualizar, identificar correlações, fazer análise de impacto. 
 
 Pode utilizar modelos treinandos ou treinar seu próprios modelos. É importante a arquitetura estar preparada para se integrar com soluções de gestão de modelos como mlflow que gerencia os experimentos e registro dos modelos de forma que o analista possa usar como parte dos scritps sql, usando um conjunto de colunas para submentar a inferencia de um modelo.
 
 
-- a descoberta de onde os dados estão e  quais os assuntos
-- metadados que auxiliam a definição de contexto
+# Virtualização de dados e conceito de serverless
+
+A virtualização traz benefícios como não precisar mover os dados, principalmente em uma arquitetura mesh baseada em domínios, centralizar o acesso aos dados em um unico ponto (oquestrador não precisa ter acesso a todas as fontes, apenas a maquina que virtualiza) 
+
+#### Integração de bases de dados
+SQL executa querys em Oracle, MongoDB, S3 Object storages com usando apenas com T-SQL
+
+#### Virtualiza a origem
+Permitindo o acesso indireto à fonte sem ter que configurar drivers, conectores, regras no client
+
+#### Simplifica as consultas
+Padroniza a linguagem de consulta, independentemente da fonte as querys são em T-SQL
+
+#### Integração
+Permite fazer querys hibridas, com parte do dados externos e parte dos dados no SQL Server
+
+Acesso aos mesmos dados sem necessidade de importar/duplicar para a engine de processamento
+
+Storage unificado de dados agrupados por domínios
+
+![Alt text](../../media/image-2.png)
+
 
 
 # Tipos de entrega
@@ -27,10 +46,17 @@ Podemos classificar de acordo com o grau de flexibilidade e complexidade. Entreg
 ![Alt text](../../media/tipos-de-entrega.png)
 
 
+## Tabelas dimensionais
+
+
+## Wide-Tables, OBTs
 
 
 
+# Importância de um catálogo de dados
 
+- Descoberta de onde os dados estão e  quais os assuntos
+- Fonte rica de metadados que auxiliam a definição de contexto
 
 
 
@@ -87,3 +113,4 @@ R08-Entrega | Organize os ativos de dados um catálogo unificado orientado a dom
 R09-Entrega | Como gerenciar os acessos e compartilhamento de dados em um modelo descentralizado/federado? | Centralizar o controle de acesso: Mesmo que os dados estejam em arquiteturas separadas, em um modelo federado, busque usar padrões de armazenamento abertos de forma que seja possível criar catálogos com controle de acceso centralizado mantendo uma governança unificada.
 R10-Entrega | Fornecer dados semanticamente consistentes para que os consumidores possam entender facilmente e combinar corretamente diferentes conjuntos de dados. Além disso, todos os dados devem ser facilmente descobertos e acessíveis aos consumidores por meio de um catálogo central com metadados e linhagem de dados devidamente selecionados.
 R11-Entrega | Busque sempre criar experiências de autoatendimento para solicitação de acessos aos produtos de dados
+R11-Entrega | Como ter controle de acesso completo a nível de objeto, tabela (linhas, colunas), views, procedures, funções, etc? | Usar na camada de entrega uma solução baseada na arquitetura de data warehouse moderno, com dados persistidos ou virtualizados. Dependendo da plataforma, Lakehouses podem não ter o nível de controle de acesso necessário para essa camada de entrega.

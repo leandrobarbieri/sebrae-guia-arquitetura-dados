@@ -4,6 +4,8 @@ Existem tipos de abstrações de arquiteturas que trazem conceitos antigos, novo
 ## Data Lakes
 Uma das arquiteturas mais populares nos ultimos anos da area de engenharia de dados, ganhou destaque por trazer a liberdade de trabalhar com dados semi-estruturado e permitir armazenamento em escala a qualquer tipo de objeto de dados ao mesmo tempo ser de fácil integração com engines de processamento diversas. Porém, apesar do hipe, essa tecnologia apresentou vários desafios de governança, controle de transações, catálogos de metadados para descoberta. Mas o maior problema foi que essa arquitetura foi concebida para ser somente leitura e enfrenta dificuldade de atender requisitos de leis como LGPD que obriga a empresa a deletar dados de um usário específico.
 
+![Alt text](datalake.png)
+
 ## Data Lakehouses (papper)
 Essa é uma arquitetura que traz aspectos dos data warehouses como operações em dados estruturados com controle de transações, isolamento, consistência, atualizações em nível de linha e os benefícios e flexibilidade de um data lake para trabalhar com dados semi-estruturados e não estruturados, muito comum em projetos de ciência de dados.
 
@@ -12,6 +14,8 @@ Os problemas experimentados pelos data lakes foram abordados pela empresa Databr
 De fato é a arquitetura que se tornou predominante nas stacks de plataformas de dados modernas e os data warehouse modernos e os Lakehouse terão diferenças cada vez menores e convergentes nas plataformas Databricks, Azure, Google, Snowflake
 
 A perpectiva de avançar na realização de análises preditivas através da modelagem estatística faz com que os Lakehouses ganhem ainda mais importância pois trazem a possibilidade de trabalhar com dados não-estruturados em conjunto com dados tabulares. Além disso os formatos de armazenamento abertos facilitam muito a integração com os principais frameworks de machine learning.
+
+![Alt text](lakehouse.png)
 
 ## Data warehouses modernos (MDW)
 Os MDW são projetados para fazer a centralização, organização e padronização de grandes volumas de dados de uma empresa. Até pouco tempo atrás eram baseados em bancos de dados relacionais, com dados armazenados em blocos de linhas. Mas com o surgimentos das soluções em clouds que utilizam formatos abertos, armazenamento de dados colunas e processamento distribuído MPP (massive parellel processing) os data warehouses são bem diferentes.
@@ -24,47 +28,50 @@ Em DW tradicionais essa infra de dados teria que ser previamente dimensionada pa
 
 Essa separação entre as camadas de armazenamento e processamento está fazendo com que seja cada vez mais tênue os parâmetros que diferenciam os data warehouses modernos dos lakehouses. Hoje ambos estão convergindo para uso de formatos abertos e processamento distribuido apoiados em object storages. Esses padrões poderão em algum momento se fundir em algo único.
 
+![Alt text](datawarehouse.png)
+
 
 
 ### Arquiteturas MPP
 
-<!-- Descrever como essa arquitetura entrega processamento distribuído
+São arquitetura de cluster de bancos de dados que processam as operações de forma distribuída, através da combinação de um nó principal que distribui e gerencia, e nós de processamento (compute nodes) que executam as querys.
 
-![Alt text](image-4.png)
+> incluir imagems
 
-Possio um nó principal e compute notes
-Divide entre os compute note
-Temos que fazer a forma de distribuição correta para aproveitar os benefícios do paralelismo
+A principal precupação que temos nesta arquitetura é como fazer corretamente a distribuição e particionamento entre os nós de execução para aproveitarmos os benefícios do paralelismo.
 
-Tipos de distribuição entre os nós
 
-Round-robin: distribuição aleatória entre as partições, definida por tabela. Para carga costuma ser mais o método mais rápido. Método de distribuição recomendado para carga de tabelas stage
+#### Tipos de distribuição entre os nós
+
+Round-robin: distribuição aleatória entre as partições, definida por tabela. Para carga costuma ser o método mais rápido. Método de distribuição recomendado para carga de tabelas stage
 
 Hash-distributed: passa uma coluna que será usada para realizar a distribuição de forma determinística atribuindo cada linha a uma distribuição. Recomendado para querys em tabelas fato. Alta performance na leitura
 É importante escolher uma coluna de forma certa para a distribuição não ficar desbalanceada. As colunas usadas precisam conseguir identificar de forma bem granular (identificação única)
 
 Replicated: uma cópia completa em cada nó. Funciona bem para dimensões pois são pequenas. 
 
-
-Partições dentro das distribuições
-
-São divisões dentro da própria distribuição. Só faz sentido começar a particionar quando tipos mais de 100 milhões de registros em uma tabela.
-Criada em geral em colunas de data
-Performance nas querys pois facilita a busca e filtragem dos dados
+Dentro de cada distribuição (compute nodes) podemos criar particionamentos para otimizar ainda mais a performance de busca e filtragem. Porém só obtemos melhorias quando temos mais de 100 milhões de registros em uma tabela.
 
 
 Recomendações
 ![Alt text](image-5.png) -->
+
+
 
 ## Comparativo
 
 Característica | Data Warehouse | Data Lake | Lakehouse 
 ---- | ---- | ----- | ---- |
 Tipo de dado | Estruturado apenas | Todos | Todos |
-Formato | proprietário | csv, parquet, delta | parquet, delta, hudi, iceberg |
+Formato | proprietário | csv, parquet, imagens, etc | parquet, delta, hudi, iceberg |
 Usuários | analistas de dados | cientistas de dados | analistas e cientistas de dados |
 Caso de uso | Análise descritiva | Análise e modelagem estatística | Análise e modelagem estatística |
-Consumo | ---- | ----- | ---- |
+Linguagens | SQL | Python, R | SQL e Python, R |
+Leitura/Escrita | SQL | Spark, T-SQL | Spark, T-SQL
+Segurança | A nível de tabela, schema, view, função, procedure, column-level, row-Level, data masking | Nenhum controle a nível de linha ou coluna, apenas a nível de objeto | Podem apresentar controle a nível de linhas e colunas limitados ou dependendo a plataforma.
+Data Sharing | Sim | Sim | Sim
+
+
 
 
 ## Quando usar MDW ou LH?
