@@ -194,7 +194,7 @@ O recurso de data sharing presente nas plataformas de dados modernas (databricks
 
 Dessa forma podemos integrar essas fontes obtidas via data sharing aos dados do Lakehouse/Data warehouse. Na verdade os dados lidos via data share não estão fisicamente armazenados no storage, se o proprietário remover os dados na origem eles não poderão ser acessados. Avalie persistir as tabelas que estão mapeadas via data sharing. 
 
-![alt text](image-1.png)
+![alt text](../../media/datasharing.png)
 
 #### Shell
 Outro método de exportação de dados são os scripts shell, seja diretamente ou através de containers e que executam scripts em outras liguagens. Um uso comum da interface shell é a orquestração das atividades envolvidas no processo de ingestão. Um script shell pode ler dados de um banco, gerar um arquivo, compactar, fazer o upload em um object storage e startar um processo de ingestão em um data warehouse. A maioria das ferramentas possuem o CLI com uma interface detalhada de comandos shell que permitem a automação de tarefas.
@@ -233,29 +233,25 @@ Inserir dados | **Adicionar**:<br> `INSERT INTO default.people10m SELECT * FROM 
 Inserir novos e atulizar existentes (Upsert)| `MERGE INTO destino USING origem ON (destino.col1=origem.col1) WHEN MATCHED AND destino.col2 <> origem.col2 THEN UPDATE SET destino.col2=origem.col2 WHEN NOT MATCHED THEN INSERT (col1,col2) VALUES (origem.col1,origem.col2)` |  `deltaTable.alias('origem').merge(df.alias('destino'), "origem.col1 = destino.col1").whenNotMatchedInsertAll().whenMatchedUpdateAll("origem.col1 < destino.col1").execute()`
 
 
-### Orquestração
+## Orquestração
 A ingestão geralmente é início de um complexto processo de orquestração que vai transformar dados brutos e informações organizadas e enriquecidas para análise do negócio. A orquestração é esse processo de coordenar as atividades entre as diversas etapas do pipeline de dados. As atividades em um pipeline são senquenciadas, agendadas, e uma série de restrições e dependências podem ser incluídas entre as etapas para garantir consistência e reprodutibilidade.
 
 As ferramentas de orquestração são capazes de acionar diferentes tecnologias, e possuem uma variedade grande de conectores. Considere incluir na plataforma de dados soluções de orquestrações flexíveis, que se integrem com as principais tecnologias atuais.
 
-### Tipos de Fontes x Ferramentas para Ingestão
 
-![Alt text](image.png)
-
-
-### Entradas
+## Entradas
 Relatórios e análises exploratórias com a relação de entidades que devem ser extraídas e transformadas no projeto, com os formatos e volumetrias identificadas.
 
-### Saídas
+## Saídas
 Dados inseridos na camada bronze no lakehouse, ou nas tabelas stage do data warehouse.
 
 
-### Limites
+## Limites
 Essa etapa se limita a copiar, atualizar, processar, limpar os dados das diversas de dados disponíveis e necessárias. Não é responsável por adicionar regras de negóicio complexas, fazer modelagem, estabelecer relacionamentos ou adionar metadados ou semântica aos datasets. Apesar disso, é uma fase que consome uma parte significativa do esforço de um projeto, o grau de complexidade pode variar muito, de acordo com os formatos, métodos, volume e tecnologias envolvidas. O mais importante é conseguir identificar e implementar o método mais eficiente e garantir que o fluxo de dados entre a oritem e o destino seja consistente.
  
-### Responsabilidades
+## Responsabilidades
 Engenheiros de dados em geral são os profissionais reponsáveis pela etapa, eles devem trabalhar muito próximos dos engenheiros de software para entender as particularidades das fontes de dados para conseguir desenvolver o melhor método de ingestão e com cientistas de dados para mantè-los atualizados sobre os dados brutos que podem ser trabalhados por eles.
   
-### Tipos de tecnologias
+## Tipos de tecnologias
 Ferramentas de ETL, orquestração, SQL, PySpark
 

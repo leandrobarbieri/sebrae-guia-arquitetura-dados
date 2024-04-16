@@ -49,18 +49,18 @@ Métricas e indicadores
 
 
 
-# Técnicas e Modelagem
+# Técnicas de Modelagem
+O criador dos conceitos de data warehouse, Kimbal/Immon trouxeram os conceito dos de modelagem dimensional que são muito presentes na maioria das inicitivas de dados. 
 
-### Immon
-O criador dos conceitos de data warehouse, Imon trouxe a discussão sobre a separação dos dados operacionais e analiticos, sobre a organização dos dados baseados em áreas de negócio, sobre a conciliação de fontes de dados diferentes em um único repositório. Vários dos princípios se mantém como boas práticas até hoje, mas 
+O objetivo da modelagem dimensional é separar as fontes de dados originais das bases analíticas e fazer a conciliação de fontes diferentes em um único repositório. Ou seja, realizar a integração de dados.
+
+#### Fatos e Dimensões
+Foco na desnormalização das tabelas operacionais deu origem aos conceitos de tabelas fato e dimensões. 
+
+![Alt text](image-3.png)
 
 
 
-- Kimbal
-# Técnicas e modelagem
-- Kimbal/Immon
-
-![alt text](image-1.png)
 
 - Data Vault
 
