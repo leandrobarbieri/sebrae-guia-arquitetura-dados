@@ -1,72 +1,74 @@
-# Pipeline e orquestração
-Estudos de Caso e Exemplos: Exemplos práticos que ilustrem como as boas práticas de arquitetura de dados podem ser aplicadas em cenários reais.
-
-# Exemplo
-End-to-End: Usar um dataset como exemplo transformar o dados em estado bruto em um modelo semântico.
+Exemplo End-to-End de como transformar dados brutos bruto em um modelo semântico pronto para consumo.
 
 ## 1: Mapear o problema de negócio
+Ter clareza da necessidade que o projeto de dados vai atecar e o valor que irá gerar.
+
+**Objetivo**: obter o histórico da base da receita para monitorar as mudanças de porte e a evolução da base de empresas de subconjuntos específicos de CNAEs para comprovar a hipótese de impacto na atuação do Sebrae
+
 
 ## 2: Fazer a ingestão
 A ingestão dos dados é realizada através do mapeamento da tabela da fonte de dados o Lakehouse no destino no ambiente de dados e da escolha de qual é o método. Neste momento podem escolher a estratégia e como vamos lidar com a questão da evolução do schemma para acomodar de forma dinamica as alterações
 
-![Alt text](image.png)
+Os dados são importando com arquivos parquet tabelas gerenciadas no formato Delta no Lakehouse da camada Bronze através de uma aplicação com conectores específicos para a fonte de dados de origem SQL Server. Nesse exemplo foi usado o Azure Data Factory.
 
-Os dados são importando como tabelas gerenciadas no formato Delta no Lakehouse da camada Bronze
+![alt text](image-2.png)
 
-![Alt text](image-1.png)
+Após fazer a ingestão os dados são transfomados no formato delta para termos performance e controle de transação nas etapas subsequentes.
+
+![alt text](image-3.png)
+
+Nessa camada a ingestão está sendo feita com o método de append-only e com a evolução de schema para acomodar mudanças de schema ao longo do tempo sem comprometer a ingestão futura
+
+![alt text](image-5.png)
 
 
 ## 3: Tranformar os dados 
 
 A primeira fase do ciclo de vida que envolve transformação é a camada silver, nesse momento vamos nos concentrar em preparar os dados das tabelas da camada bronze adicionando qualidade sem alterar as características da tabela. O objetivo é deixar a tabela pronta para ser usada em multiplos casos de uso sem alterar a granularidade.
 
+Camada Silver
+
+![alt text](image-6.png)
+
 - Definir schema padrão para os campos e salvar em delta gerenciados;
 - Aplicar validação de valores nulos ou inconsistentes para aumentar a qualidade
 - Fazer transformações, tratamentos, dê-para com regras de negócios genéricas e válidas em vários contextos (não fazer joins ou alterar novas de campos)
 - Deduplicar registros repetidos, mascarar quando tiver necessidade ou remover colunas sem utilidade para análise
 
-Exemplo:
+![alt text](image-7.png)
 
-```
-from pyspark.sql.types import *
-from pyspark.sql.functions import *
+Dados tratados na camada silver
 
-schema_movies = StructType([
-    StructField("movieId", IntegerType(), nullable=True),
-    StructField("title", StringType(), nullable=True),
-    StructField("genres", StringType(), nullable=True)
-])
+![alt text](image-10.png)
 
 
-df = spark.read.format("delta") \
-    .schema(schema_movies) \
-    .load(path="abfss://bronze@storageaccountsebraees.dfs.core.windows.net/movies/*.parquet")
 
-df_transformado = df \
-    .withColumn("movieId", col("movieId").cast(IntegerType())) \
-    .withColumn("genres1", trim(split(df.genres, "[|]").getItem(0))) \
-    .withColumn("genres2", trim(split(df.genres, "[|]").getItem(1))) \
-    .withColumnRenamed("genres", "genreslist") \
-    .drop("movieId")
+Agora vamos fazer as manipulações necessárias para fazer a entrega. Nessa camada são possível alterações na granularidade, joins e qualquer adaptação que altere a entidade com o objetivo de atender uma necessidade de negócio
 
-# gravando no lakehouse
-delta_movies_path = "abfss://silver@storageaccountsebraees.dfs.core.windows.net/movies"
-df_transformado.write.format("delta").mode("overwrite").save(delta_movies_path)
-df_transformado.head(10)
+Lakehouse camada gold
 
-display(df_transformado.head(3))
-```
+![alt text](image-9.png)
 
-# Resumo
+Agora a linguagem de consulta SQL passa a fazer ter uma função presente pois é mais declarativa e mais familiar aos analistas de dados que são os principais usuários dos dados nessa camada
 
-Pergunda | Exploração | Ingestão | Storage | Transformação | Modelagem | Entrega
----------- | -------- | ------- | ------------- | --------- | ------- | --------
-O que acontece em cada fase? | - | - | - | - | - | -
-Qual tipo de tec. usar? | - | - | - | - | - | -
-Qual perfil de profissional? | - | - | - | - | - | -
-Entradas | - | - | - | - | - | -
-Saídas | - | - | - | - | - | -
+Uma das características das plataformas modernas que trabalham com engine spark é a capacidade de ter no mesmo notebook várias linguagens diferentes. Essa independência de liguagem atribui grande flexibilidade. Veja no exemplo. Os dados são obtidos usando pyspark e modelados usando SparkSQL
 
-Fazer Passo a passo usando esse exemplo so que com tipos de tecnologias
+![alt text](image-11.png)
 
-https://aws.amazon.com/pt/solutions/guidance/customer-data-platform-on-aws/
+Dados persistidos no lakehouse da camada gold. De acordo com o caso de uso as dados podem ser produzidos a partir da bronze de várias formas diferentes. É importante lembra que mesmo que não haja mudanças entre a tabela da silver para a gold, a silver nunca pode ser acessada diretamente. Crie uma cópia na gold se for preciso. Isso é importante pois sempre que precisar vc pode alterar a silver sem afetar os consumidores que acessar a gold.
+
+![alt text](image-12.png)
+
+
+Na camada gold os dados estão prontos para vários tipos de consumo. Analisando os dados com ferramentas de visualização.
+
+![alt text](image-13.png)
+
+# Pipeline e orquestração
+Após a criação de todas as etapas é necessário orquestrar a execução dos diversos compomentes para criar um pipeline automatizado.
+
+Nesse exemplo a ingestão (raw > bronze), transformação (bronze > silver) e a modelagem (silver > gold) estão sendo executadas pelo Data Factory
+
+![alt text](image-14.png)
+
+

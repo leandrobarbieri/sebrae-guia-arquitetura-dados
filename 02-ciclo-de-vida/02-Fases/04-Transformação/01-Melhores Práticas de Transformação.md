@@ -12,4 +12,5 @@ R06-Transformação | Evite realizar operações full scan (select *) | Esse tip
 R07-Transformação | Use CTEs (common table expression) ao invés de subquerys ou tabelas temporárias
 R08-Transformação |  Não armazenar dados semi-estruturados em base relacional
 R09-Transformação | Como regra geral, para acesso a dados sempre selecione as colunas necessárias e aplique filtros ao rodar uma consulta.
-R10-Tranformação | Quanto uma tabela em um Lakehouse é muito grande use sempre estratégias de particionamento para reduzir a quantidade arquivos que são carregados e persistidos. 
+R10-Tranformação | Quanto uma tabela em um Lakehouse é muito grande use sempre estratégias de particionamento para reduzir a quantidade arquivos que são carregados e persistidos.
+R10-Transformação | As tabelas devem com dados relacionais devem sempre ter o schema definido explicitamente. Usar a inferência de schema pode trazer uma carga extra de processamento desnecessária
