@@ -49,23 +49,56 @@ Métricas e indicadores
 
 
 
-# Técnicas e Modelagem
-
-### Immon
-O criador dos conceitos de data warehouse, Imon trouxe a discussão sobre a separação dos dados operacionais e analiticos, sobre a organização dos dados baseados em áreas de negócio, sobre a conciliação de fontes de dados diferentes em um único repositório. Vários dos princípios se mantém como boas práticas até hoje, mas 
-
-
-
-- Kimbal
 # Técnicas e modelagem
-- Kimbal/Immon
+
+### Modelagem dimensional
+
+Os pesquisadores Kimbal e Immon elaboraram padrões de modelagem dimensional que dominam a área de dados a muito tempo. Trata-se dos conceitos de tabelas fato e dimensões.
+
+As tabelas "fato" representam eventos associados a um momento específico no tempo, e um conjunto de medias numéricas que serão analisadas sob várias perspectivas. Geralmente contém um grande número de registros em comparação com as tabelas de dimensão. 
+
+> Uma boa prática recomendada para elaboração de tabelas fato definir a menor granularidade possível.
+
+As tabelas fato não se relacionam diretamente, elas possuem relacionamentos com as tabelas de dimensões, que tem o papel de fornecer contexto, trazer informações detalhadas sobre os eventos das tabelas fato.
+
+Uma boa prática para modelagem de dimensões é buscar o maior grau de desnormalização possível, reunindo todos os atributos relacionados a tabela em uma única tabela, mesmo que isso gere colunas com dados repetidos. 
+
+Por exemplo: uma tabela fato de atendimento, pode ser modelada para armazenar uma linha para cada registro de atendimento, com os códigos de produtos (chave das dimensões) e os repectivos valores (métricas). Já a dimensão de produto pode ser modelada para ter a chave do produto, o nome do produto, e todas as demais características do produto, incluindo as subcategorias e categorias relacionadas.
+
+O sentido do relacionamento entre fato e dimensão é sempre, dimensão propagando filtros na direção das tabelas fato.
+
+As dimensões são formadas muitas vezes por dados consolidados a partir de fontes distindas, por isso outra boa prática importante é sempre usar "surrogate keys", que são as chaves que itendificam o elemento único na dimensão, e as chaves "alternate key" que são as chaves originais do sistema de origem. Com essa técnica podemos compor uma dimensão com elementos de fontes distintas criando o conceito de entidade de domínio que pode ser usada para filtrar dados de várias tabelas fato dando uma visão de difentes processos sob o mesmo ponto de vista. Por exemplo: uma tabela de dimensão de produto ou ter a lista completa de produtos consolidada a partir do sistema ERP, CRM. A mesma tabela pode ser usada para analisar o faturamento e o atendimento na mesma visão consolidada por produto. 
+
+
+![alt text](image-2.png)
+
+Uma outra forma de modelar os dados, que vem ganhando espaço são as wide-tables (tabelões). As wide-tables são tabelas totalmente desnormalizadas, que reúnem todos os atributos em um único conjunto de dados. Essa técnica facilita o consumo pois remove a necesside de fazer as junções, o que faz com que tenha uma perfornance otimizada em data warehouses e lakehouses modernos. 
 
 ![alt text](image-1.png)
 
-- Data Vault
+
+### Data Vault
+É um método de modelagem com um abordagem diferente, que utiliza as tabelas conhecidas como "tabelas hub", "tabelas link" e "tabelas satelites". A ideia da tabela "hub" é armazenar as chave únicas de negócio das entidades, a "link" manter as chaves que representam os relacionamento entre as "hubs" e as "satelites" aramenar os atributos que descrevem a entidades. 
+
+As tabelas hub devem possuir pelo menos:
+- Hash key: a chave primária que é usada para consolidade dados de diferentes sistemas (encriptado usando hash MD5)
+- Data de carregamnto: data que o dado foi carregado. As tabelas hub são append-only e essa data serve para identificar a última versão do registro.
+- Fonte: Serve para identificar a fonte de origem para rastreamento
+- Chave de negócio: identifica de forma única o registro, por exemplo CPF para usuário. Só é possível consolidar diferentes fontes se essa chave for comum, pois ela é usada para criar a hash-key.
+
+As tabelas Link armazenam os relacionamentos entre as chaves de negócio (hash) das tabelas hub. Os relaciomentos entre essas tabelas em geral é de muitos para muitos. Esse tipo de relacionamento traz grande flexibilidade. Para acomodar mudanças no modelo basta adicionar uma nova chave de uma nova hub.
+
+As tabelas satelites são como dimensões, elas presentam os atributos descritovos do modelo. O único atributo obrigatório de uma satélite é a chave de negócio e a data de carregamento, em geral cada satélite possui atributos de uma fonte diferente. Por exemplo. A hub usuário pode ter uma satélite com dados da base "mongodb" com dados do sistema de crm, e outra satélite com dados do MSSQL com dados do sistema de RH. Dessa forma para acomodar novos atributos a uma hub basta incluir uma nova satélite. Essa padrão de modelagem é muito flexível, adaptado para mudanças e ideal para integração de bases entre vários sistemas.
 
 
-# Camada semantica
+![alt text](image-4.png)
+
+
+Os pontos negativos são que esse padrão é mais complexo em comparação com dimensional, até mesmo as querys mais simples envolvem mapear vários relacionamentos. Além diso esse é um padrão "append-only", ou seja, os dados são adicionados a cada processamento e nunca é feito merge, isso faz com que a base cresca rapidamente a necessidade de armazenamento e ao longo do tempo pode ser significativa. 
+
+![alt text](image-6.png)
+
+# Camada semântica
 Conceito de desacoplamento da camada semantica empresa Transform comprada pelo dbt 
 dbt Semantic Layer, Enabling Greater Consistency Across Analytics Tools
 

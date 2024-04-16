@@ -1,7 +1,11 @@
 # Fase: Ingestão
 Nesta fase vamos detalhar os padrões e os métodos de ingestão de dados de vários formatos, origens e os tipos de tecnologias relacionadas.
 
-A ingestão de dados é o processo de mover os dados de um lugar para outro, tradicionalmente as tecnologias de ingestão são responsáveis por buscar das fontes originais e armazenar os dados em data warehouse ou data lakes através de processos de ELT/ETL. Essa fase se caracteriza por ser um dos poucos momentos que a fonte de dados original é lida. Geralmente durante a ingestão não são realizadas operações de processamento que alterem as características originais dos dados, tanto a granularidade quando eventuais problemas de qualidade são mantidos. As etapas subsequentes do ciclo de vida serão responsáveis por lidar com essas questões de limpeza, padronização, organização e aplicação de regras de negócio. Neste momento, o objetivo é apenas apenas trazer os dados de origem o mais rápido possível para dentro do storage de dados analíticos com ele estão. Em geral os dados são persistidos de forma incremental (APPEND/UPSERT) ou sobrescrita (FULL) nas nos bucket do data lake ou em tabelas de destino nos data warehouses.
+A ingestão de dados é o processo de mover os dados de um lugar para outro, tradicionalmente as tecnologias de ingestão são responsáveis por buscar das fontes originais e armazenar os dados em data warehouse ou data lakes através de processos de ELT/ETL. Essa fase se caracteriza por ser um dos poucos momentos que a fonte de dados original é lida. Esse é um dos ponto de maior gargalo do ciclo de vida dos dados. Muitas vezes limitações são impostas pela fonte de dados tanto quanto ao formato quanto ao tipo de tecnologia. 
+
+Por isso, o objetivo principal dessa fase é fazer a coleta da forma efiente. Geralmente durante a ingestão não são realizadas operações de processamento que alterem as características originais dos dados, tanto a granularidade quando eventuais problemas de qualidade não são tratados durante a ingestão. As operações de ajustes nos dados são feitas em etapas subsequentes do ciclo de vida. Questões como a limpeza, padronização, organização e aplicação de regras de negócio são feitas depois que os dados estão ingeridos na plataforma analítica. 
+
+Neste momento, o objetivo é apenas apenas trazer os dados de origem o mais rápido possível para dentro do storage de dados analíticos com ele estão. Em geral os dados são persistidos de forma incremental (APPEND/UPSERT) ou sobrescrita (FULL) nas nos bucket do data lake ou em tabelas de destino nos data warehouses.
 
 É importante diferenciar a fase de ingestão das fases de modelagem e integração de dados, enquanto a ingestão apenas busca mover os dados do ambiente operacional para o ambiente analítico, a integração de dados busca combinar dados de diferentes fontes em um conjunto de dados. Essas fases serão detalhadas mais a diante no ciclo de vida.
 
@@ -91,6 +95,10 @@ O processamento em batch é muito utilizado, apesar do ganho de popularidade das
 ## Estratégias de atualização
 A escolha da estratégia de atualização envolver avaliar a opção de capturar todos os dados da fonte ou apenas o diferencial desde a última carga.
 
+
+#### Truncate e Reload
+Esse é um padrão simples que não atualiza os dados, apenas sobrescreve com os dados mais atualizados obtidos da fonte. Nesse caso, os dados do banco analítico são removidos e o processo de ingestão faz uma carga full da fonde de dados gerando uma nova versão da tabela.
+
 ### Full Snapshots
 Essa estratégia extrai todos os dados da fonte e os adiciona em uma partição imutável, atualizando todos os registros para a última versão em cada execução.
 
@@ -99,14 +107,6 @@ Essa estratégia extrai todos os dados da fonte e os adiciona em uma partição 
 Use essas estratégia quando:
 - O volume de dados na origem é pequeno.
 - O sistema de origem não mantém um campo de carimbo de data/hora que identifique se os dados foram adicionados, atualizados ou excluídos.
-
-
-### Slowly Changing Dimensions
-Essa abordagem armazena os dados de forma mais eficiente, pois versiona os registros atualizados. O benefício é que a análise fica mais simples e rápida, e identificar e remover dados individuais, por exemplo a pedido da LGPD, também. O lado complicado dessa abordagem é que as mudanças nas fontes de dados precisam ser monitoradas e detactadas e assim que possível as atualizações realizadas.
-
-Use essas estratégia quando:
-- O sistema de origem mantém um campo de carimbo de data/hora que identifica se os dados foram adicionados, atualizados ou excluídos.
-
 
 ### Insert-only
 Esse padrão de ingestão de dados cria um novo registro acada processamento ao invés de fazer a atualização. Cada inserção uma coluna com a data/hora é incluída no registro. Por exemplo, cada vêz que um cliente muda de endereço uma nova linha com o endereço é inserida junto com a anterior, dessa forma todo o log de alterações é mantido no banco de dados analítico e o dado atual pode ser obtido buscando pela data de inserção mais recente. Use somente onde tiver necessidade, avalie se esse histório pode ser mantido na tabela de fatos pois essa estratégia pode trazer algumas desvantagens como gerar tabelas muito grandes quando há atualizações frequentes, além de demandar processamento adicional para buscar a versão atual através da ultima data de atualização.
@@ -137,6 +137,11 @@ WHEN NOT MATCHED THEN
     INSERT (chave, col1, col2) VALUES (f.chave, f.col1, f.col2);
 ```
 
+### Slowly Changing Dimensions
+Essa abordagem armazena os dados de forma mais eficiente, pois versiona os registros atualizados. O benefício é que a análise fica mais simples e rápida, e identificar e remover dados individuais, por exemplo a pedido da LGPD, também. O lado complicado dessa abordagem é que as mudanças nas fontes de dados precisam ser monitoradas e detactadas e assim que possível as atualizações realizadas.
+
+Use essas estratégia quando:
+- O sistema de origem mantém um campo de carimbo de data/hora que identifica se os dados foram adicionados, atualizados ou excluídos.
 
 ### Push vs Pull
 A estratégia de PUSH inverte o modelo tradicional de requisitar os dados diretamente na origem, na estratatégia de push a fonte os dados envia para o destino, ou seja, nesse padrão a fonte tem o total controle sob a contenção dos seus recursos, enviando na frequencia, horário e formatos desejados. Já a estratégia de PULL a fonte de dados é lida pela solução de ingestão de dados e tem controle sob o processo.
@@ -144,7 +149,6 @@ A estratégia de PUSH inverte o modelo tradicional de requisitar os dados direta
 O método de intgestão push, pode ser implementado através da exportação de arquivos (gerado pelo próprio sistema de origem) e envio para um object storage, na camada landing. Essa acaba sendo mais interessante sempre que o sistema de origem não pode dar acesso externo aos dados por questões de segurança. Além disso os desenvolvedores do sistema têm autonomia e a responsabilidade de fazer o processo de extração.
 
 ![Alt text](../../media/push-pull.png)
-
 
 
 ### Conectividade e schemas
