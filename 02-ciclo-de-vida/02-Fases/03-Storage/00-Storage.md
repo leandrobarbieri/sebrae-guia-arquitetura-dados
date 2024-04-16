@@ -53,6 +53,9 @@ Bronze/Raw | Nessa camada os dados estão com o schema original, mas com um form
 Silver/Trusted | Nessa camada os dados estão padronizados com um formato único por tipo mas ainda são classificados pela fonte | ./silver/sas/delta/ano=2024/mes=jan/dia=20240131; silver/sas/parquet/ano=2024/mes=jan/dia=20240131; 
 Gold/Refined | Após limpeza e padronização os dados devem estar organizados para consumo e depedendo do projeto os conjuntos de dados devem ter nomes relacionados às áreas de negócio | ./gold/atendimento/uf=es/ano=2024/mes=jan/dia=20240131
 
+
+Exemplo:
+
 ![Alt text](../../media/hierarquia-objectstorage-diagrama.png)
 
 
@@ -78,8 +81,7 @@ Utilize os recursos das ferramentas de gestão de ciclo de vida dos object stora
 
 
 ## Storages para streaming
-> escrever sobre as particularidades deste tipo de carga de trabalho e os tipos storages mais apropriados
-
+> Escrever sobre as particularidades deste tipo de carga de trabalho e os tipos storages mais apropriados
 
 <br>
 
@@ -153,10 +155,8 @@ Kafka | Sim | Não | Sim
 ClickHouse | Sim | Não | Sim
 
 
-
-
 ## Delta Lake
-O que é? É um formato, uma camada de abstração de um formato, um framework com conjunto de libs, uma tabela?
+É um formato, uma camada de abstração de um formato, um framework com conjunto de libs que faz com que arquivos parquet tenha característica equivalentes a tabelas de bancos relacionais.
 
 Após o surgimento do Spark começou a surgir a necesside criar um formato otimizado, com recursos adionais além do que até então era utilizado no caso o formato parquet. Então em 2019 da empresa Databrics criou o Delta Lake, uma camada de storage, engine de para armazenar dados em data lakes, que traz uma série de feautures adicionais, como time travel e propriedades ACID.
 
@@ -164,46 +164,18 @@ Spark casa muito bem com delta, pela facilidade e performance para se fazer o of
 
 Mas para trabalhar com esse formato não é necessário usar o spark, o delta por ser um padrão aberto pode ser processado por outras engines, por exemplo pandas.
 
-<!-- - Sugestão de criar particionamento quando a tabela estiver acima de 1TB
-- Criado pensando na integração com o spark.
-- Traz a opção de trabalhar com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem), PySpark (diversidade)
-- Formato parquet
-- O spark consegue conversar bem com todos os formatos, mais é mais alinhado com o Delta (mesma fabricante) 
-- Hidden Partitioning (não precisa dizer o que precisa particionar)
+Embora o Spark possa trabalhar com vários formatos de arquivo, o Delta Lake é altamente recomendado. Ele é desenvolvido pela mesma equipe por trás do Spark e oferece recursos adicionais, como controle de versão, transações ACID e otimização de consultas.
 
-> recomendações
-- Quanto mais arquivos mais lento a leitura - arquivos no tamanho certo (pequenos demais - muito list ou grandes demais - acessando mesmo o local sempre paralelismo) 
-- cada arquivo tem que ser aberto listadop o que demora. O custo maior está no list, abertura leitura e fechamento
-- pra resolver compartação de arquivos
-- atividades de  manutenção arquovos oordenados -->
-
-
-
-## Iceberg
-
-https://www.thoughtworks.com/en-es/radar/platforms/apache-iceberg
-
-<!-- - Formato de arquivo para implantação de lakehouse
-- Mais possibilidade de customizações/otimizações do que delta (tabelas gigantes acima de 10 TB)
-- Criado pensando em abstrações que permitem outras engines podem se conectar, camada extra de abstrações  
-- Expressões com SQL (SELECT, INSERT, UPDATE, MERGE tudo que um banco relacional tem)
-- Evolução de Schema (adaptação a mudamças de schema e não falha o pipeline) 
-- Hidden Partitioning (não precisa dizer o que precisa particionar) entende o que fazer auto
-- Timetravel e rollback
-- Lakehouses são imutaveis, novas versões dos dados
-- dois tipos de arquivos (delete files/puffin files) qualquer tipo de arquivo não apenas parquet - parquet, orc, avro (melhor em streaming) - tabelas grandes para query (ORC), default (parquet)- atende casos de uso específicos no mesmo lakehouse format - escolhe o tipo par cada tabela "file format agnostic" -->
-
-
+Ao trabalhar com esse formato evite arquivos muito pequenos ou muito grandes. Muitos arquivos pequenos podem resultar em sobrecarga de listagem e abertura, enquanto arquivos grandes podem afetar o paralelismo.
+Encontre um equilíbrio: arquivos de tamanho adequado para otimizar a leitura e minimizar o custo de operações.
 
 
 # Data Sharing
-É um recurso que nos permite compartilhar ou incorporar fontes de dados de storages remotos ou internos como parte do seu lakehouse, com controle de acesso em objetos, pastas ou buckets/containes específicos do data lake.
+O conceito de data sharing representa o compartilhamento de forma segura conjuntos de dados entre plataformas heterogêneas, independentes. Esse tipo de acesso a dados realizado entre empresas ganhou força com o uso de object storages que entregam controle de acesso e um permissionamento refinado permitindo acesso segura pela internet através do protocolos próprios que rodam sob o http sem ter que se preocupar com detalhes como acesso a rede corporativa para chegar até os servidores de bancos de dados. Além disso, dentro da própria empresa o data sharing permite que unidades tenham seus dados compartilhados de forma seletiva, garantindo a descetralização da produção e do consumo.
+
+Ao facilitar o compartilhamento os pipelines de ingestão ficaram mais simples e incorporar fontes de dados de storages remotos ou internos como parte do seu lakehouse. É importante garantir o controle de acesso em objetos, pastas ou buckets/containes específicos do data lake quando usar data sharing.
 
 Isso traz simplicidade e evita a replicação de dados sem controle dentro da empresa, além disso, abre a possibildade de compartilhamento entre unidades independentes ou empresas parceiras.
 
 O fato de não ter mover grandes quantidade de dados e conseguir incorporar nas querys tabelas externas com segurança e performance, faz com que a feature data sharing seja ideal para o modelo federado do Sebrae, onde cada unidade pode atuar de forma independente, com arquiteturas distintas e mesmo assim compartilhar seus produtos de dados como recurso que pode ser gerenciado e governado por um repositório central unificado. Esse compartilhamento traz agilidade para o desenvolvimento dos pipelines de atualização pois evita a necessidade de sincronização dos pipelines externos e internos ao mesmo tempo mantém a responsabilidade de quem é o dono do conjunto de dados, um dos conceitos centrais do Data Mesh, que veremos mais a frente.
-
-<!-- O conceito de data sharing consite em compartilhar de forma segura conjuntos de dados entre plataformas heterogêneas, independentes. Esse tipo de acesso a dados realizado entre empresas ganhou força com o uso de object storages que entregam controle de acesso e um permissionamento refinado permitindo acesso segura pela internet através do protocolos próprios que rodam sob o http sem ter que se preocupar com detalhes como acesso a rede corporativa para chegar até os servidores de bancos de dados. Além disso, dentro da própria empresa o data sharing permite que unidades tenham seus dados compartilhados de forma seletiva, garantindo a descetralização da produção e do consumo. -->
-
-
 <br>

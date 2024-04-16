@@ -12,7 +12,6 @@ R07-Storage | Como controlar o aumento do espaço de armazenamento do object sto
 R08-Storage | Como reduzir o custo de storage? | Utilize os recursos das ferramentas de gestão de ciclo de vida dos object storages para criar políticas automatizadas para armazenar dados antigos ou pouco acessados em categorias de persistências com discos com melhor custo benefício.
 
 
-
 ### Dicas de como gerenciar o storage para não perder a governança?
 - Use valores exclusivos nos dados para criar hierarquias de pastas. 
 - Particione os dados com base em critérios como data, região ou tipo. Isso facilita a recuperação e o processamento seletivo dos dados. 
@@ -22,17 +21,10 @@ R08-Storage | Como reduzir o custo de storage? | Utilize os recursos das ferrame
 - Monitore o uso das pastas regularmente. Remova dados obsoletos ou desnecessários para evitar acúmulo. 
 
 
-
-
-
 # Anotações
-
 - usar parquet na bronze por ser mais generalista e delta ou iceberg na silver e gold
-
 - colocar pk e foreign key no começo da tabela
-
 - não armazenar dados semi-estruturados em base relacionalç
-
 - antes de armazenar fazer a compressao do arquivo para reduzir o tamanho e economizar
 
 ex func de compressao para testar o melhor formato 
