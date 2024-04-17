@@ -17,14 +17,4 @@ Fase 5 | Além da fase 4, gerencia entidades mestre, possui pipelines com fases 
 
 # Diagramas de Arquitetura
 
-## Azure
-![alt text](azure2.png)
-
-
-## Google
-
-
-## Híbrido
-
-
-![Alt text](./hibrido.png)
+![alt text](diagrama.png)
